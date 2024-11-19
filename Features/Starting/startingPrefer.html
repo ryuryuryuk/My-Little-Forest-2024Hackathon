@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'start/css/startingPage.css' %}">
     <link rel="stylesheet" href="{% static 'start/css/startingProgress.css' %}">
     <link rel="stylesheet" href="{% static 'start/css/startingQuestion.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
 
     <style>
@@ -19,6 +20,19 @@
         @import url(startingProgress.css);
         @import url(startingPage.css);
         
+        /* 이 부분 반드시 추가해야지만 로고 위치가 정확하게 일치해요! */
+        @media screen and (min-width: 1280px) and (max-width: 1920px) {
+            .whole-wrapper {
+                margin-top: 16.8px;
+            }
+        }
+
+        @media screen and (max-width: 1279px) {
+            .whole-wrapper {
+                margin-top: 0;
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -45,91 +59,99 @@
         .main {
             grid-area: main;
             background-color: white;
-            flex-direction: column;
             gap: 20px;
+            justify-content: center;
+			align-items: center;
+			text-align: center;
         }
 
         .footer {
             grid-area: footer;
             background-color: #4EA686;
         }
+
+        .Logo {
+            width: 300px;
+        }
+
+        .whole-wrapper {
+            display: flex; 
+            align-items: center;
+            justify-content:center;
+			text-align: center;
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+        }
+
         
     </style>
 </head>
 <body>
     <div class="grid-container">
-        <div class="box header">Header - 100px</div>
+        <div class="box header"></div>
         <div class="box main">
 
-            <!--6개의 질문 페이지 중 어느 페이지에 해당하는지 보여주기 위한 진행 상태 바
-            남은 페이지 개수를 유동적으로 보여주기 위하여 원에 색깔이 칠해지는 느낌-->
-            <div class="progress-container">
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
+            <div class="whole-wrapper">
+
+                <div class="whole-container">
+                    <img src="../../assets/images/Logo.jpg" alt="로고" class="Logo">
+
+                    <div class="progress-container">
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                    </div>
+
+                <div class="question-text">취향</div>
+                <div class="question-subtext">세부 내용</div> <!--불필요 시 삭제 요망-->
+
+                <div class="buttons-container">
+                    <!-- 각 선택지별로 form 태그 추가 -->
+                    <form id="prefer-1" method="POST" action="{% url 'start:startingInterest' %}">
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 1')">선택지 1</button>
+                    </form>
+                    <form id="prefer-2" method="POST" action="{% url 'start:startingInterest' %}">
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 2')">선택지 2</button>
+                    </form>
+                    <form id="prefer-3" method="POST" action="{% url 'start:startingInterest' %}">
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 3')">선택지 3</button>
+                    </form>
+                    <form id="prefer-4" method="POST" action="{% url 'start:startingInterest' %}">
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 4')">선택지 4</button>
+                    </form>
+                    <!-- 다음페이지 버튼 -->
+                    <button class="choice-next" onclick="nextPage()">
+                        <i class="fa-solid fa-arrow-right" style="color: #27634C;"></i>
+                    </button>
+                </div>
             </div>
 
-            <div class="question-text">취향</div>
-            <div class="question-subtext">세부 내용</div> <!--불필요 시 삭제 요망-->
-
-            <div class="buttons-container">
-                <!-- 각 선택지별로 form 태그 추가 -->
-                <form id="prefer-1" method="POST" action="{% url 'start:startingInterest' %}">
-                    <button class="choice-button" onclick="selectChoice(this, '선택지 1')">선택지 1</button>
-                </form>
-                <form id="prefer-2" method="POST" action="{% url 'start:startingInterest' %}">
-                    <button class="choice-button" onclick="selectChoice(this, '선택지 2')">선택지 2</button>
-                </form>
-                <form id="prefer-3" method="POST" action="{% url 'start:startingInterest' %}">
-                    <button class="choice-button" onclick="selectChoice(this, '선택지 3')">선택지 3</button>
-                </form>
-                <form id="prefer-4" method="POST" action="{% url 'start:startingInterest' %}">
-                    <button class="choice-button" onclick="selectChoice(this, '선택지 4')">선택지 4</button>
-                </form>
-                <!-- 다음페이지 버튼 -->
-                <button class="choice-next" onclick="nextPage()">
-                    <i class="fa-solid fa-arrow-right" style="color: #27634C;"></i>
-                </button>
-
-            </div>
         </div>
-        <div class="box footer">Footer - 50px</div>
-        <script> 
-            var selectedChoice = ""; // 사용자가 선택한 값을 저장할 변수
 
-            // 동작되는지 확인하려고 임시로 만든 함수
-            function selectChoice(button, choice) {
-                // 다시 클릭하면 선택 해제
-                if (button.classList.contains('selected')) {
-                    button.classList.remove('selected');
-                    selectedChoice = ""; // 선택 해제 시 변수 초기화
-                } else {
-                    var buttons = document.querySelectorAll('.choice-button');
-                    buttons.forEach(function(button) {  // selected가 하나 뿐이어야 해서 forEach(반복) 돌고
-                        button.classList.remove('selected'); // 모든 버튼에서 selected 해제
-                    });
-                    button.classList.add('selected'); // 현재 버튼에만 selected 추가
-                    selectedChoice = choice; // 선택된 값 저장
-                }
-    
-                var selectedButton = document.querySelector('.choice-button.selected');
-                var nextButton = document.querySelector('.choice-next');
-                nextButton.disabled = !selectedButton; // 선택이 없으면 '다음' 비활성화
-            }
-    
+        </div>
+        <div class="box footer"></div>
+        <script src="starting_.js"></script>
+        <script> 
+
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelectorAll('.progress-circle')[0].classList.add('filled');
+                document.querySelectorAll('.progress-line')[0].classList.add('filled');
+            });
+
             function nextPage() {
                 if (!selectedChoice) {
                     alert("선택되지 않은 상태");
                 } else {
-                    window.location.href = "startingInterest.html"; 
+                    window.location.href = "{% url 'start:startingInterest' %}"; 
                 }
             }
         </script>
