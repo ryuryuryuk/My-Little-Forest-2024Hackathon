@@ -93,16 +93,16 @@
         <div class="box sidebar">
 			<div class="side-box">
 				<span class=" side city">
-					<a href="#city">도시 특징</a>
+					<a href="#city">도시 특징</a> <!-- '같은 페이지: 사이드바 -> 메인'으로 이동하는 거라 이대로 두었어요! -->
 				</span>
 				<span class=" side info">
-					<a href="#info">생활 정보</a>
+					<a href="#info">생활 정보</a> <!-- '같은 페이지: 사이드바 -> 메인'으로 이동하는 거라 이대로 두었어요! -->
 				</span>
 				<span class=" side fes">
-					<a href="searchLocalFestival.html">지역 축제</a> <!-- 2번 페이지로 이동하도록 설정 -->
+					<a href="{% url 'searchLocalFestival' %}">지역 축제</a> <!-- searchLocalFestival.html로 이동하도록 설정 -->
 				</span>
 				<span class=" side store">
-					<a href="searchLocalStore.html">지역 가게</a> <!-- 3번 페이지로 이동하도록 설정 -->
+					<a href="{% url 'searchLocalStore' %}">지역 가게</a> <!-- searchLocalStore.html로 이동하도록 설정 -->
 				</span>
 
 				<span>
