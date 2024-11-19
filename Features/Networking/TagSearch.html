@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tag Search</title> 
+    
+    <!-- networking.html 1~2번 부분 코드 짤 때 참고하시라고 올립니다! 실행해보면 바로 아실 수 있을 거에요!! -->
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #search-section {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #search-input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        #search-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .box {
+            width: 200px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 18px;
+            color: white;
+        }
+
+        .computer {
+            background-color: #4CAF50;
+        }
+
+        .disogong {
+            background-color: #2196F3;
+        }
+
+        .code {
+            background-color: #FF5722;
+        }
+
+        .travel {
+            background-color: #9C27B0;
+        }
+
+        .cooking {
+            background-color: bisque;
+        }
+
+        .food {
+            background-color: aqua;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="search-section">
+        <input type="text" id="search-input" placeholder="태그 입력창 ">
+        <button id="search-button">Search</button>
+    </div>
+
+    <!-- data-tag에 있는 내용으로 검색창 검색하면 해당 태그 가진 박스만 검색됩니다! -->
+    <div id="box-container">
+        <div class="box computer" data-tag="computer">computer</div>
+        <div class="box disogong" data-tag="disogong, code">disogong</div>
+        <div class="box code" data-tag="computer, code">Code</div>
+        <div class="box travel" data-tag="travel">Travel</div>
+        <div class="box cooking" data-tag="food">cooking</div>
+        <div class="box food" data-tag="food, cooking">배고파</div>
+    </div>
+
+
+    <!-- Js 파일입니다! -->
+    <script src="TagSearch.js"></script>
+</body>
+
+</html>
