@@ -12,6 +12,7 @@
 	
 	<style>
 		@import url(searchLocalGrid.css);
+		@import url(searchLocalSideBar.css);
 
 		body {
 			font-family: 'NanumSquareRound', sans-serif;
@@ -45,18 +46,84 @@
 		.footer {
 			grid-area: footer;
 		}
-
 	</style>
 </head>
 
 <body>
 	<div class="grid-container">
 		<div class="box header">Header - 100px</div>
+
 		<div class="box widget">widget - 행 당 80px</div>
-		<div class="box main">Main - 행 당 80px</div>
-        <div class="box sidebar">sidebar</div>
+
+		<div class="box main">
+				<h2>
+					도시 특징
+				</h2>
+			<div class="title-city" id="city">
+				<span class="shadow">
+					<img src="page.jpg" alt="사진">
+					<div class="overlay">
+						<p>문구 작성</p> <!-- 문구 작성 -->
+					 </div>
+				</span>
+			</div>
+				<h2>
+					생활 정보
+				</h2>
+			<div class="title-info" id="info">
+				<div class="text A">
+					<h3 class="click-info" onclick="showContent(this)">text-A title</h3>
+					<p>text-A content</p>
+				</div>
+				<div class="text B">
+					<h3 class="click-info" onclick="showContent(this)">text-B title</h3>
+					<p>text-B content</p>
+				</div>
+				<div class="text C">
+					<h3 class="click-info" onclick="showContent(this)">text-C title</h3>
+					<p>text-C content</p>
+				</div>
+				<div class="text D">
+					<h3 class="click-info" onclick="showContent(this)">text-D title</h3>
+					<p>text-D content</p>
+				</div>
+			</div>
+		</div>
+
+        <div class="box sidebar">
+			<div class="side-box">
+				<span class=" side city">
+					<a href="#city">도시 특징</a>
+				</span>
+				<span class=" side info">
+					<a href="#info">생활 정보</a>
+				</span>
+				<span class=" side fes">
+					<a href="searchLocalFestival.html">지역 축제</a> <!-- 2번 페이지로 이동하도록 설정 -->
+				</span>
+				<span class=" side store">
+					<a href="searchLocalStore.html">지역 가게</a> <!-- 3번 페이지로 이동하도록 설정 -->
+				</span>
+
+				<span>
+					<!--  빈 공간 -->
+				</span>
+
+			</div>
+		</div>
 		<div class="box footer">Footer - 50px</div>
 	</div>
-</body>
 
+    <script>
+        function showContent(element) {
+            const content = element.nextElementSibling;
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
 </html>
