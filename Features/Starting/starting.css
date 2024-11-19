@@ -3,7 +3,7 @@
     font-size: 1.5em;
     padding: 20px 30px;
     width: 400px;
-    height: 400px;
+    height: 250px;
     margin: 10px;
     background-color: #27634C;
     color: white;
@@ -11,6 +11,13 @@
     border-radius: 8px;
     cursor: pointer;
     text-align: center;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: space-between; 
+    width: 100%; 
+    max-width: 600px;
 }
 
 .back-button {
