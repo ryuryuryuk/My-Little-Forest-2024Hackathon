@@ -22,3 +22,5 @@ urlpatterns = [
     path("start/", include("start.urls")), #start애플리케이션 url
     #path("main/", include("main.urls")), 
 ]
+
+#main status
