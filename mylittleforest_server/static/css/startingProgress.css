@@ -1,0 +1,28 @@
+/* Progress bar container */
+.progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+/* Circle styles */
+.progress-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #D3D3D3; /* 기본 회색 */
+}
+
+/* Line styles */
+.progress-line {
+    width: 40px;
+    height: 4px;
+    background-color: #D3D3D3; /* 기본 회색 */
+}
+
+/* Active circle */
+.progress-circle.active {
+    background-color: #27634C; /* 활성화된 원 */
+}
