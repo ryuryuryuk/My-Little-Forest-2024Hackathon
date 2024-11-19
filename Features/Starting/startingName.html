@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>startingName</title> <!-- 시작화면 페이지 -->
+    
+    <!-- .css 불러오기 -->
+    <link rel="stylesheet" href="{% static 'start/css/startingGrid.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/startingName.css' %}">
+
+
+    <style>
+        @import url(startingGrid.css);
+        @import url(startingName.css);
+
+        body {
+            font-family: 'NanumSquareRound', sans-serif;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #4EA686;
+        }
+
+        .header {
+            grid-area: header;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .main {
+            grid-area: main;
+        }
+
+        .footer {
+            grid-area: footer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="box header">Header - 100px</div>
+        <div class="box main">
+            <div>
+                <h2>당신의 닉네임을 알려주세요</h2>
+                <form method="POST" onsubmit="validateNickname(event)"> <!-- 중복된 닉네임인지 확인 필요 -->
+                    <input type="text" name="nickname" id="nickname" placeholder="닉네임 입력" required>
+                    <button type="submit">제출</button>
+                </form>
+            </div>
+        </div>
+        <div class="box footer">Footer - 50px</div>
+    </div>
+
+    <script> //해당 자바스크립트는 공백 문자도 빈 문자열로 취급하기 위하여 오류를 출력하는 ~
+        document.getElementById("nickname").addEventListener("input", function () {
+            var nickname = this.value;
+
+            // 공백만 있는 경우도 빈 문자열로 취급
+            if (nickname.trim() === "") {
+                this.setCustomValidity("닉네임을 입력해주세요."); //setCustomValidity(): 오류 메시지를 입맛에 맞게 변경
+            } else {
+                this.setCustomValidity(""); // 사용자가 제대로 입력할 경우 오류 제거
+            }
+        } );
+
+        function validateNickname(event) {
+            var nicknameInput = document.getElementById("nickname");
+
+            // 공백 문자만 있을 경우 required 오류 메시지가 똑같이 뜨도록
+            if (nicknameInput.validity.valueMissing) { 
+                event.preventDefault(); //제출 막기
+            }
+            return true;
+        }
+    </script>
+
+
+</body>
+</html>
