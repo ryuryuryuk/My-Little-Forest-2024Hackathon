@@ -16,18 +16,6 @@
         @import url(startingGrid.css);
         @import url(starting.css);
 
-        /* 이 부분 반드시 추가해야지만 로고 위치가 정확하게 일치해요! */
-        @media screen and (min-width: 1280px) and (max-width: 1920px) {
-            .whole-wrapper {
-                margin-top: 22px;
-            }
-        }
-
-        @media screen and (max-width: 1279px) {
-            .whole-wrapper {
-                margin-top: 10px;
-            }
-        }
 
         body {
             font-family: 'NanumSquareRound', sans-serif;
@@ -53,10 +41,9 @@
 
         .footer {
             grid-area: footer;
-        }
-
-        .Logo {
-            width: 300px;
+            font-size: 15px;
+            color: #544424;
+            text-align: center;
         }
 
         .whole-wrapper {
@@ -66,37 +53,68 @@
             width: 100%;
             max-width: 800px;
             flex-direction: column;
+            font-family: 'NanumSquareRound';
         }
+
+        .Logo {
+            width: 400px;
+        }
+
+
+        /* 마리포 간단한 소개문구 */
+        .intro-text {
+            font-size: 20px;
+            color: #544424;
+            text-align: center;
+            font-family: 'NanumSquareRound', sans-serif;
+            margin-bottom: 60px;
+            letter-spacing: 0.3px; /* 글자 간격 */
+
+            /* 애니메이션 조건 */
+            
+        }
+
+        .intro-wrapper {
+        }
+        
+
     </style>
 </head>
 
 <body>
+
     <div class="grid-container">
-        <div class="box header"></div>
         <div class="box main">
             <div class="whole-wrapper">
                 <img src="../../assets/images/Logo.jpg" alt="로고" class="Logo">
+                <!-- 마리포 간단한 소개문구 -->
+                <div class="intro-wrapper">
+                    <p class="intro-text">나를 위한 맞춤형 로컬 라이프, 마이리틀포레스트</p>
+                </div>
 
                     <!-- 애니메이션으로(희망사항)으로 '마이리틀포레스트' 소개 화면 -->
                 <div class="button-wrapper">
                     <button class="button back-button" 
-                        onmouseover="this.innerText = '내 포레스트로 이동'" 
-                        onmouseout="this.innerText = '와본 적 있어요'" 
+                        onmouseover="this.innerHTML = '내 포레스트로<br>이동하기'" 
+                        onmouseout="this.innerHTML = '와본 적 있어요'" 
                         onclick="window.location.href='{% url 'main:main' %}'">
                         와본 적 있어요
                     </button>
 
                     <button class="button next-button" 
-                        onmouseover="this.innerText = '당신의 포레스트를 찾아보세요'" 
-                        onmouseout="this.innerText = '첫 방문이에요'" 
+                        onmouseover="this.innerHTML = '나만의<br>포레스트 찾기'"
+                        onmouseout="this.innerHTML = '첫 방문이에요'" 
                         onclick="window.location.href='{% url 'start:startingName' %}'">
                         첫 방문이에요
                     </button>
                 </div>
             </div>
         </div>
-        <div class="box footer"></div>
+        <div class="footer">
+            Copyright©2024 by team 마리포
+        </div>
     </div>
+
 </body>
 
 </html>

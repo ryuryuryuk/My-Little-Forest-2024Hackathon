@@ -1,33 +1,50 @@
-
+@media screen and (min-width: 1280px) and (max-width: 1920px) {
 .button {
-    font-size: 1.5em;
-    padding: 20px 30px;
     width: 400px;
     height: 250px;
     margin: 10px;
     background-color: #27634C;
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
     text-align: center;
+    padding: 15px 30px; /* 내부 여백 */
+    font-size: 23px; /* 기본 글꼴 크기 */
+    border-radius: 60px; /* 둥근 모서리 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+    cursor: pointer;
+    line-height: 1.5; /* 텍스트 간격 */
+    
+}
+
+
+/* 마우스 호버 효과 (추가) */
+.button:hover {
+    background: linear-gradient(180deg,  #8BC330, #4EA686); /* 그라데이션 */
+    transform: translateY(-2px); /* 살짝 떠오르는 효과 */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* 그림자 확대 */
+    font-weight: bold;
 }
 
 .button-wrapper {
     display: flex;
     justify-content: space-between; 
-    width: 100%; 
+    width: 90%; 
     max-width: 600px;
+    font-family: 'NanumSquareRound';
+    gap: 20px; /* 버튼 간격 */
+    margin-bottom: 30px;
 }
 
 .back-button {
-    background-color: #27634C; 
+    font-family: 'NanumSquareRound';
+    background: linear-gradient(180deg, #8BC330, #27634C); /* 그라데이션 */
 }
 
 .next-button {
-    background-color: #27634C; 
+    font-family: 'NanumSquareRound';
+    background: linear-gradient(180deg, #8BC330, #27634C); /* 그라데이션 */
 }
-
+}
 
 @font-face {
     font-family: 'NanumSquareRound';
@@ -35,3 +52,18 @@
     font-weight: normal;
     font-style: normal;
 }
+
+/* intro-text 애니메이션 */
+@keyframes slideIn {
+    0% {
+        transform: translateX(100); /* 텍스트가 화면 왼쪽에서 시작 */
+        opacity: 1;
+    }
+    50% {
+      opacity: 1; /* 점점 보이기 시작 */
+    }
+    100% {
+      transform: translateX(0); /* 텍스트가 원래 위치로 이동 */
+      opacity: 1; /* 완전히 보이기 */
+    }
+}  
