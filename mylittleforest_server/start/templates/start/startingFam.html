@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>startingFam</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <title>startingFam</title> <!-- 1.맞춤형지방도시찾기 : 가족구성원 조사 -->
+
+    <!-- .css 불러오기 -->
+    <link rel="stylesheet" href="{% static 'start/css/startingGrid.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/startingQuestion.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/startingProgress.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/startingPage.css' %}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <style>
         @import url(startingGrid.css);
         @import url(startingQuestion.css);
         @import url(startingProgress.css);
         @import url(startingPage.css);
+
+        /* 이 부분 반드시 추가해야지만 로고 위치가 정확하게 일치해요! */
+        @media screen and (min-width: 1280px) and (max-width: 1920px) {
+            .whole-wrapper {
+                margin-top: 16.8px;
+            }
+        }
+
+        @media screen and (max-width: 1279px) {
+            .whole-wrapper {
+                margin-top: 0;
+            }
+        }
         
         * {
             margin: 0;
@@ -48,69 +67,126 @@
             grid-area: footer;
             background-color: #4EA686;
         }
+
+        .Logo {
+            width: 300px;
+        }
+
+        .whole-wrapper {
+            display: flex; 
+            align-items: center;
+            justify-content:center;
+			text-align: center;
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+        }
         
     </style>
 </head>
 <body>
     <div class="grid-container">
-        <div class="box header">Header - 100px</div>
+        <div class="box header"></div>
         <div class="box main">
 
-            <!--6개의 질문 페이지 중 어느 페이지에 해당하는지 보여주기 위한 진행 상태 바
-            남은 페이지 개수를 유동적으로 보여주기 위하여 원에 색깔이 칠해지는 느낌-->
-            <div class="progress-container">
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-            </div>
+            <div class="whole-wrapper">
 
-            <div class="question-text">가족 구성원</div>
-            <div class="question-subtext">세부 내용</div> <!--불필요 시 삭제 요망-->
-            <div class="buttons-container">
-                <button class="choice-back" onclick="backPage()">
-                    <i class="fa-solid fa-arrow-right fa-flip-horizontal" style="color: #27634C;"></i>
-                </button>
-                <button class="choice-button" onclick="selectChoice(this, '선택지 1')">선택지 1</button>
-                <button class="choice-button" onclick="selectChoice(this, '선택지 2')">선택지 2</button>
-                <button class="choice-button" onclick="selectChoice(this, '선택지 3')">선택지 3</button>
-                <button class="choice-button" onclick="selectChoice(this, '선택지 4')">선택지 4</button>
-                
-                <!-- 이 버튼에 대한 처리가 쉽지 않..습니다
-                 그리고 디자인도 조금 구린 것 같아서 바꿀 예정입니다
-                 위치 선정을 기존 다음 버튼과 비슷한 위치로 하려면 class를 choice-button으로 바꾸면 됩니다
-                 그런데 다른 건 기호고 이것만 글자라 위치가 너무 어정쩡해서 보류했습니다 ..
-                 자세한 CSS 스타일은 startingPage.css에 있어요 -->
-                <button class="choice-submit">결과보기</button>
+                <div class="whole-container">
+                    <img src="../../assets/images/Logo.jpg" alt="로고" class="Logo">
+
+                    <!--6개의 질문 페이지 중 어느 페이지에 해당하는지 보여주기 위한 진행 상태 바
+                    남은 페이지 개수를 유동적으로 보여주기 위하여 원에 색깔이 칠해지는 느낌-->
+                    <div class="progress-container">
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                    </div>
+
+                    <div class="question-text">가족 구성원</div>
+                    <div class="question-subtext">세부 내용</div> <!--불필요 시 삭제 요망-->
+                    <div class="buttons-container">
+
+                        <!-- 이전페이지 이동 버튼 -->
+                        <button class="choice-back" onclick="backPage()">
+                            <i class="fa-solid fa-arrow-right fa-flip-horizontal" style="color: #27634C;"></i>
+                        </button>
+
+                        <form id="Fam-1" method="POST" action="">
+                            {% csrf_token %}
+                            <input type="hidden" name="choice" value="a"> 
+                            <button class="choice-button" onclick="selectChoice('fam-1')">선택지 1</button>
+                        </form>
+                        <form id="Fam-2" method="POST" action="">
+                            {% csrf_token %}
+                            <input type="hidden" name="choice" value="a"> 
+                            <button class="choice-button" onclick="selectChoice('fam-2')">선택지 2</button>
+                        </form>
+                        <form id="Fam-3" method="POST" action="">
+                            {% csrf_token %}
+                            <input type="hidden" name="choice" value="b"> 
+                            <button class="choice-button" onclick="selectChoice('fam-3')">선택지 3</button>
+                        </form>
+                        <form id="Fam-4" method="POST" action="">
+                            {% csrf_token %}
+                            <input type="hidden" name="choice" value="b"> 
+                            <button class="choice-button" onclick="selectChoice('fam-4')">선택지 4</button>
+                        </form>
+                        
+                        <!-- 이 버튼에 대한 처리가 쉽지 않..습니다
+                        그리고 디자인도 조금 구린 것 같아서 바꿀 예정입니다 -->
+                        <button class="choice-submit">결과보기</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="box footer">Footer - 50px</div>
+        <div class="box footer"></div>
         <script> 
-            var selectedChoice = ""; // 사용자가 선택한 값을 저장할 변수
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelectorAll('.progress-circle')[0].classList.add('filled');
+                document.querySelectorAll('.progress-line')[0].classList.add('filled');
+                document.querySelectorAll('.progress-circle')[1].classList.add('filled');
+                document.querySelectorAll('.progress-line')[1].classList.add('filled');
+                document.querySelectorAll('.progress-circle')[2].classList.add('filled');
+                document.querySelectorAll('.progress-line')[2].classList.add('filled');
+                document.querySelectorAll('.progress-circle')[3].classList.add('filled');
+                document.querySelectorAll('.progress-line')[3].classList.add('filled');
+                document.querySelectorAll('.progress-circle')[4].classList.add('filled');
+                document.querySelectorAll('.progress-line')[4].classList.add('filled');
+                document.querySelectorAll('.progress-circle')[5].classList.add('filled');
+                document.querySelectorAll('.progress-line')[5].classList.add('filled');
+            });
+
+            /* 아래 부분이 starting_.js 코드랑 같은 부분인데, 변수 변경이 필요해서
+            startingFam.html만 html script로 삽입했습니다 */
+            var selectedChoice = "";
     
             function selectChoice(button, choice) {
-                // 다시 클릭하면 선택 해제
                 if (button.classList.contains('selected')) {
                     button.classList.remove('selected');
-                    selectedChoice = ""; // 선택 해제 시 변수 초기화
+                    selectedChoice = ""; 
                 } else {
                     var buttons = document.querySelectorAll('.choice-button');
-                    buttons.forEach(function(button) {  // selected가 하나 뿐이어야 해서 forEach(반복) 돌고
-                        button.classList.remove('selected'); // 모든 버튼에서 selected 해제
+                    buttons.forEach(function(button) { 
+                        button.classList.remove('selected'); 
                     });
-                    button.classList.add('selected'); // 현재 버튼에만 selected 추가
-                    selectedChoice = choice; // 선택된 값 저장
+                    button.classList.add('selected');
+                    selectedChoice = choice; 
                 }
+            
+                var selectedButton = document.querySelector('.choice-button.selected');
+                var nextButton = document.querySelector('.choice-submit'); // .js에서는 이 부분이 전부 choice-next인데, 여기가 마지막 페이지라 choice-submit으로 변경이 필요해서요
+                nextButton.disabled = !selectedButton;
             }
             function backPage() {
-                window.location.href = "startingBudget.html";
+                window.location.href = "{% url 'start:startingBudget' %}";
                 }
         </script>
 </body>

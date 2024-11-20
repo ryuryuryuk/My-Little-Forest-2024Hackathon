@@ -51,6 +51,12 @@
                     <div>제가 당신에게 딱 맞는 곳을 추천해드릴게요</div>
                     <div>질문 중 더 끌리는 것을 선택하세요</div>
             </div>
+            <script>
+                const startingPreferUrl = "{% url 'start:startingPrefer' %}";
+            </script>
+            <div class="button-wrap">
+                <button onclick="window.location.href=startingPreferUrl">시작하기</button>
+            </div>
         </div>
         <div class="box footer">Footer - 50px</div>
     </div>
