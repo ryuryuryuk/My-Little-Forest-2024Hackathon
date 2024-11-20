@@ -15,7 +15,7 @@ def login(request):
             request.session['nickname'] = user.nickname # 세션에 닉네임 저장
 
             if user.result_area == 'a': # 결과가 a인 사용자
-                return render(request, 'main/mainLogin_a.html')
+                return render(request, 'main/mainLogin_a.html')   
             elif user.result_area == 'b': # 결과가 b인 사용자
                 return render(request, 'main/mainLogin_b.html')
             else:
