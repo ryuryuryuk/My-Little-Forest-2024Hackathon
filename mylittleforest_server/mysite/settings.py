@@ -32,7 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "start.apps.StartConfig", #start 앱 추가
-    "main.apps.MainConfig",
+    "main.apps.MainConfig", #main 앱 추가
+    "login.apps.LoginConfig", #login 앱 추가
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

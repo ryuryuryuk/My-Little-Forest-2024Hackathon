@@ -17,9 +17,12 @@ Including another URLconf
 
 from django.contrib import admin #admin모듈 불러오기
 from django.urls import path, include #path, include 모듈 불러오기
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("start/", include("start.urls")), #start애플리케이션 url
+    path("login/", include("login.urls")),
+
     #path("main/", include("main.urls")), 
 ]
 

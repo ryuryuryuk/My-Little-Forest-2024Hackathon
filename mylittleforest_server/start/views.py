@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from django.http import JsonResponse
 from .models import User #import .model.User
 
@@ -72,7 +71,7 @@ def startingJob(request):
 def startingEnv(request):
     if request.method == 'POST':
         job = request.POST.get('choice')
-        nickname = request.session.get('job')
+        nickname = request.session.get('nickname')
         try:
             user = User.objects.get(nickname=nickname)
             user.job = job
@@ -89,7 +88,7 @@ def startingBudget(request):
         env = request.POST.get('choice')
         nickname = request.session.get('nickname')
         try:
-            user = User.object.get(nickname=nickname)
+            user = User.objects.get(nickname=nickname)
             user.env = env
             user.save()
             return render(request, 'start/startingFam.html');
@@ -103,13 +102,14 @@ def startingFam(request):
         budget = request.POST.get('choice')
         nickname = request.session.get('nickname')
         try:
-            user = User.object.get(nickname=nickname)
+            user = User.objects.get(nickname=nickname)
             user.budget = budget
-            return render(request, 'start/startingFam.html');
+            user.save()
+            return render(request, 'start/startingBudget.html');
         except User.DoesNotExist:
             return JsonResponse({'message': '사용자를 찾을 수 없습니다.'}, status=404)
     elif request.method == 'GET':  
-        return redirect(request, 'start:result')
+        return render(request, 'start/startingFam.html')
 
 #성향 결과 페이지 결정
 def result(request):

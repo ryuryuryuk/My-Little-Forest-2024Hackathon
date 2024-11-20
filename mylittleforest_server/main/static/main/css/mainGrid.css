@@ -1,3 +1,4 @@
+
 @media screen and (min-width: 1280px) and (max-width: 1920px) {
     
     * { /* 화면 안에 꽉 차도록 함 */
@@ -7,7 +8,7 @@
 
     .grid-container {
          /* 컨테이너 너비 */
-        width: 1200px; 
+        width: 1280px; 
 
         display: grid;
 
@@ -45,4 +46,11 @@
 
     }
 
+}
+
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
