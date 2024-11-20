@@ -1,13 +1,12 @@
 .whole-container {
-    background-color: blueviolet;
-    width: 600px;
-    height: 800px;
+    max-width: 1280px;
+    height: 100%;
 }
 
 /* first-section */
 .first-section {
     background-color: yellow;
-    height: 30%;
+    height: 30%; /* 임의로 비율 설정 */
 }
 
 .search-input {
@@ -17,16 +16,24 @@
 /* second-section */
 .second-section {
     background-color: red;
-    height: 60%;
+    height: 60%; /* 임의로 비율 설정 */
 }
 
 .upload-group-img {
-    background-color: blue;
+    border: 2px solid black;
     display: inline-block;
 }
 
 .intro-group-text {
     display: inline-block;
+}
+
+.show-img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-top: 10px;
+    border: 2px solid #ccc;
 }
 
 /* third-section */
