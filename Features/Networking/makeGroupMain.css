@@ -1,0 +1,26 @@
+/* first-section */
+.first-section {
+    background-color: yellow;
+}
+
+.search-input {
+    width: 30%;
+}
+
+
+/* second-section */
+.second-section {
+    background-color: red;
+}
+
+
+
+.upload-group-img {
+    background-color: blue;
+    display: inline-block;
+}
+
+.intro-group-text {
+background-color: green;
+display: inline-block;
+}   
