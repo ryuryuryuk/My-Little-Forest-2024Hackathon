@@ -14,7 +14,7 @@
     <style>
         @import url(makeGroup.css);
         @import url(makeGroupMain.css);
-/*      @import url(makeGroupConfirmText.css);    */
+        @import url(makeGroupConfirmText.css);
 
         body {
             font-family: 'NanumSquareRound', sans-serif;
@@ -55,7 +55,7 @@
 
         <div class="box main">
 
-            <form method="POST" class="whole-container" action="{% url '' %}"> <!-- 어디로 전송할지? -->
+            <form method="POST" class="whole-container" action="{% url '' %}"> <!-- 어디로 전송할지 -->
 
                 <section class="first-section">
                     <h2>당신의 관심사를 알려주세요</h2>
@@ -63,25 +63,27 @@
                             <input type="text" class="search-input" id="tag1" placeholder="#태그">
                             <input type="text" class="search-input" id="tag2" placeholder="#태그">
                             <input type="text" class="search-input" id="tag3" placeholder="#태그">
-                    <p>임의로 잠시 공간 할당</p>
+                    <p>잠시 공간 할당</p>
                     </div>
                 </section>
+
                 <section class="second-section">
                     <h2>그룹을 소개해주세요</h2>
                     <div class="intro-group-section">
                         <div class="upload-group-img">
-                            <input type="file" name="group-img" onchange="showImg(event)"> <!-- 이미지 삽입하는 코드 추가해야함-->
+                            <input type="file" name="group-img" onchange="showImg(event)">
                         </div>
                         <div class="intro-group-text">
-                            <input type="text" name="group-text" placeholder="소개글">
+                            <input type="text" name="group-text" placeholder="소개글 입력">
                         </div>
                     </div>
                     <div>
-                        <img id="preview" class="show-img" style="display: none;" />
+                        <img id="preview" class="show-img" style="display: none;" /> <!-- 사용자가 업로드 한 사진 미리보기 -->
                     </div>
                 </section>
+
                 <section class="third-section">
-                    <button type="submit" class="btn" onclick="showConfirmText()">
+                    <button type="button" class="btn" onclick="showConfirmText()"> <!-- button type="button"이라 자동으로 제출되지 않음 >> action 속성 불필요 // fetch()로 연결 필요 -->
                         그룹 만들기
                     </button>
                 </section>
@@ -93,29 +95,7 @@
         <div class="box footer"></div>
     </div>
     <script>
-        function showConfirmText() {
-            alert("그룹 만들기'가 완료되었습니다. 화면을 확인해보세요.");
-            window.location.href="{% url 'networking:networking' %}";
-        }
 
-        function showImg(event) {
-            const file = event.target.files[0]; // 업로드된 첫 번째 파일을 선택
-            const reader = new FileReader(); // 페이지 내에서 파일을 읽을 수 있도록 돕는 객체
-
-            reader.onload = function(e) {
-                const preview = document.getElementById('preview'); //preview라는 미리보기 id 생성
-                preview.src = e.target.result; // src속성을 부여, 'e.target.result= 파일 읽은 결과값'과 연결
-                preview.style.display = 'block'; // 눈에 보이게 하려고 display = 'block' 설정
-            };
-
-            if (file) { //file이 업로드 된 경우에만
-                reader.readAsDataURL(file); // 파일을 읽고 미리보기 생성
-                //여기서 FileReader 객체에서, 'readAsDataURL은 파일을 읽어 데이터 URL로 변환'하여 e.target.result에 저장
-            }
-        }
-    </script>
-<!--
-    <script>
         function showConfirmText() {
             existingAlert = document.querySelector('.custom-alert'); // 아래에 'custom-alert' 동적 삽입
             if (existingAlert) {
@@ -138,7 +118,22 @@
             }
             window.location.href = "networking.html";
         }
+
+        function showImg(event) {
+            const file = event.target.files[0]; // 업로드된 첫 번째 파일을 선택
+            const reader = new FileReader(); // 페이지 내에서 파일을 읽을 수 있도록 돕는 객체
+
+            reader.onload = function(e) {
+                const preview = document.getElementById('preview'); //preview라는 미리보기 id 생성
+                preview.src = e.target.result; // src속성을 부여, 'e.target.result= 파일 읽은 결과값'과 연결
+                preview.style.display = 'block'; // 눈에 보이게 하려고 display = 'block' 설정
+            };
+
+            if (file) { //file이 업로드 된 경우에만
+                reader.readAsDataURL(file); // 파일을 읽고 미리보기 생성
+                //여기서 FileReader 객체에서, 'readAsDataURL은 파일을 읽어 데이터 URL로 변환'하여 e.target.result에 저장
+            }
+        }
     </script>
--->
 </body>
 </html>
