@@ -7,6 +7,10 @@
     background-color: yellow;
 }
 
+.hidden {
+    display: none;
+}
+
 /* second-section CSS */
 .second-section {
     background-color: aquamarine;

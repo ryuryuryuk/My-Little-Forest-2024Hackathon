@@ -120,7 +120,7 @@
 		<div class="box main">
             <div class="whole">
 
-                <section class="first-section">
+                <section class="first-section"> <!-- 여기가 태그 입력 -->
                     <div class="search-container">
                         <input type="text" id="search-input" placeholder="#태그">
                         <button id="search-button">
@@ -129,32 +129,64 @@
                     </div>
                 </section>
 
-                <section class="second-section">
+                <section class="second-section"> <!-- 여기가 태그 찾기 -->
                     <div class="site-container">
                         <button class="slide left">
                             <i class="fa-solid fa-angle-left" style="color: #000000;"></i>
                         </button>
-                        <div class="site-img">
+                        <div class="site-img" data-tag="가">
                             <span class="shadow">
                                 <img src="networkingSlideImg.jpg" alt="사진">
                                 <div class="overlay">
-                                    <p>문구 작성</p> <!-- 문구 작성 -->
+                                    <p>가</p> <!-- 문구 작성 -->
                                 </div>
                             </span>
                         </div>
-                        <div class="site-img">
+                        <div class="site-img" data-tag="나">
                             <span class="shadow">
                                 <img src="networkingSlideImg.jpg" alt="사진">
                                 <div class="overlay">
-                                    <p>문구 작성</p> <!-- 문구 작성 -->
+                                    <p>나</p> <!-- 문구 작성 -->
                                 </div>
                             </span>
                         </div>
-                        <div class="site-img">
+                        <div class="site-img" data-tag="다">
                             <span class="shadow">
                                 <img src="networkingSlideImg.jpg" alt="사진">
                                 <div class="overlay">
-                                    <p>문구 작성</p> <!-- 문구 작성 -->
+                                    <p>다</p> <!-- 문구 작성 -->
+                                </div>
+                            </span>
+                        </div>
+                        <div class="site-img" data-tag="라">
+                            <span class="shadow">
+                                <img src="networkingSlideImg.jpg" alt="사진">
+                                <div class="overlay">
+                                    <p>라</p> <!-- 문구 작성 -->
+                                </div>
+                            </span>
+                        </div>
+                        <div class="site-img" data-tag="가 나">
+                            <span class="shadow">
+                                <img src="networkingSlideImg.jpg" alt="사진">
+                                <div class="overlay">
+                                    <p>가 나</p> <!-- 문구 작성 -->
+                                </div>
+                            </span>
+                        </div>
+                        <div class="site-img" data-tag="나 다">
+                            <span class="shadow">
+                                <img src="networkingSlideImg.jpg" alt="사진">
+                                <div class="overlay">
+                                    <p>나 다 </p> <!-- 문구 작성 -->
+                                </div>
+                            </span>
+                        </div>
+                        <div class="site-img" data-tag="가 라">
+                            <span class="shadow">
+                                <img src="networkingSlideImg.jpg" alt="사진">
+                                <div class="overlay">
+                                    <p>가 라</p> <!-- 문구 작성 -->
                                 </div>
                             </span>
                         </div>
@@ -194,6 +226,7 @@
 		<div class="box footer"></div>
 	</div>
     <script src="networking.js"></script>
+    <script src="networkingTag.js"></script>
 </body>
 
 </html>
