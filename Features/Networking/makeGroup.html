@@ -13,6 +13,7 @@
 
     <style>
         @import url(makeGroup.css);
+        @import url(makeGroupMain.css);
 
         body {
             font-family: 'NanumSquareRound', sans-serif;
@@ -33,28 +34,62 @@
 
         .main {
             grid-area: main;
+            display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
         }
 
         .footer {
             grid-area: footer;
         }
+
+        
     </style>
 </head>
 
 <body>
     <div class="grid-container">
-        <div class=" box header"> header
+        <div class=" box header"></div>
+
+        <div class="box main">
+
+            <div class="whole-container">
+
+                <div class="first-section">
+                    <h2>당신의 관심사를 알려주세요</h2>
+                    <div id="search-section">
+                        <input type="text" class="search-input" id = "tag1" placeholder="#태그">
+                        <input type="text" class="search-input" id = "tag2" placeholder="#태그">
+                        <input type="text" class="search-input" id = "tag3" placeholder="#태그">
+                    </div>
+                </div>
+                <div class="second-section">
+                    <h2>그룹을 소개해주세요</h2>
+                    <div class="intro-group-section">
+                        <div class="upload-group-img">이미지 업로드하는 공간</div>
+                        <div class="intro-group-text">
+                            <input type="text" placeholder="소개글">
+                        </div>
+                    </div>
+                </div>
+                <div class="third-section">
+                    <button class="btn" onclick="showConfirmText()"> <!-- 확인 요망 -->
+                        그룹 만들기
+                    </button>
+                </div>
+
+            </div>
 
         </div>
 
-        <div class="box main"> main
-
-        </div>
-
-        <div class="box footer"> footer
-
-        </div>
+        <div class="box footer"></div>
 </div>
-</body>
 
+<script>
+    function showConfirmText() {
+        alert("'그룹 만들기'가 완료되었습니다. 화면을 확인해보세요."); // 이런 식으로 하는 게 맞는가욛..
+    }
+</script>
+</body>
 </html>
