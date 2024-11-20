@@ -1,19 +1,24 @@
+.whole-container {
+    background-color: blueviolet;
+    width: 600px;
+    height: 800px;
+}
+
 /* first-section */
 .first-section {
     background-color: yellow;
+    height: 30%;
 }
 
 .search-input {
     width: 30%;
 }
 
-
 /* second-section */
 .second-section {
     background-color: red;
+    height: 60%;
 }
-
-
 
 .upload-group-img {
     background-color: blue;
@@ -21,6 +26,10 @@
 }
 
 .intro-group-text {
-background-color: green;
-display: inline-block;
-}   
+    display: inline-block;
+}
+
+/* third-section */
+.third-section {
+    background-color: blue;
+}

@@ -14,6 +14,7 @@
     <style>
         @import url(makeGroup.css);
         @import url(makeGroupMain.css);
+/*      @import url(makeGroupConfirmText.css);    */
 
         body {
             font-family: 'NanumSquareRound', sans-serif;
@@ -54,42 +55,70 @@
 
         <div class="box main">
 
-            <div class="whole-container">
+            <form method="POST" class="whole-container" action="{% url '' %}"> <!-- 어디로 전송할지 -->
 
-                <div class="first-section">
+                <section class="first-section">
                     <h2>당신의 관심사를 알려주세요</h2>
                     <div id="search-section">
-                        <input type="text" class="search-input" id = "tag1" placeholder="#태그">
-                        <input type="text" class="search-input" id = "tag2" placeholder="#태그">
-                        <input type="text" class="search-input" id = "tag3" placeholder="#태그">
+                            <input type="text" class="search-input" id="tag1" placeholder="#태그">
+                            <input type="text" class="search-input" id="tag2" placeholder="#태그">
+                            <input type="text" class="search-input" id="tag3" placeholder="#태그">
                     </div>
-                </div>
-                <div class="second-section">
+                </section>
+                <section class="second-section">
                     <h2>그룹을 소개해주세요</h2>
                     <div class="intro-group-section">
-                        <div class="upload-group-img">이미지 업로드하는 공간</div>
+                        <div class="upload-group-img">
+                            <input type="file" name="group-img" accept="image/*"> <!-- 이미지'만' 삽입하는 코드 -->
+                        </div>
                         <div class="intro-group-text">
-                            <input type="text" placeholder="소개글">
+                            <input type="text" name="group-text" placeholder="소개글">
                         </div>
                     </div>
-                </div>
-                <div class="third-section">
-                    <button class="btn" onclick="showConfirmText()"> <!-- 확인 요망 -->
+                </section>
+                <section class="third-section">
+                    <button type="submit" class="btn" onclick="showConfirmText()">
                         그룹 만들기
                     </button>
-                </div>
-
-            </div>
+                </section>
+                
+            </form>
 
         </div>
 
         <div class="box footer"></div>
-</div>
+    </div>
+    <script>
+        function showConfirmText() {
+            alert("그룹 만들기'가 완료되었습니다. 화면을 확인해보세요.");
+            window.location.href="{% url 'networking:networking' %}";
+        }
+    </script>
+<!--
+    <script>
+        function showConfirmText() {
+            existingAlert = document.querySelector('.custom-alert'); // 아래에 'custom-alert' 동적 삽입
+            if (existingAlert) {
+                existingAlert.remove();
+            }
 
-<script>
-    function showConfirmText() {
-        alert("'그룹 만들기'가 완료되었습니다. 화면을 확인해보세요."); // 이런 식으로 하는 게 맞는가욛..
-    }
-</script>
+            alertBox = document.createElement('div'); // here
+            alertBox.classList.add('custom-alert'); // here
+            alertBox.innerHTML =`
+                <p>'그룹 만들기'가 완료되었습니다. 화면을 확인해보세요.</p>
+                <button onclick="goToNetworkingPage()">확인</button>
+            `;
+            document.body.appendChild(alertBox);
+        }
+
+        function goToNetworkingPage() {
+            alertBox = document.querySelector('.custom-alert');
+            if (alertBox) {
+                alertBox.remove();
+            }
+            window.location.href = "networking.html";
+        }
+    </script>
+-->
 </body>
 </html>

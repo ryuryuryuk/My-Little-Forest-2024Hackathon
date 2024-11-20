@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    images = document.querySelectorAll('.animation-fade');
+    var images = document.querySelectorAll('.animation-fade');
      let currentIndex = 0;
 
     function changeImage() {

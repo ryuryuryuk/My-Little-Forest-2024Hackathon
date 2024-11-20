@@ -16,11 +16,18 @@
         @import url(networking.css);
 
         @media screen and (max-width: 1279px) {
+            .second-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 370px;
+            }
+            
             .third-section {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                height: 80vh; /* 너비가 줄어들었을 때 최대 높이를 할당하기 위해서 */
+                height: 600px;
             }
 
             .text-container {
@@ -30,18 +37,47 @@
             .img-container {
                 position: relative;
                 display: flex;
-                width: 90%;
-                max-width: 400px; 
-                background-color: aqua;
+                width: 100%;
+                max-width: 300px;
             }
             .img-container img {
                 position: absolute; /* 애니메이션을 유지하기 위해 절대 위치 */
-                width: 100%;
+                width: 300px; 
+                height:300px;
                 border-radius: 20px;
                 aspect-ratio: 1 / 1;
             }
+
+            .button-tag {
+                margin-top: auto;
+                margin-bottom: 60px;
+            }
         }
 
+        @media screen and (max-width: 900px) {
+            /* second-section에 있는 이미지 하나와 버튼만 보이도록 설정 */
+            .site-container {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .site-img { /* 이미지가 하나만 보이도록 설정 */
+                display: none;
+            }
+
+            .site-img:first-of-type { /* 첫 번째 이미지와 버튼만 보이도록 설정 */
+                display: inline-block;
+            }
+
+            .slide {  /* slide 버튼 보이도록 설정 */
+                display: inline-block;
+            }
+
+        }
 
 		body {
 			font-family: 'NanumSquareRound', sans-serif;
@@ -79,14 +115,14 @@
 
 <body>
 	<div class="grid-container">
-		<div class="box header">Header - 100px</div>
-		<div class="box widget">widget - 행 당 80px</div>
+		<div class="box header"></div>
+		<div class="box widget"></div>
 		<div class="box main">
             <div class="whole">
 
-                <section class="first-section" style="background-color: red;">
+                <section class="first-section">
                     <div class="search-container">
-                        <input type="text" id="search-input" placeholder="태그 입력창">
+                        <input type="text" id="search-input" placeholder="#태그">
                         <button id="search-button">
                             <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
                         </button>
@@ -128,17 +164,13 @@
                     </div>
                 </section>
 
-                <section class="third-section" style="background-color: blue;">
+                <section class="third-section">
                     <div class="text-container">
                         <h1>관심사를 설정하고<br>
                         더 많은 사람들을 만나보세요!</h1>
                         <p>원하는 그룹이 없다면,<br>
                         관심사를 설정하고 직접 만들어 보세요.</p>
-                        <button class="make-group" onclick="window.location.href='{% url 'networking:makeGroup' %}'"> <!-- 확인 요망 -->
-                            그룹 만들기
-                        </button>
                     </div>
-                    
                     <div class="img-container">
                         <div class="img-fade">
                             <img src="networkingFirstFadeImg.jpg" alt="이미지1" class="animation-fade active">
@@ -150,11 +182,16 @@
                             <img src="networkingThirdFadeImg.jpg" alt="이미지1" class="animation-fade">
                         </div>
                     </div>
+                    <div class="button-tag">
+                        <button class="make-group" onclick="window.location.href='{% url 'networking:makeGroup' %}'"> <!-- 확인 요망 -->
+                            그룹 만들기
+                        </button>
+                    </div>
                 </section>
 
             </div>
         </div>
-		<div class="box footer">Footer - 50px</div>
+		<div class="box footer"></div>
 	</div>
     <script src="networking.js"></script>
 </body>
