@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>startingBudget</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <title>startingBudget</title> <!-- 1.맞춤형지방도시찾기 : 예산 조사 -->
+
+    <!-- .css 불러오기 -->
+    <link rel="stylesheet" href="{% static 'start/css/startingGrid.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/startingQuestion.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/startingProgress.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/startingPage.css' %}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
     <style>
         @import url(startingGrid.css);
         @import url(startingQuestion.css);
+        @import url(startingProgress.css);
         @import url(startingPage.css);
+
+        /* 강조된 선택 버튼 스타일 */
+        .choice-button.selected {
+            background-color: #27634C;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* 페이지 레이아웃 관련 스타일 */
+        @media screen and (min-width: 1280px) and (max-width: 1920px) {
+            .whole-wrapper {
+                margin-top: 16.8px;
+            }
+        }
+
+        @media screen and (max-width: 1279px) {
+            .whole-wrapper {
+                margin-top: 0;
+            }
+        }
         
         * {
             margin: 0;
@@ -47,80 +74,129 @@
             grid-area: footer;
             background-color: #4EA686;
         }
+
+        .Logo {
+            width: 300px;
+        }
+
+        .whole-wrapper {
+            display: flex; 
+            align-items: center;
+            justify-content:center;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+        }
         
     </style>
 </head>
 <body>
     <div class="grid-container">
-        <div class="box header">Header - 100px</div>
+        <div class="box header"></div>
         <div class="box main">
+            <div class="whole-wrapper">
+                <div class="whole-container">
+                    <img src="{% static 'start/images/Logo.jpg' %}" alt="로고" class="Logo">
 
-            <!--6개의 질문 페이지 중 어느 페이지에 해당하는지 보여주기 위한 진행 상태 바
-            남은 페이지 개수를 유동적으로 보여주기 위하여 원에 색깔이 칠해지는 느낌-->
-            <div class="progress-container">
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-                <div class="progress-line"></div>
-                <div class="progress-circle"></div>
-            </div>
+                    <div class="progress-container">
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-circle"></div>
+                    </div>
 
-            <div class="question-text">예산</div>
-            <div class="question-subtext">세부 내용</div> <!--불필요 시 삭제 요망-->
-            <div class="buttons-container">
-                <button class="choice-back" onclick="backPage()">
-                    <i class="fa-solid fa-arrow-right fa-flip-horizontal" style="color: #27634C;"></i>
-                </button>
-                <button class="choice-button" onclick="selectChoice(this, '선택지 1')">선택지 1</button>
-                <button class="choice-button" onclick="selectChoice(this, '선택지 2')">선택지 2</button>
-                <button class="choice-button" onclick="selectChoice(this, '선택지 3')">선택지 3</button>
-                <button class="choice-button" onclick="selectChoice(this, '선택지 4')">선택지 4</button>
-                <button class="choice-next" onclick="nextPage()">
-                    <i class="fa-solid fa-arrow-right" style="color: #27634C;"></i>
-                </button>
+                    <div class="question-text">예산</div>
+                    <div class="question-subtext">세부 내용</div>
+
+                    <div class="buttons-container">
+                        <!-- 이전페이지 이동 버튼 -->
+                        <button class="choice-back" onclick="backPage()">
+                            <i class="fa-solid fa-arrow-right fa-flip-horizontal" style="color: #27634C;"></i>
+                        </button>
+
+                        <!-- 각 선택지별로 form 태그 추가 -->
+                        <form id="budget-1" method="POST" action="{% url 'start:startingFam' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="choice" value="a"> <!--선택지1은 a를 저장함-->
+                            <button type="button" class="choice-button" onclick="selectChoice('budget-1')">선택지 1</button>
+                        </form>
+                        <form id="budget-2" method="POST" action="{% url 'start:startingFam' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="choice" value="a"><!--선택지2는 a를 저장함-->
+                            <button type="button" class="choice-button" onclick="selectChoice('budget-2')">선택지 2</button>
+                        </form>
+                        <form id="budget-3" method="POST" action="{% url 'start:startingFam' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="choice" value="b"><!--선택지3은 b를 저장함-->
+                            <button type="button" class="choice-button" onclick="selectChoice('budget-3')">선택지 3</button>
+                        </form>
+                        <form id="budget-4" method="POST" action="{% url 'start:startingFam' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="choice" value="b"><!--선택지4는 b를 저장함-->
+                            <button type="button" class="choice-button" onclick="selectChoice('budget-4')">선택지 4</button>
+                        </form>
+
+                        <!-- 다음페이지 이동 버튼 -->
+                        <button type="button" class="choice-next" onclick="nextPage()">
+                            <i class="fa-solid fa-arrow-right" style="color: #27634C;"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="box footer">Footer - 50px</div>
-        <script> 
-            var selectedChoice = ""; // 사용자가 선택한 값을 저장할 변수
-    
-            // 동작되는지 확인하려고 임시로 만든 함수
-            function selectChoice(button, choice) {
-                // 다시 클릭하면 선택 해제
-                if (button.classList.contains('selected')) {
-                    button.classList.remove('selected');
-                    selectedChoice = ""; // 선택 해제 시 변수 초기화
-                } else {
-                    var buttons = document.querySelectorAll('.choice-button');
-                    buttons.forEach(function(button) {  // selected가 하나 뿐이어야 해서 forEach(반복) 돌고
-                        button.classList.remove('selected'); // 모든 버튼에서 selected 해제
-                    });
-                    button.classList.add('selected'); // 현재 버튼에만 selected 추가
-                    selectedChoice = choice; // 선택된 값 저장
-                }
-    
-                var selectedButton = document.querySelector('.choice-button.selected');
-                var nextButton = document.querySelector('.choice-next');
-                nextButton.disabled = !selectedButton; // 선택이 없으면 '다음' 비활성화
-            }
+        <div class="box footer"></div>
+    </div>
+    <script src="starting_.js"></script>
+    <script> 
+        let selectedFormId = null; // 선택된 폼의 ID를 저장하는 변수
 
-            function nextPage() {
-                if (!selectedChoice) {
-                    alert("선택하지 않은 상태");
-                } else {
-                    window.location.href = "startingFam.html";
-                }
-            }
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll('.progress-circle')[0].classList.add('filled');
+            document.querySelectorAll('.progress-line')[0].classList.add('filled');
+            document.querySelectorAll('.progress-circle')[1].classList.add('filled');
+            document.querySelectorAll('.progress-line')[1].classList.add('filled');
+            document.querySelectorAll('.progress-circle')[2].classList.add('filled');
+            document.querySelectorAll('.progress-line')[2].classList.add('filled');
+            document.querySelectorAll('.progress-circle')[3].classList.add('filled');
+            document.querySelectorAll('.progress-line')[3].classList.add('filled');
+            document.querySelectorAll('.progress-circle')[4].classList.add('filled');
+            document.querySelectorAll('.progress-line')[4].classList.add('filled');
+        });
 
-            function backPage() {
-                window.location.href = "startingEnv.html";
-                }
-        </script>
+        function selectChoice(formId) {
+            // 선택된 폼의 ID를 저장
+            selectedFormId = formId;
+
+            // 모든 버튼 강조 제거
+            const buttons = document.querySelectorAll('.choice-button');
+            buttons.forEach(button => button.classList.remove('selected'));
+
+            // 선택된 버튼 강조
+            const selectedForm = document.getElementById(formId);
+            const button = selectedForm.querySelector('.choice-button');
+            button.classList.add('selected');
+        }
+
+        function nextPage() {
+            if (!selectedFormId) {
+                alert("항목을 선택해주세요");
+                return;
+            }
+            // 선택된 폼 제출
+            document.getElementById(selectedFormId).submit();
+        }
+
+        function backPage() {
+            window.location.href = "{% url 'start:startingEnv' %}";
+        }
+    </script>
 </body>
 </html>

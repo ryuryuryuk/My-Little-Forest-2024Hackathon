@@ -35,89 +35,105 @@ def startingName2(request):#닉네임을 포함한 인사말
     return render(request, 'start/startingName2.html')
 
 def startingPrefer(request):
-    if request.method == 'POST':
-        prefer = request.POST.get('prefer')
-        nickname = request.session.get('nickname')
-        try:
-            user = User.object.get(nickname=nickname)
-            user.prefer = prefer
-            return redirect(request, 'start : startingInterest');#관심 페이지 경로로 리다이렉트
-        except User.DoesNotExist:
-            return JsonResponse({'message': '사용자를 찾을 수 없습니다.'}, status=404)
-    return render(request, 'start/startingPrefer.html') #선호 페이지 렌더링
-
+        return render(request, 'start/startingPrefer.html')
 
 def startingInterest(request):
     if request.method == 'POST':
-        interest = request.POST.get('interest')
+        prefer = request.POST.get('choice')
         nickname = request.session.get('nickname')
         try:
-            user = User.object.get(nickname=nickname)
-            user.interest = interest
-            return redirect(request, 'start : startingJob');
+            user = User.objects.get(nickname=nickname)
+            user.prefer = prefer #db에 prefer 저장
+            user.save()
+            return render(request, 'start/startingInterest.html');#db에 저장 후 interest 페이지 경로로 리다이렉트
         except User.DoesNotExist:
             return JsonResponse({'message': '사용자를 찾을 수 없습니다.'}, status=404)
-    return render(request, 'start/startingInterest.html')
+    
+    elif request.method == 'GET':    
+        return render(request, 'start/startingInterest.html')
 
 
 def startingJob(request):
     if request.method == 'POST':
-        job = request.POST.get('job')
-        nickname = request.session.get('job')
+        interest = request.POST.get('choice') 
+        nickname = request.session.get('nickname')
         try:
-            user = User.object.get(nickname=nickname)
-            user.job = job
-            return redirect(request, 'start : startingEnv');
+            user = User.objects.get(nickname=nickname)
+            user.interest = interest
+            user.save()
+            return render(request, 'start/startingJob.html');
         except User.DoesNotExist:
             return JsonResponse({'message': '사용자를 찾을 수 없습니다.'}, status=404)
-    return render(request, 'start/startingJob.html')
+    
+    elif request.method == 'GET':    
+        return render(request, 'start/startingJob.html')
 
 
 def startingEnv(request):
     if request.method == 'POST':
-        env = request.POST.get('env')
+        job = request.POST.get('choice')
+        nickname = request.session.get('job')
+        try:
+            user = User.objects.get(nickname=nickname)
+            user.job = job
+            user.save()
+            return render(request, 'start/startingEnv.html');
+        except User.DoesNotExist:
+            return JsonResponse({'message': '사용자를 찾을 수 없습니다.'}, status=404)
+        
+    elif request.method == 'GET':    
+        return render(request, 'start/startingEnv.html')
+
+def startingBudget(request):
+    if request.method == 'POST':
+        env = request.POST.get('choice')
         nickname = request.session.get('nickname')
         try:
             user = User.object.get(nickname=nickname)
             user.env = env
-            return redirect(request, 'start : startingBudget');
+            user.save()
+            return render(request, 'start/startingFam.html');
         except User.DoesNotExist:
             return JsonResponse({'message': '사용자를 찾을 수 없습니다.'}, status=404)
-    return render(request, 'start/startingEnv.html')
+    elif request.method == 'GET':    
+        return render(request, 'start/startingBudget.html')
 
-
-def startingBudget(request):
+def startingFam(request):
     if request.method == 'POST':
-        budget = request.POST.get('budget')
+        budget = request.POST.get('choice')
         nickname = request.session.get('nickname')
         try:
             user = User.object.get(nickname=nickname)
             user.budget = budget
-            return redirect(request, 'start : startingFam');
+            return render(request, 'start/startingFam.html');
         except User.DoesNotExist:
             return JsonResponse({'message': '사용자를 찾을 수 없습니다.'}, status=404)
-    return render(request, 'start/startingBudget.html')
+    elif request.method == 'GET':  
+        return redirect(request, 'start:result')
 
+#성향 결과 페이지 결정
+def result(request):
+    # 세션에서 닉네임 가져오기
+    nickname = request.session.get('nickname')
+    
+    if not nickname:
+        return JsonResponse({'message': '세션에 닉네임 정보가 없습니다.'}, status=400)
 
-def startingFam(request):
-    if request.method == 'POST':
-        fam = request.POST.get('fam')
-        nickname = request.session.get('nickname')
-        try:
-            user = User.object.get(nickname=nickname)
-            user.fam = fam
-            user.save()
-            return redirect(request, 'start : startingResult_a');
-        except User.DoesNotExist:
-            return JsonResponse({'message': '사용자를 찾을 수 없습니다.'}, status=404)
-    return render(request, 'start/startingFam.html')
+    try:
+        # User 모델에서 닉네임으로 사용자 검색
+        user = User.objects.get(nickname=nickname)
 
+        # 사용자 성향 속성 가져오기
+        attributes = [user.prefer, user.interest, user.job, user.env, user.budget, user.fam]  # 6개의 속성값
+        count_a = attributes.count('a')
+        count_b = attributes.count('b')
 
-#성향 결과
-def startingResult_a(request):
-    return render(request, 'start/startingResult_a.html')
-
-
-def startingResult_b(request):
-    return render(request, 'start/startingResult_b.html')
+        # 결과 페이지 결정
+        if count_a >= count_b:
+            return render(request, 'start/startingResult_a.html', {'user': user})
+        else:
+            return render(request, 'start/startingResult_b.html', {'user': user})
+        
+    except User.DoesNotExist:
+        return JsonResponse({'message': '사용자를 찾을 수 없습니다.'}, status=404)
 
