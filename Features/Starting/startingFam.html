@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
         /* 이 부분 반드시 추가해야지만 로고 위치가 정확하게 일치해요! */
         @media screen and (min-width: 1280px) and (max-width: 1920px) {
             .whole-wrapper {
-                margin-top: 16.8px;
+                margin-top: 96px;
             }
         }
 
@@ -64,7 +65,9 @@
 
         .footer {
             grid-area: footer;
-            background-color: #4EA686;
+            font-size: 15px;
+            color: #544424;
+            text-align: center;
         }
 
         .Logo {
@@ -93,8 +96,6 @@
                 <div class="whole-container">
                     <img src="../../assets/images/Logo.jpg" alt="로고" class="Logo">
 
-                    <!--6개의 질문 페이지 중 어느 페이지에 해당하는지 보여주기 위한 진행 상태 바
-                    남은 페이지 개수를 유동적으로 보여주기 위하여 원에 색깔이 칠해지는 느낌-->
                     <div class="progress-container">
                         <div class="progress-circle"></div>
                         <div class="progress-line"></div>
@@ -131,14 +132,12 @@
                             <button class="choice-button" onclick="selectChoice(this, '선택지 4')">선택지 4</button>
                         </form>
                         
-                        <!-- 이 버튼에 대한 처리가 쉽지 않..습니다
-                        그리고 디자인도 조금 구린 것 같아서 바꿀 예정입니다 -->
                         <button class="choice-submit">결과보기</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="box footer"></div>
+        <div class="box footer">Copyright©2024 by team 마리포</div>
         <script> 
             document.addEventListener("DOMContentLoaded", function () {
                 document.querySelectorAll('.progress-circle')[0].classList.add('filled');

@@ -8,10 +8,12 @@ clone https://github.com/ryuryuryuk/My-Little-Forest-2024Hackathon.git
 2. mylittleforest_server 폴더로 이동
 cd mylittleforest_server
 
-3. python 가상환경 설치 및 활성화
-(1) python - venv venv
-(2_Window 버전) venv\Scripts\active 
-(2_MacOS 버전) source venv\bin\activate
+3. python 가상환경 설치
+python - venv venv
+
+4. 가상환경 활성화
+(Window 버전) venv\Scripts\active 
+(MacOS 버전) source venv\bin\activate
 
 3. 의존성 설치
 pip install -r requirements.txt
