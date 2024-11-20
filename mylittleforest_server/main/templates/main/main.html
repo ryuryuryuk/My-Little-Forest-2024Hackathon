@@ -10,7 +10,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>main</title> <!-- 로그아웃된 메인화면 페이지 -->
+<title>main</title> <!-- 메인화면 페이지 -->
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
 
@@ -20,7 +20,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <style>
-@import url(styles.css);
+@import url(newmain.css);
 @import url(mainGrid.css);
 
 body {
@@ -49,6 +49,10 @@ grid-area: header;
 
 font-family: 'Noto Sans KR', sans-serif;
 
+}
+
+.Logo {
+    width: 50px; /* 로고 이미지 크기 조정 */
 }
 
 .widget {
@@ -80,7 +84,7 @@ grid-area: footer;
 <div class="box header">
     <div class="header-top">
         <!-- 로고 이미지 -->
-        <img src="logo.png" alt="로고" class="logo">
+        <img src="../assets/images/Logo.jpg" alt="로고" class="Logo">
     </div>
     <div class="header-bottom">
         <!-- 홈 버튼 -->
