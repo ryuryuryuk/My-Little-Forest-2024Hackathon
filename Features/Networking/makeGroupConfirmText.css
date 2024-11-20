@@ -1,3 +1,5 @@
+/* alert로 쓸지 이런 문구를 중앙에 보여줄지? */
+
 .custom-alert {
     position: fixed;
     top: 50%;
