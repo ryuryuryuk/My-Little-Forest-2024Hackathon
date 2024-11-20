@@ -1,0 +1,22 @@
+
+.button {
+    font-size: 1.5em;
+    padding: 20px 30px;
+    width: 400px;
+    height: 400px;
+    margin: 10px;
+    background-color: #27634C;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.back-button {
+    background-color: #27634C; 
+}
+
+.next-button {
+    background-color: #27634C; 
+}

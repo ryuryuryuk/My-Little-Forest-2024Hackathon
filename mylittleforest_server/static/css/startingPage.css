@@ -1,0 +1,30 @@
+.choice-back, .choice-next {
+    padding: 10px 20px;
+    font-size: 30px;
+    background-color: #D3D3D3;
+    color: black; /* 색을 변경하는  */
+    border: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 화살표 배경색 수정 요망 */
+.choice-back:hover, .choice-next:hover {
+    background-color: rgba(0,0,0, 0.1);
+}
+
+.choice-back {
+    position: absolute; 
+    left: -70px; 
+    margin-top: 45px; 
+}
+
+.choice-next {
+    position: absolute;
+    right: -70px;
+    margin-top: 45px; 
+}
+
+.choice-button.selected {
+    border: 2px solid red; /* 잘 보이라고 임시 red */
+}

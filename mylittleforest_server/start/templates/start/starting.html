@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %} <!--정적파일 사용-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>starting</title> <!-- 시작화면 페이지 -->
+
+    <!--폰트 로드-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+script+KR:wght@400;700&display=swap" rel="stylesheet">
+    <!--정적 css 파일-->
+    <link rel="stylesheet" href="{% static 'start/css/startingGrid.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/starting.css' %}">
+
+    <style>
+
+        body {
+            font-family: 'NanumSquareRound', sans-serif;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #4EA686;
+        }
+
+        .header {
+            grid-area: header;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .main {
+            grid-area: main;
+        }
+
+        .footer {
+            grid-area: footer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="box header">Header - 100px</div>
+        <div class="box main">
+            <!--view와 연결되는 url-->
+            <script>
+                const startingNameUrl = "{% url 'start:startingName' %}";
+            </script>
+            <!-- 애니메이션으로(희망사항)으로 '마이리틀포레스트' 소개 화면 -->
+            <button class="button back-button" 
+                onmouseover="this.innerText = '내 포레스트로 이동'" 
+                onmouseout="this.innerText = '와본 적 있어요'" 
+                onclick="window.location.href='main.html'">
+                와본 적 있어요
+            </button>
+
+            <button class="button next-button" 
+                onmouseover="this.innerText = '당신의 포레스트를 찾아보세요'" 
+                onmouseout="this.innerText = '첫 방문이에요'" 
+                onclick="window.location.href = startingNameUrl">
+                첫 방문이에요
+            </button>
+        
+        </div>
+        <div class="box footer">Footer - 50px</div>
+    </div>
+</body>
+
+</html>

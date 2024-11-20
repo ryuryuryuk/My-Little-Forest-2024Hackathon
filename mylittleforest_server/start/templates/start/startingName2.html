@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>startingName2</title> <!-- 시작화면 페이지 -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'start/css/startingGrid.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/startingName2.css' %}">
+
+    <style>
+
+        body {
+            font-family: 'NanumSquareRound', sans-serif;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #4EA686;
+        }
+
+        .header {
+            grid-area: header;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .main {
+            grid-area: main;
+        }
+
+        .footer {
+            grid-area: footer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="box header">Header - 100px</div>
+        <div class="box main">
+            <div class="text">
+                    <div>{{request.session.nickname}}님 환영합니다!</div>
+                    <div>제가 당신에게 딱 맞는 곳을 추천해드릴게요</div>
+                    <div>질문 중 더 끌리는 것을 선택하세요</div>
+            </div>
+        </div>
+        <div class="box footer">Footer - 50px</div>
+    </div>
+</body>
+
+</html>
