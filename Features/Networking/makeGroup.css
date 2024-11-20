@@ -1,63 +1,121 @@
-@media screen and (min-width: 1280px) and (max-width: 1920px) {
 
-    * { /* 화면 안에 꽉 차도록 함 */
-    margin: 0;
-    padding: 0;
-    }
-    
-    .grid-container {
-    /* 컨테이너 너비 */
-    width: 1200px;
-    display: grid;
-    
-    /* 행 6개
-    100px: 첫 번째 행의 높이 
-    repeat(10, 80px): 가운데에 10개의 행을 생성하며, 각 행의 높이를 동일하게 80px로 설정.
-    (1fr은 사용 가능한 공간을 균등하게 나눈다는 의미로, 레이아웃의 중앙 내용 부분으로 활용.)
-    50px: 마지막 행의 높이를 50px로 설정.
-    */
-    grid-template-rows: 100px repeat(10, 80px) 50px;
-
-    /* 열 구성: 좌우 여백 및 메인 콘텐츠 */
-    grid-template-columns: 100px repeat(10, 1fr) 100px;
-    
-    /* 열 사이 간격 10px */
-    gap: 10px;
-    
-    /* 화면 가운데 정렬 */
-    margin: auto;
-
-    .btn {
-        padding: 10px 20px;
-        font-size: 16px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    
-    /* 레이아웃 구성 : header, main, footer */
-    grid-template-areas:
-    
-    "header header header header header header header header header header header header"
-    "main main main main main main main main main main main main"
-    "main main main main main main main main main main main main"
-    "main main main main main main main main main main main main"
-    "main main main main main main main main main main main main"
-    "main main main main main main main main main main main main"
-    "main main main main main main main main main main main main"
-    "main main main main main main main main main main main main"
-    "main main main main main main main main main main main main"
-    "main main main main main main main main main main main main"
-    "main main main main main main main main main main main main"
-    "footer footer footer footer footer footer footer footer footer footer footer footer";
-    }
-    
+.grid-container {
 }
 
-@font-face {
-    font-family: 'NanumSquareRound';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+form {
+    background-color: #fff; /* 흰색 배경 */
+    border-radius: 10px; /* 둥근 모서리 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
+/* 제목 스타일 */
+.interest-title h2, .group-title h2 {
+    font-size: 22px;
+    color: #4EA686;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* 입력 필드 */
+.search-input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.search-input:focus,
+textarea:focus {
+    border-color: #4EA686;
+    outline: none;
+    box-shadow: 0 0 5px rgba(78, 166, 134, 0.3);
+}
+
+
+.upload-label {
+    display: block;
+    width: 100%; /* 원하는 너비 */
+    height: 200px; /* 원하는 높이 */
+    border: 2px dashed #ccc; /* 박스 스타일 */
+    border-radius: 8px; /* 둥근 모서리 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* 박스 밖으로 넘치는 이미지를 숨김 */
+    position: relative; /* 상대 위치 */
+    text-align: center;
+    cursor: pointer;
+    background-color: #f8f8f8; /* 배경색 */
+}
+
+.upload-label img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 박스 크기에 맞게 채워짐 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0; /* 이미지가 텍스트 뒤로 가게 설정 */
+}
+
+.upload-label::after {
+    position: absolute;
+}
+
+
+.show-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    position: absolute; /* 업로드한 이미지가 레이블 내부에 배치 */
+    top: 0;
+    left: 0;
+    display: block; /* 파일 선택 시 보여줌 */
+    border-radius: 5px;
+}
+
+#group-img {
+    display: none;
+}
+
+
+/* 파일 업로드 */
+.upload-group-img input[type="file"] {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* 버튼 */
+.btn {
+    background-color: #4EA686;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #3a8767;
+}
+
+/* 에러 메시지 */
+.error-message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+}

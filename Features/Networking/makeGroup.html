@@ -8,13 +8,13 @@
     <title>makeGroup</title> <!-- 그룹만들기 페이지 -->
 
     <!-- .css 불러오기 -->
+    <link rel="stylesheet" href="{% static 'start/css/makeGroupGrid.css' %}">
     <link rel="stylesheet" href="{% static 'start/css/makeGroup.css' %}">
     
 
     <style>
+        @import url(makeGroupGrid.css);
         @import url(makeGroup.css);
-        @import url(makeGroupMain.css);
-        @import url(makeGroupConfirmText.css);
 
         body {
             font-family: 'NanumSquareRound', sans-serif;
@@ -30,9 +30,8 @@
 
         .header {
             grid-area: header;
-            font-family: 'Noto Sans KR', sans-serif;
         }
-
+        
         .main {
             grid-area: main;
             display: flex;
@@ -52,89 +51,128 @@
     </style>
 </head>
 
+
 <body>
     <div class="grid-container">
+
         <div class=" box header"></div>
 
         <div class="box main">
+<<<<<<< HEAD
 
             <form method="POST" class="whole-container" action="{% url '' %}"> <!-- 어디로 전송할지 -->
                 {%  %}
+=======
+            <form id="make-group-form" method="POST" action="{%url 'networking:makeGroup' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- 1. 관심사를 입력하는 섹션 -->
+>>>>>>> 2268546 (makeGroup.html과 makeGroup.css 수정)
                 <section class="first-section">
-                    <h2>당신의 관심사를 알려주세요</h2>
-                    <div id="search-section">
-                            <input type="text" class="search-input" id="tag1" placeholder="#태그">
-                            <input type="text" class="search-input" id="tag2" placeholder="#태그">
-                            <input type="text" class="search-input" id="tag3" placeholder="#태그">
-                    <p>잠시 공간 할당</p>
+                    <div class = "interest-title">
+                        <h2>당신의 관심사를 알려주세요!</h2>
+                    </div>
+                    <!-- 관심사 #태그로 3개 입력받는 부분 -->
+                    <div class="interests">
+                            <input type="text" class="search-input" id="tag1" name="tag1" placeholder="#관심사1">
+                            <input type="text" class="search-input" id="tag2" name="tag2" placeholder="#관심사2">
+                            <input type="text" class="search-input" id="tag3" name="tag3" placeholder="#관심사3">
                     </div>
                 </section>
 
+                <!-- 2. 그룹 소개 섹션 -->
                 <section class="second-section">
-                    <h2>그룹을 소개해주세요</h2>
-                    <div class="intro-group-section">
-                        <div class="upload-group-img">
-                            <input type="file" name="group-img" onchange="showImg(event)">
-                        </div>
-                        <div class="intro-group-text">
-                            <input type="text" name="group-text" placeholder="소개글 입력">
-                        </div>
+                    <div class = "group-title">
+                        <h2>그룹을 소개해주세요!</h2>
                     </div>
-                    <div>
-                        <img id="preview" class="show-img" style="display: none;" /> <!-- 사용자가 업로드 한 사진 미리보기 -->
+                    <div class="group-img">
+                        <!-- 이미지 받기 -->
+                        <div class="upload-group-img">
+                            <label for="group-img" class="upload-label">
+                                이미지를 업로드하세요
+                                <img id="preview" class="show-img" style="display: none;" />
+                            </label>
+                            <input type="file" id="group-img" name="group-img"  accept="image/*" onchange="showImg(event)" required>
+                        </div>
+                        <!-- 그룹 이름 받기 -->
+                        <div class="upload-group-name">
+                            <input type="text" id="group-name" name="group-name" placeholder="그룹명을 입력하세요">
+                        </div>
+                        <!-- 소개글 받기 -->
+                        <div class="upload-group-text">
+                            <textarea id="group-text" name="group_text" placeholder="간단한 그룹 소개글을 입력하세요" rows="4" required></textarea>
+                        </div>
                     </div>
                 </section>
 
+                <!-- '그룹만들기' 버튼 -->
                 <section class="third-section">
-                    <button type="button" class="btn" onclick="showConfirmText()"> <!-- button type="button"이라 자동으로 제출되지 않음 >> action 속성 불필요 // fetch()로 연결 필요 -->
+                    <button type="button" class="btn" onclick="validateForm()">  
                         그룹 만들기
                     </button>
                 </section>
-                
-            </form>
 
+                <!-- 에러 메시지 표시 -->
+                <div id="error-message" class="error-message"></div>
+            </form>
         </div>
+
 
         <div class="box footer"></div>
     </div>
+
+
     <script>
+        /* 빈칸인 값이 있으면 알림 */
+        function validateForm() {
+            // 폼의 요소들을 가져옵니다
+            const tag1 = document.getElementById('tag1').value.trim();
+            const tag2 = document.getElementById('tag2').value.trim();
+            const tag3 = document.getElementById('tag3').value.trim();
+            const groupImg = document.getElementById('group-img').files.length; // 업로드된 파일의 개수
+            const groupName = document.getElementById('group-name').value.trim(); 
+            const groupText = document.getElementById('group-text').value.trim();
+            const errorMessage = document.getElementById('error-message');
 
-        function showConfirmText() {
-            existingAlert = document.querySelector('.custom-alert'); // 아래에 'custom-alert' 동적 삽입
-            if (existingAlert) {
-                existingAlert.remove();
+            // 에러 메시지 초기화
+            errorMessage.textContent = '';
+
+            // 입력값 검증
+            if (!tag1 || !tag2 || !tag3) {
+            alert('관심사 태그 3개를 모두 입력하세요.');
+            return;
             }
 
-            alertBox = document.createElement('div'); // here
-            alertBox.classList.add('custom-alert'); // here
-            alertBox.innerHTML =`
-                <p>'그룹 만들기'가 완료되었습니다. 화면을 확인해보세요.</p>
-                <button onclick="goToNetworkingPage()">확인</button>
-            `;
-            document.body.appendChild(alertBox);
-        }
-
-        function goToNetworkingPage() {
-            alertBox = document.querySelector('.custom-alert');
-            if (alertBox) {
-                alertBox.remove();
+            if (!groupImg) {
+            alert('그룹 이미지를 업로드하세요.');
+            return;
             }
-            window.location.href = "networking.html";
+
+            if (!groupName) {
+                alert('그룹명을 입력하세요.')
+                return;
+            }
+
+            if (!groupText) {
+            alert('그룹 소개글을 작성하세요.');
+            return;
+            }
+
+            // 폼 제출하기
+            document.getElementById('make-group-form').submit();
         }
 
         function showImg(event) {
-            const file = event.target.files[0]; // 업로드된 첫 번째 파일을 선택
-            const reader = new FileReader(); // 페이지 내에서 파일을 읽을 수 있도록 돕는 객체
+            const file = event.target.files[0];
+            const reader = new FileReader();
 
             reader.onload = function(e) {
-                const preview = document.getElementById('preview'); //preview라는 미리보기 id 생성
-                preview.src = e.target.result; // src속성을 부여, 'e.target.result= 파일 읽은 결과값'과 연결
-                preview.style.display = 'block'; // 눈에 보이게 하려고 display = 'block' 설정
+                const preview = document.getElementById('preview');
+                preview.src = e.target.result;
+                preview.style.display = 'block';
             };
 
-            if (file) { //file이 업로드 된 경우에만
-                reader.readAsDataURL(file); // 파일을 읽고 미리보기 생성
-                //여기서 FileReader 객체에서, 'readAsDataURL은 파일을 읽어 데이터 URL로 변환'하여 e.target.result에 저장
+            if (file) {
+                reader.readAsDataURL(file);
             }
         }
     </script>
