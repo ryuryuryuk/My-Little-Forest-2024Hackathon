@@ -8,15 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>starting</title> <!-- 시작화면 페이지 -->
 
-    <!--폰트 로드-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+script+KR:wght@400;700&display=swap" rel="stylesheet">
-    <!--정적 css 파일-->
-    <link rel="stylesheet" href="{% static 'start/css/startingGrid.css' %}">
-    <link rel="stylesheet" href="{% static 'start/css/starting.css' %}">
 
     <style>
-
+        @import url("{% static 'start/css/startingGrid.css' %}");
+        @import url("{% static 'start/css/starting.css' %}");
         body {
             font-family: 'NanumSquareRound', sans-serif;
         }
