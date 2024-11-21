@@ -46,7 +46,7 @@ textarea:focus {
 .upload-label {
     display: block;
     width: 100%; /* 원하는 너비 */
-    height: 200px; /* 원하는 높이 */
+    height: 300px; /* 원하는 높이 */
     border: 2px dashed #ccc; /* 박스 스타일 */
     border-radius: 8px; /* 둥근 모서리 */
     display: flex;

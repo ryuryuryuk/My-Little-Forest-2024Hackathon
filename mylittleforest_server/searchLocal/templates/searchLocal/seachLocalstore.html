@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>searchLocal</title>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+	
+	<style>
+		@import url(searchLocalGrid.css);
+        @import url(store.css);
+
+		body {
+			font-family: 'NanumSquareRound', sans-serif;
+		}
+
+		.box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			background-color: #4EA686;
+		}
+
+		.header {
+			grid-area: header;
+			font-family: 'Noto Sans KR', sans-serif;
+		}
+		
+		.widget {
+			grid-area: widget;
+		}
+		
+		.main {
+			grid-area: main;
+		}
+		
+        .sidebar {
+            grid-area: sidebar;
+        }
+
+		.footer {
+			grid-area: footer;
+		}
+
+	</style>
+</head>
+
+<body>
+<div class="grid-container">
+	<div class="box header">Header - 100px</div>
+	<div class="box widget">widget - 행 당 80px</div>
+	<div class="box main">
+        <div class = "top-grid-flex-container">
+            <div class="top_text-box">지역가게</div>
+            <div class="container">
+                <div class="image-box">
+                    <img src="image1.jpg" alt="이미지 1">
+                    <div class="text-box">이미지 1 텍스트</div>
+                </div>
+                <div class="image-box">
+                    <img src="image1.jpg" alt="이미지 2">
+                    <div class="text-box">이미지 2 텍스트</div>
+                </div>
+                <div class="image-box">
+                    <img src="image1.jpg" alt="이미지 3">
+                    <div class="text-box">이미지 3 텍스트</div>
+                </div>
+                <div class="image-box">
+                    <img src="image1.jpg" alt="이미지 4">
+                    <div class="text-box">이미지 4 텍스트</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box sidebar">sidebar</div>
+	<div class="box footer">Footer - 50px</div>
+</div>
+	
+</body>
+
+</html>
