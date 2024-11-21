@@ -199,9 +199,11 @@
 
                 
                     <div class="button-tag">
-
+                    <script>
+                        const makeGroupUrl = "{% url 'networking:makeGroup' %}";
+                    </script>
                         <!-- 그룹만들기 버튼 -->
-                        <button class="make-group" onclick="window.location.href='{% url 'networking:makeGroup' %}'">
+                        <button class="make-group" onclick="window.location.href=makeGroupUrl">
                             그룹 만들기
                         </button>
                     </div>
