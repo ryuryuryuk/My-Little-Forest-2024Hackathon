@@ -1,4 +1,4 @@
-@media screen and (min-width: 1280px) and (max-width: 1920px) {
+@media screen and (min-width: 1024px) and (max-width: 1920px) {
     
     * { /* 화면 안에 꽉 차도록 함 */
         margin: 0;
