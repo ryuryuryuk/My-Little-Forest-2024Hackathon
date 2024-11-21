@@ -80,11 +80,6 @@
     border-radius: 8px;
 }
 
-.site-img img:nth-child(n+1):nth-child(-n+3) {
-    display: block;
-}
-
-
 /* second-section OVERLAY 관련 애니메이션 코드 */
 .shadow {
     display: block;
