@@ -2,28 +2,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
 }
 
 .progress-circle {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     background-color: #D3D3D3; 
 }
 
 .progress-line {
     width: 40px;
-    height: 4px;
+    height: 2px;
     background-color: #D3D3D3; 
 }
 
 .progress-circle.filled {
-    background-color: #27634C; 
+    background-color: #4EA686; 
 }
 
 .progress-line.filled {
-    background-color: #27634C; 
+    background-color: #4EA686; 
 }
 
 @font-face {
