@@ -22,8 +22,10 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("start/", include("start.urls")), #start애플리케이션 url
     path("login/", include("login.urls")),
+    path("main/", include("main.urls")), 
+    path("networking/", include("networking.urls")),
+    path("sharing/", include("sharing.urls")),
 
-    #path("main/", include("main.urls")), 
 ]
 
 #main status

@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     "start.apps.StartConfig", #start 앱 추가
     "main.apps.MainConfig", #main 앱 추가
     "login.apps.LoginConfig", #login 앱 추가
+    "networking.apps.NetworkingConfig", #networking 앱 추가
+    "sharing.apps.SharingConfig", #sharing 앱 추가
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -123,6 +125,12 @@ STATIC_URL = "static/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # 루트 static 폴더
+    BASE_DIR / 'start/static',
+    BASE_DIR / 'main/static',
+    BASE_DIR / 'login/static',
+    BASE_DIR / 'networking/static',
+    BASE_DIR / 'sharing/static',
+
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
