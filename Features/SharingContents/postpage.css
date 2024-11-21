@@ -11,6 +11,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 350px;
+    background-color: #8BC330;
   }
 .title-input{
     height: 50px;
@@ -29,6 +30,7 @@
     height: 150px;
     margin-top: 40px;
     margin-bottom: 10px;
+    background-color: #E1E1A0;
 }
 
 .button-group {
@@ -40,13 +42,13 @@
     margin-right: 10px;
     border: none;
     cursor: pointer;
-    background-color: #007BFF;
+    background-color: #27634C;
     color: white;
     border-radius: 5px;
 }
 
 .button-group button:hover {
-    background-color: #0056b3;
+    background-color:  #544424;
 }
 
 .comment-section {
@@ -83,12 +85,13 @@
     width: 15%;
     padding: 10px;
     border: none;
-    background-color: #28a745;
+    background-color: #27634C;
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .input-group button:hover {
-    background-color: #218838;
+    background-color:  #544424;
 }
