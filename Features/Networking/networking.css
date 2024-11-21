@@ -67,11 +67,22 @@
 
 .site-img {
     display: flex;
-    width: 250px;
+    width: 300px;
     overflow:hidden;
     position: relative;
-    aspect-ratio: 1 / 1.2; /* 사진에 대한 고정 크기를 지정해 주는 코드 */
+    aspect-ratio: 4/5; /* 사진에 대한 고정 크기를 지정해 주는 코드 */
     border-radius: 10px;
+}
+
+.site-container h3 {
+    position: absolute;
+    top: 10px; 
+    left: 50%; 
+    transform: translateX(-50%);
+    z-index: 2; 
+    font-size: 1.5em;
+    color: #fff; 
+    font-weight: bold; 
 }
 
 .site-img img {

@@ -1,6 +1,7 @@
 .side-box {
     width: 100%;
     height: 100%;
+    background-color: #ffffff;
 }
 
 .side {
@@ -9,6 +10,11 @@
     padding: 10px 0;
     margin-bottom: 10px; 
     text-align: center;
+    background-color: #ffffff; /* 각 항목 배경 색상 */
+    border-radius: 5px; /* 항목 모서리 둥글게 */
+    padding: 10px;
+    margin: 5px 0; /* 항목 간격 */
+    transition: background-color 0.3s ease; /* 배경 색상 전환 효과 */
 }
 
 .city {
@@ -16,26 +22,20 @@
 }
 
 a {
-        text-decoration: none;
-        color: black; /* 사이드바 색상 */
-    }
-    
+    text-decoration: none;
+}
+
 a:hover {
         color: rgba(0,0,0,0.5);
     }
 
-.main {
-        display: flex;
-        flex-direction: column;
-        height: 100%; 
-    }
 
 .title-city {
         display: flex;
         max-width: 90%;
         overflow: hidden;
         position: relative; 
-        margin-bottom: 20px;
+        margin-bottom: 40px;
     }
     
 .title-city img {
@@ -48,6 +48,7 @@ h2 {
         width: 90%; 
         text-align: left;
         margin: 10px 0;
+        font-weight: 700; 
     }
 
 h2:nth-child(1) {
@@ -88,18 +89,74 @@ h2:nth-child(1) {
     text-align: left;
 }
 
+.click-info {
+    border: 2px solid #4EA686; /* 원하는 색상과 두께로 변경 가능 */
+    padding: 10px;
+    border-radius: 5px; /* 모서리 둥글게 */
+    cursor: pointer; /* 클릭 가능하도록 커서 변경 */
+    transition: all 0.3s ease; /* 애니메이션 추가 */
+}
+
+/* hover 시 border 색상 변경 */
+.click-info:hover {
+    border-color: #2a8b58; /* hover 시 다른 색상으로 변경 */
+}
+
+.side:hover {
+    background-color: #e0e0e0; /* hover 시 배경 색상 변경 */
+}
+
+/* 링크 스타일: 사이드바 내 */
+a {
+    color: #4EA686; /* 링크 색상 */
+    font-weight: 600; /* 글씨 두껍게 */
+    font-size: 16px;
+}
+
+a:hover {
+    color: #2c8b6f; /* hover 시 색상 */
+    text-decoration: underline; /* hover 시 밑줄 */
+}
+
+/* .title-city 이미지 섹션에 그림자 추가 */
+.title-city {
+    border-radius: 10px; /* 이미지 모서리 둥글게 */
+}
+
+.shadow {
+    transition: transform 0.3s ease;
+}
+
+.overlay p {
+    font-size: 18px; 
+    color: #fff;
+    font-weight: 600; 
+}
+
+/* 클릭 시 문구 표시되는 효과 */
 .text p {
     display: none;
     margin: 10px 5px;
     padding-left: 5px;
+    opacity: 0; 
+    transform: translateY(20px); 
 }
 
-.click-info {
-    cursor: pointer;
-    display: inline-block;
-    margin-top: 10px;
+/* show 클래스가 추가될 때 애니메이션 */
+.text p.show {
+    display: block; 
+    animation: slideUp 0.5s forwards;
+    opacity: 1;
+    transform: translateY(0); 
 }
 
-.click-info:hover {
-    color: rgba(0,0,0,0.4);
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

@@ -38,6 +38,9 @@
 		
 		.main {
 			grid-area: main;
+			flex-direction: column;
+			height: 100%; 
+			background-color: white;
 		}
 		
         .sidebar {
@@ -96,16 +99,16 @@
 
         <div class="box sidebar">
 			<div class="side-box">
-				<span class=" side city">
+				<span class="side city">
 					<a href="#city">도시 특징</a> <!-- '같은 페이지: 사이드바 -> 메인'으로 이동하는 거라 이대로 두었어요! -->
 				</span>
-				<span class=" side info">
+				<span class="side info">
 					<a href="#info">생활 정보</a> <!-- '같은 페이지: 사이드바 -> 메인'으로 이동하는 거라 이대로 두었어요! -->
 				</span>
-				<span class=" side fes">
+				<span class="side fes">
 					<a href="{% url 'searchLocal:searchLocalFestival' %}">지역 축제</a> <!-- searchLocalFestival.html로 이동하도록 설정 -->
 				</span>
-				<span class=" side store">
+				<span class="side store">
 					<a href="{% url 'searchLocal:searchLocalStore' %}">지역 가게</a> <!-- searchLocalStore.html로 이동하도록 설정 -->
 				</span>
 
@@ -115,18 +118,21 @@
 
 			</div>
 		</div>
-		<div class="box footer">Footer - 50px</div>
+		<div class="box footer">Copyright©2024 by team 마리포</div>
 	</div>
 
     <script>
-        function showContent(element) {
-            const content = element.nextElementSibling;
-            if (content.style.display === "none" || content.style.display === "") {
-                content.style.display = "block";
-            } else {
-                content.style.display = "none";
-            }
-        }
+		function showContent(element) {
+    const content = element.nextElementSibling;
+
+    // p 태그가 보이지 않으면 애니메이션을 통해 보이게 하고, 보이면 숨기기
+    if (content.classList.contains("show")) {
+        content.classList.remove("show"); // 이미 보이고 있으면 숨김
+    } else {
+        content.classList.add("show"); // 보이지 않으면 애니메이션으로 보여줌
+    }
+}
+
     </script>
 
 </body>
