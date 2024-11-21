@@ -28,7 +28,7 @@
 .button-wrapper {
     display: flex;
     justify-content: space-between; 
-    width: 90%; 
+    width: 80%; 
     max-width: 600px;
     font-family: 'NanumSquareRound';
     gap: 20px; /* 버튼 간격 */
@@ -38,11 +38,13 @@
 .back-button {
     font-family: 'NanumSquareRound';
     background: linear-gradient(180deg, #8BC330, #27634C); /* 그라데이션 */
+    border: solid 2px linear-gradient(180deg, #8BC330, #27634C);
 }
 
 .next-button {
     font-family: 'NanumSquareRound';
     background: linear-gradient(180deg, #8BC330, #27634C); /* 그라데이션 */
+    border: solid 2px linear-gradient(180deg, #8BC330, #27634C);
 }
 }
 
