@@ -12,14 +12,9 @@ class Custom_group(models.Model):
         return self.group_name
 
 class Tag(models.Model):
-    group_id = models.ForeignKey(
-        'networking.Custom_group', 
-        on_delete=models.CASCADE,
-        related_name='tag',
-        to_field='group_id'
-    )
-    tags = models.CharField(max_length=30)
+    group_name = models.CharField(max_length=30, null=True)
+    tag = models.CharField(max_length=30, null=True)
 
     # 문자열 표현을 위한 메서드
     def __str__(self):
-        return self.tags
+        return self.tag
