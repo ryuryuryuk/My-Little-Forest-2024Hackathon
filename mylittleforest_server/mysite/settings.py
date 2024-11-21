@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "login.apps.LoginConfig", #login 앱 추가
     "networking.apps.NetworkingConfig", #networking 앱 추가
     "sharing.apps.SharingConfig", #sharing 앱 추가
+    "searchLocal.apps.SearchlocalConfig", #searchLocal 앱 추가
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

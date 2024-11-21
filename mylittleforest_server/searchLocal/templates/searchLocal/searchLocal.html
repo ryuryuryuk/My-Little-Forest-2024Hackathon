@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% load static %}
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>searchLocal</title>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+	
+	<style>
+		@import url(searchLocalGrid.css);
+		@import url(searchLocal.css);
+
+		body {
+			font-family: 'NanumSquareRound', sans-serif;
+		}
+
+		.box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			background-color: #4EA686;
+		}
+
+		.header {
+			grid-area: header;
+			font-family: 'Noto Sans KR', sans-serif;
+		}
+		
+		.widget {
+			grid-area: widget;
+		}
+		
+		.main {
+			grid-area: main;
+		}
+		
+        .sidebar {
+            grid-area: sidebar;
+        }
+
+		.footer {
+			grid-area: footer;
+			font-size: 15px;
+            color: #544424;
+            text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="grid-container">
+		<div class="box header">Header - 100px</div>
+
+		<div class="box widget">widget - 행 당 80px</div>
+
+		<div class="box main">
+				<h2>
+					도시 특징
+				</h2>
+			<div class="title-city" id="city">
+				<span class="shadow">
+					<img src="page.jpg" alt="사진">
+					<div class="overlay">
+						<p>문구 작성</p> <!-- 문구 작성 -->
+					 </div>
+				</span>
+			</div>
+				<h2>
+					생활 정보
+				</h2>
+			<div class="title-info" id="info">
+				<div class="text A">
+					<h3 class="click-info" onclick="showContent(this)">text-A title</h3>
+					<p>text-A content</p>
+				</div>
+				<div class="text B">
+					<h3 class="click-info" onclick="showContent(this)">text-B title</h3>
+					<p>text-B content</p>
+				</div>
+				<div class="text C">
+					<h3 class="click-info" onclick="showContent(this)">text-C title</h3>
+					<p>text-C content</p>
+				</div>
+				<div class="text D">
+					<h3 class="click-info" onclick="showContent(this)">text-D title</h3>
+					<p>text-D content</p>
+				</div>
+			</div>
+		</div>
+
+        <div class="box sidebar">
+			<div class="side-box">
+				<span class=" side city">
+					<a href="#city">도시 특징</a> <!-- '같은 페이지: 사이드바 -> 메인'으로 이동하는 거라 이대로 두었어요! -->
+				</span>
+				<span class=" side info">
+					<a href="#info">생활 정보</a> <!-- '같은 페이지: 사이드바 -> 메인'으로 이동하는 거라 이대로 두었어요! -->
+				</span>
+				<span class=" side fes">
+					<a href="{% url 'searchLocal:searchLocalFestival' %}">지역 축제</a> <!-- searchLocalFestival.html로 이동하도록 설정 -->
+				</span>
+				<span class=" side store">
+					<a href="{% url 'searchLocal:searchLocalStore' %}">지역 가게</a> <!-- searchLocalStore.html로 이동하도록 설정 -->
+				</span>
+
+				<span>
+					<!--  빈 공간 -->
+				</span>
+
+			</div>
+		</div>
+		<div class="box footer">Footer - 50px</div>
+	</div>
+
+    <script>
+        function showContent(element) {
+            const content = element.nextElementSibling;
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

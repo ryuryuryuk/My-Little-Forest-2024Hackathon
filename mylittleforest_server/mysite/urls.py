@@ -25,7 +25,5 @@ urlpatterns = [
     path("main/", include("main.urls")), 
     path("networking/", include("networking.urls")),
     path("sharing/", include("sharing.urls")),
-
+    path("searchLocal/", include("searchLocal.urls")),
 ]
-
-#main status

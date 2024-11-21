@@ -116,7 +116,7 @@
                         </button>
                         <div class="site-img" data-tag="가">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingSlideImg.jpg' %}" alt="사진">
+                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>가</p> <!-- 문구 작성 -->
                                 </div>
@@ -124,7 +124,7 @@
                         </div>
                         <div class="site-img" data-tag="나">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingSlideImg.jpg' %}" alt="사진">
+                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>나</p> <!-- 문구 작성 -->
                                 </div>
@@ -132,7 +132,7 @@
                         </div>
                         <div class="site-img" data-tag="다">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingSlideImg.jpg' %}" alt="사진">
+                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>다</p> <!-- 문구 작성 -->
                                 </div>
@@ -140,7 +140,7 @@
                         </div>
                         <div class="site-img" data-tag="라">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingSlideImg.jpg' %}" alt="사진">
+                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>라</p> <!-- 문구 작성 -->
                                 </div>
@@ -148,7 +148,7 @@
                         </div>
                         <div class="site-img" data-tag="가 나">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingSlideImg.jpg' %}" alt="사진">
+                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>가 나</p> <!-- 문구 작성 -->
                                 </div>
@@ -156,7 +156,7 @@
                         </div>
                         <div class="site-img" data-tag="나 다">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingSlideImg.jpg' %}" alt="사진">
+                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>나 다 </p> <!-- 문구 작성 -->
                                 </div>
@@ -164,21 +164,44 @@
                         </div>
                         <div class="site-img" data-tag="가 라">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingSlideImg.jpg' %}" alt="사진">
+                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>가 라</p> <!-- 문구 작성 -->
                                 </div>
                             </span>
                         </div>
+                        <div class="site-img" data-tag="라 사">
+                            <span class="shadow">
+                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
+                                <div class="overlay">
+                                    <p>나 사</p> <!-- 문구 작성 -->
+                                </div>
+                            </span>
+                        </div>
+                        <div class="site-img" data-tag="다 사">
+                            <span class="shadow">
+                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
+                                <div class="overlay">
+                                    <p>다 사</p> <!-- 문구 작성 -->
+                                </div>
+                            </span>
+                        </div>
+
+                        <div class="no-results" style="display: none;">
+                            <p>해당 그룹이 없어요</p>
+                        </div>
+
                         <button class="slide right">
-                            <i class="fa-solid fa-angle-right" style="color: white;"></i>
+                            <i class="fa-solid fa-angle-right" style="color: gray;"></i>
                         </button>
+
                     </div>
                 </section>
 
                 <section class="third-section">
                     <div class="text-container">
-                        <h1>관심사를 설정하고<br>
+                        <h1><span style="color: #27634C;font-size: 1.2em;font-weight: bold;">
+                            관심사</span>를 설정하고<br>
                         더 많은 사람들을 만나보세요!</h1>
                         <p>원하는 그룹이 없다면,<br>
                         관심사를 설정하고 직접 만들어 보세요.</p>
@@ -211,9 +234,8 @@
         </div>
 		<div class="box footer"></div>
 	</div>
-    <script src="{% static 'networking/js/networking.js' %}"></script>
     <script src="{% static 'networking/js/networkingTag.js' %}"></script>
-    <script src="{% static 'networking/js/networkingSlide.js' %}"></script>
+    <script src="{% static 'networking/js/networkingFade.js' %}"></script>
 </body>
 
 </html>

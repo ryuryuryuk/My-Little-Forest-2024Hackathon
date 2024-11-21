@@ -22,13 +22,17 @@ def makeGroup(request):
         print(f"group_img: {group_img}")
 
         try:  
-            #데이터 저장
+            # Custom_group에 데이터 저장
             group = Custom_group.objects.create(
                 constructor = request.session['nickname'],
                 image = group_img,
                 group_name = group_name,
                 description = group_text
             )
+            # tag에 데이터 저장  
+            tags = [tag1, tag2, tag3]
+            for tag in tags:
+                Tag.objects.create(group_name = group.group_name, tag = tag) #group_id = group에서 group_id는 group 객체를 받고 내부적으로 group 객체의 pk를 추출하여 tag.group_id에 저장함
             # 성공 시 처리
             return JsonResponse({"success": True, 'message': '그룹 만들기 성공'}, status=200)
         except Exception as e:
