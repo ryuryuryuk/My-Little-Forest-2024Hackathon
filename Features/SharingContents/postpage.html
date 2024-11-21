@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+{% load static %}
 
 <meta charset="UTF-8">
 
@@ -20,8 +21,8 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <style>
-@import url(page.css);
-@import url(mainGrid.css);
+@import url(postpage.css);
+@import url(sharingContentsGrid.css);
 /*@import url(searchlocalgrid.css);*/
 /*@import url(searchLocalstore.html);*/
 
@@ -41,7 +42,7 @@ align-items: center;
 
 text-align: center;
 
-background-color: #4EA686;
+background-color: #E1E1A0;
 
 }
 
@@ -91,10 +92,10 @@ grid-area: footer;
           <input type="text" placeholder="제목을 입력하세요" class="title-input">
           
           <div class="image-box">
-            <img src="https://via.placeholder.com/500x200" alt="이미지" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="image4.jpg" alt="이미지" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           
-          <div class="content">
+          <div class="content"> <!-- ㅅㄷㄴㅅㅅㄷㄴㅅ -->
             <p>이곳에 내용이 들어갑니다. 내용이 여러 줄일 수 있습니다.</p>
           </div>
     

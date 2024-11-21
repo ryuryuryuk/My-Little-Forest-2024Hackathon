@@ -43,7 +43,7 @@ body {
 .form-container {
   margin-top: 30px;
   padding: 20px;
-  background-color: #28e20f;
+  background-color: #8BC330;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   height: 700px;
@@ -93,16 +93,16 @@ form input, form textarea {
 
 form button {
   padding: 10px 20px;
-  background-color: blueviolet;
+  background-color: #27634C;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  
 }
 
 form button:hover {
-  background-color: darkviolet;
+  background-color: #544424;
 }
 
 .preview-img {
