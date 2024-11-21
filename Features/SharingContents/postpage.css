@@ -1,0 +1,94 @@
+.container {
+    display: flex;
+    height: 800px;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+.box1 {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+  }
+.title-input{
+    height: 50px;
+    width: 350px;
+}
+  
+.image-box {
+    width: 100%;
+    margin-top: 20px;
+    height: 400px;
+    background-color: #eee;
+    margin-bottom: 10px;
+}
+
+.content {
+    height: 150px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.button-group {
+    margin-top: 10px;
+}
+
+.button-group button {
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+}
+
+.button-group button:hover {
+    background-color: #0056b3;
+}
+
+.comment-section {
+    margin-top: 20px;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.comment {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.input-group input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.input-group button {
+    width: 15%;
+    padding: 10px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-group button:hover {
+    background-color: #218838;
+}

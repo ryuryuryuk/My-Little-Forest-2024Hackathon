@@ -14,11 +14,9 @@
 }
 
 .choice-button.selected {
-    background-color: #27634C;
+    background-color: #4EA686;
     color: rgba(255,255,255); 
-    border: 2px solid #27634C;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-    font-weight: bold;
     transition: all 0.3s ease; /* 부드러운 변화 효과 */
 }
 

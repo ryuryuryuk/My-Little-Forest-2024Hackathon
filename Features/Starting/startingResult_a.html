@@ -1,1 +1,159 @@
-<!-- 결과화면 a -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result_a</title> <!-- 결과화면 A -->
+
+    <!-- .css 불러오기 -->
+    <link rel="stylesheet" href="{% static 'start/css/startingResultGrid.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/starting.css' %}">
+    
+
+    <style>
+        @import url(startingGrid.css);
+        @import url(startingResult.css);
+
+
+        body {
+            font-family: 'NanumSquareRound', sans-serif;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .header {
+            grid-area: header;
+            font-family: 'Noto Sans KR', sans-serif;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .main {
+            grid-area: main;
+            background-color: white;
+        }
+
+        .footer {
+            grid-area: footer;
+            font-size: 15px;
+            color: #544424;
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .whole-wrapper {
+            display: flex; 
+            align-items: center;
+			text-align: center;
+            width: 100%;
+            max-width: 800px;
+            flex-direction: column;
+            font-family: 'NanumSquareRound';
+        }
+
+        .Logo {
+            width: 300px;
+        }
+
+
+        /* 간단한 결과 소개 */
+        .intro-text {
+            font-size: 18px;
+            color: #544424;
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+
+            /* 애니메이션 조건 */
+            
+        }
+
+
+        .intro-wrapper {
+        }
+
+        .result-wrapper {
+            display: flex; 
+            align-items: center;
+			text-align: center;
+        }
+
+        .result-img {
+            width: 150px;
+            display: flex; 
+            align-items: center;
+			text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .result-text{
+
+        }
+
+        /* 결과 캐릭터 타이틀 */
+        .result-title{
+            font-size: 30px;
+            color: #61b600;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-weight: bold;
+
+        }
+
+        /* 결과 설명 */
+        .result-subtitle{
+            font-size: 16px;
+            color: #544424;
+            text-align: center;
+            line-height: 1.6;
+            margin: 20px 0;
+
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="box header">
+        
+    </div>
+
+    <div class="grid-container">
+        <div class="box main">
+            <div class="whole-wrapper">
+                <img src="../../Assets/images/Logo.jpg" alt="로고" class="Logo">
+                <!-- 마리포 간단한 소개문구 -->
+                <div class="intro-wrapper">
+                    <p class="intro-text">지방도시 특징을 포함한 간단한 캐릭터 설명 </p>
+                </div>
+                <div class="result-wrapper">
+                    <img src="../../Assets/images/resultB.png" alt="결과이미지" class="result-img">
+                </div>
+                    <div class="result-text">
+                        <p class="result-title">특별이</p>
+                        <p class="result-subtitle">강원특별자치도의 아름다운 경치를 보고 초록색이 된 반달가슴곰은 <br>청정 자연의 기를 받고 자라 따뜻한 마음씨를 가지고 있으며<br>
+                            태백산 골짜기에서 낮잠 자는 것을 좋아한다. <br> 새로운 강원특별자치도에 대해 호기심과 궁금증이 들끓는다.</p>
+                    </div>
+
+            </div>
+        </div>
+        <div class="footer">
+            Copyright©2024 by team 마리포
+        </div>
+    </div>
+
+</body>
+
+</html>

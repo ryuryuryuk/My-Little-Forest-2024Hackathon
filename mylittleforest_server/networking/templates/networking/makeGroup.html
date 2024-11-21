@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>makeGroup</title> <!-- 그룹만들기 페이지 -->
+
+    <!-- .css 불러오기 -->
+    <link rel="stylesheet" href="{% static 'networking/css/makeGroupGrid.css' %}">
+    <link rel="stylesheet" href="{% static 'networking/css/makeGroup.css' %}">
+    
+
+    <style>
+        @import url(makeGroupGrid.css);
+        @import url(makeGroup.css);
+
+        body {
+            font-family: 'NanumSquareRound', sans-serif;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #4EA686;
+        }
+
+        .header {
+            grid-area: header;
+        }
+        
+        .main {
+            grid-area: main;
+            display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+        }
+
+        .footer {
+            grid-area: footer;
+            font-size: 15px;
+            color: #544424;
+            text-align: center;
+        }
+
+        
+    </style>
+</head>
+
+
+<body>
+    <div class="grid-container">
+
+        <div class=" box header"></div>
+
+        <div class="box main">
+
+            <form method="POST" class="whole-container" action="{% url '' %}"> <!-- 어디로 전송할지 -->
+                {%  %}
+            <form id="make-group-form" method="POST" action="{%url 'networking:makeGroup' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- 1. 관심사를 입력하는 섹션 -->
+                <section class="first-section">
+                    <div class = "interest-title">
+                        <h2>당신의 관심사를 알려주세요!</h2>
+                    </div>
+                    <!-- 관심사 #태그로 3개 입력받는 부분 -->
+                    <div class="interests">
+                            <input type="text" class="search-input" id="tag1" name="tag1" placeholder="#관심사1">
+                            <input type="text" class="search-input" id="tag2" name="tag2" placeholder="#관심사2">
+                            <input type="text" class="search-input" id="tag3" name="tag3" placeholder="#관심사3">
+                    </div>
+                </section>
+
+                <!-- 2. 그룹 소개 섹션 -->
+                <section class="second-section">
+                    <div class = "group-title">
+                        <h2>그룹을 소개해주세요!</h2>
+                    </div>
+                    <div class="group-img">
+                        <!-- 이미지 받기 -->
+                        <div class="upload-group-img">
+                            <label for="group-img" class="upload-label">
+                                이미지를 업로드하세요
+                                <img id="preview" class="show-img" style="display: none;" />
+                            </label>
+                            <input type="file" id="group-img" name="group-img"  accept="image/*" onchange="showImg(event)" required>
+                        </div>
+                        <!-- 그룹 이름 받기 -->
+                        <div class="upload-group-name">
+                            <input type="text" id="group-name" name="group-name" placeholder="그룹명을 입력하세요">
+                        </div>
+                        <!-- 소개글 받기 -->
+                        <div class="upload-group-text">
+                            <textarea id="group-text" name="group_text" placeholder="간단한 그룹 소개글을 입력하세요" rows="4" required></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- '그룹만들기' 버튼 -->
+                <section class="third-section">
+                    <button type="button" class="btn" onclick="validateForm()">  
+                        그룹 만들기
+                    </button>
+                </section>
+
+                <!-- 에러 메시지 표시 -->
+                <div id="error-message" class="error-message"></div>
+            </form>
+        </div>
+
+
+        <div class="box footer"></div>
+    </div>
+
+
+    <script>
+        /* 빈칸인 값이 있으면 알림 */
+        function validateForm() {
+            // 폼의 요소들을 가져옵니다
+            const tag1 = document.getElementById('tag1').value.trim();
+            const tag2 = document.getElementById('tag2').value.trim();
+            const tag3 = document.getElementById('tag3').value.trim();
+            const groupImg = document.getElementById('group-img').files.length; // 업로드된 파일의 개수
+            const groupName = document.getElementById('group-name').value.trim(); 
+            const groupText = document.getElementById('group-text').value.trim();
+            const errorMessage = document.getElementById('error-message');
+
+            // 에러 메시지 초기화
+            errorMessage.textContent = '';
+
+            // 입력값 검증
+            if (!tag1 || !tag2 || !tag3) {
+            alert('관심사 태그 3개를 모두 입력하세요.');
+            return;
+            }
+
+            if (!groupImg) {
+            alert('그룹 이미지를 업로드하세요.');
+            return;
+            }
+
+            if (!groupName) {
+                alert('그룹명을 입력하세요.')
+                return;
+            }
+
+            if (!groupText) {
+            alert('그룹 소개글을 작성하세요.');
+            return;
+            }
+
+            // 폼 제출하기
+            document.getElementById('make-group-form').submit();
+        }
+
+        function showImg(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const preview = document.getElementById('preview');
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
