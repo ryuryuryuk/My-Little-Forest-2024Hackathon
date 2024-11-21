@@ -49,6 +49,8 @@
 /* second-section CSS */
 .second-section {
     padding: 10px;
+    border: 2px solid #544424 ;
+    border-radius: 20px;
 }
 
 .site-container {
@@ -63,7 +65,7 @@
 }
 
 .site-img {
-    display: none;
+    display: flex;
     width: 250px;
     overflow:hidden;
     position: relative;
@@ -78,6 +80,10 @@
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
+}
+
+.hidden {
+    display: none; 
 }
 
 /* second-section OVERLAY 관련 애니메이션 코드 */

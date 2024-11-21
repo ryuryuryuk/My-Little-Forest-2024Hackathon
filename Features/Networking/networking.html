@@ -7,9 +7,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>networking</title> <!-- 현지 소셜 네트워킹 메인 페이지 -->
 
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
 
 	<style>
 		@import url(networkingGrid.css);
@@ -78,6 +83,7 @@
 		
 		.main {
 			grid-area: main;
+            background-color: white;
 		
 		}
 		
@@ -114,7 +120,7 @@
                         </button>
                         <div class="site-img" data-tag="가">
                             <span class="shadow">
-                                <img src="networkingFirstFadeImg.jpg" alt="사진">
+                                <img src="networkingFirstFadeImg.jpg" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>가</p> <!-- 문구 작성 -->
                                 </div>
@@ -122,7 +128,7 @@
                         </div>
                         <div class="site-img" data-tag="나">
                             <span class="shadow">
-                                <img src="networkingFirstFadeImg.jpg" alt="사진">
+                                <img src="networkingFirstFadeImg.jpg" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>나</p> <!-- 문구 작성 -->
                                 </div>
@@ -130,7 +136,7 @@
                         </div>
                         <div class="site-img" data-tag="다">
                             <span class="shadow">
-                                <img src="networkingFirstFadeImg.jpg" alt="사진">
+                                <img src="networkingFirstFadeImg.jpg" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>다</p> <!-- 문구 작성 -->
                                 </div>
@@ -138,7 +144,7 @@
                         </div>
                         <div class="site-img" data-tag="라">
                             <span class="shadow">
-                                <img src="networkingFirstFadeImg.jpg" alt="사진">
+                                <img src="networkingFirstFadeImg.jpg" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>라</p> <!-- 문구 작성 -->
                                 </div>
@@ -146,7 +152,7 @@
                         </div>
                         <div class="site-img" data-tag="가 나">
                             <span class="shadow">
-                                <img src="networkingFirstFadeImg.jpg" alt="사진">
+                                <img src="networkingFirstFadeImg.jpg" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>가 나</p> <!-- 문구 작성 -->
                                 </div>
@@ -154,7 +160,7 @@
                         </div>
                         <div class="site-img" data-tag="나 다">
                             <span class="shadow">
-                                <img src="networkingSlideImg.jpg" alt="사진">
+                                <img src="networkingSlideImg.jpg" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>나 다</p> <!-- 문구 작성 -->
                                 </div>
@@ -162,7 +168,7 @@
                         </div>
                         <div class="site-img" data-tag="가 라">
                             <span class="shadow">
-                                <img src="networkingSlideImg.jpg" alt="사진">
+                                <img src="networkingSlideImg.jpg" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>가 라</p> <!-- 문구 작성 -->
                                 </div>
@@ -170,7 +176,7 @@
                         </div>
                         <div class="site-img" data-tag="라 사">
                             <span class="shadow">
-                                <img src="networkingSlideImg.jpg" alt="사진">
+                                <img src="networkingSlideImg.jpg" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>나 사</p> <!-- 문구 작성 -->
                                 </div>
@@ -178,7 +184,7 @@
                         </div>
                         <div class="site-img" data-tag="다 사">
                             <span class="shadow">
-                                <img src="networkingSlideImg.jpg" alt="사진">
+                                <img src="networkingSlideImg.jpg" alt="사진" class="slideIMG">
                                 <div class="overlay">
                                     <p>다 사</p> <!-- 문구 작성 -->
                                 </div>
@@ -192,12 +198,14 @@
                         <button class="slide right">
                             <i class="fa-solid fa-angle-right" style="color: white;"></i>
                         </button>
+                        
                     </div>
                 </section>
 
                 <section class="third-section">
                     <div class="text-container">
-                        <h1>관심사를 설정하고<br>
+                        <h1><span style="color: #27634C;font-size: 1.2em;font-weight: bold;">
+                            관심사</span>를 설정하고<br>
                         더 많은 사람들을 만나보세요!</h1>
                         <p>원하는 그룹이 없다면,<br>
                         관심사를 설정하고 직접 만들어 보세요.</p>
@@ -228,9 +236,9 @@
         </div>
 		<div class="box footer"></div>
 	</div>
-    <script src="networking.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="networkingTag.js"></script>
-    <script src="networkingSlide.js"></script>
+    <script src="networkingFade.js"></script>
 </body>
 
 </html>
