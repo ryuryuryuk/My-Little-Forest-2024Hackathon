@@ -63,7 +63,7 @@
 }
 
 .site-img {
-    display: none;
+
     width: 250px;
     overflow:hidden;
     position: relative;
@@ -192,11 +192,14 @@
 /* third-section FADE 관련 애니메이션 관련 코드 */
 
 .animation-fade {
-    opacity: 0; /* default 숨겨진 상태 */
-    transition: opacity 1s ease-in-out; /* fade 효과 */
+    opacity: 0; /* 비활성화된 이미지는 숨김 */
+    transition: opacity 1s ease-in-out; /* 부드러운 전환 */
+    position: absolute; /* 애니메이션 효과를 위하여 고정 */
+    width: 280px;
+    height: 280px;
 }
 
 .active {
-    opacity: 1; /* 활성화된 이미지만 보이도록 */
-    z-index: 1; /* 활성화된 이미지가 가장 위에 표시되도록 */
+    opacity: 1; /* 활성화된 이미지는 표시 */
+    z-index: 1; /* 활성화된 이미지가 위로 오도록 설정 */
 }
