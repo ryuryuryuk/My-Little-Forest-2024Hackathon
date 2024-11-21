@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-$ajxmh00j3!bnr2$3p#c9h$1$uc&r&*y32d$dqwzwxo_c2tphr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost']
 
 
 # Application definition
@@ -121,16 +121,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # 루트 static 폴더
-    BASE_DIR / 'start/static',
-    BASE_DIR / 'main/static',
-    BASE_DIR / 'login/static',
-    BASE_DIR / 'networking/static',
-    BASE_DIR / 'sharing/static',
-
+    BASE_DIR / "static",  
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

@@ -22,7 +22,7 @@ pip install -r requirements.txt
 python manage.py migrate
 
 5. 개발 서버 실행
-python manage.py runserver
+python manage.py runserver 127.0.0.1:8080
 
 6. 브라우저에 접속
 http://localhost:8080/start

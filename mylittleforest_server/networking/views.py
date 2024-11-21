@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from start.models import User 
+from .models import Custom_group, Tag
 
 def networking(request):
     return render(request, 'networking/networking.html') 
@@ -19,6 +20,20 @@ def makeGroup(request):
         print(f"tag1: {tag1}, tag2: {tag2}, tag3: {tag3}")
         print(f"group_name: {group_name}, group_text: {group_text}")
         print(f"group_img: {group_img}")
+
+        try:  
+            #데이터 저장
+            group = Custom_group.objects.create(
+                constructor = request.session['nickname'],
+                image = group_img,
+                group_name = group_name,
+                description = group_text
+            )
+            # 성공 시 처리
+            return JsonResponse({"success": True, 'message': '그룹 만들기 성공'}, status=200)
+        except Exception as e:
+            return JsonResponse({"success": False, 'message': '그룹 만들기 실패'}, status=404)
+
     return render(request, 'networking/makeGroup.html') 
 
 def tagSearch(request):

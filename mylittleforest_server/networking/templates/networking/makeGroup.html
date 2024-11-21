@@ -7,15 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>makeGroup</title> <!-- 그룹만들기 페이지 -->
-
-    <!-- .css 불러오기 -->
-    <link rel="stylesheet" href="{% static 'networking/css/makeGroupGrid.css' %}">
-    <link rel="stylesheet" href="{% static 'networking/css/makeGroup.css' %}">
     
 
     <style>
-        @import url(makeGroupGrid.css);
-        @import url(makeGroup.css);
+        @import url("{% static 'networking/css/makeGroupGrid.css' %}");
+        @import url("{% static 'networking/css/makeGroup.css' %}");
 
         body {
             font-family: 'NanumSquareRound', sans-serif;
@@ -47,8 +43,6 @@
             color: #544424;
             text-align: center;
         }
-
-        
     </style>
 </head>
 
@@ -101,7 +95,7 @@
 
                 <!-- '그룹만들기' 버튼 -->
                 <section class="third-section">
-                    <button type="button" class="btn" onclick="validateForm()">  
+                    <button type="submit" class="btn">  
                         그룹 만들기
                     </button>
                 </section>
@@ -117,19 +111,30 @@
 
 
     <script>
-        /* 빈칸인 값이 있으면 알림 */
-        function validateForm() {
-            // 폼의 요소들을 가져옵니다
-            const tag1 = document.getElementById('tag1').value.trim();
-            const tag2 = document.getElementById('tag2').value.trim();
-            const tag3 = document.getElementById('tag3').value.trim();
-            const groupImg = document.getElementById('group-img').files.length; // 업로드된 파일의 개수
-            const groupName = document.getElementById('group-name').value.trim(); 
-            const groupText = document.getElementById('group-text').value.trim();
+        // 폼 제출 이벤트 연결
+        document.getElementById('make-group-form').addEventListener('submit', (event) => {
+            event.preventDefault(); // 기본 동작 방지
+            validateForm();
+        });
+        
+        //서버로 폼 데이터 전송
+        async function validateForm(){
+            //폼의 요소들 가져오기
+            const form = document.getElementById('make-group-form'); //make-group-form을 form에 저장
+            const formData = new FormData(form); //form을 formdata에 저장
+            
             const errorMessage = document.getElementById('error-message');
 
             // 에러 메시지 초기화
-            errorMessage.textContent = '';
+            errorMessage.textContent = "";
+
+            //폼 검증
+            const tag1 = document.getElementById('tag1').value.trim();
+            const tag2 = document.getElementById('tag2').value.trim();
+            const tag3 = document.getElementById('tag3').value.trim();
+            const groupImg = document.getElementById('group-img').files.length; //파일 길이
+            const groupName = document.getElementById('group-name').value.trim(); 
+            const groupText = document.getElementById('group-text').value.trim()
 
             // 입력값 검증
             if (!tag1 || !tag2 || !tag3) {
@@ -152,10 +157,30 @@
             return;
             }
 
-            // 폼 제출하기
-            document.getElementById('make-group-form').submit();
+            //서버로 요청 보내기
+            try{
+                //fetch: 프로미스 반환
+                const response = await fetch(form.action, { // 서버 응답이 올 때까지 기다린다(await)
+                    method: "POST",
+                    body: formData,
+                });
+
+                //response.json(): 프로미스 반환
+                const data = await response.json(); // 응답이 JSON 데이터로 파싱할 때까지 기다린다(await)
+                console.log("json파싱 성공");
+                if(data.success){ //data.success == TRUE 일 때
+                    alert("그룹 만들기 성공!");
+                    window.location.href = "{% url 'networking:networking' %}"; // networking.html로 이동
+                } else{
+                    errorMessage.textContent = "그룹 생성에 실패하였습니다.(db오류)"; 
+                }
+            }catch (error){
+                errorMessage.textContent = "서버 요청 중 오류가 발생했습니다.";
+                console.error("Error:", error);
+            }
         }
 
+        //이미지 미리보기
         function showImg(event) {
             const file = event.target.files[0];
             const reader = new FileReader();
