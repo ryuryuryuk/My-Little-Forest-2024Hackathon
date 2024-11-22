@@ -10,7 +10,7 @@ body {
   align-items: center;
   background-color: blueviolet;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  padding: 20px;
+  /*padding: 20px;*/
   border: 1px solid #000;
 }
 
@@ -41,12 +41,13 @@ body {
 }
 
 .form-container {
-  margin-top: 30px;
-  padding: 20px;
+  margin-top: 2px;
+  padding: 25px;
   background-color: #8BC330;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 700px;
+  height: 800px;
+  width: 900px;
 }
 
 .form-container h3 {
@@ -59,8 +60,8 @@ form {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 600px;
-  width: 700px;
+  height: 750px;
+  width: 850px;
 }
 
 form input, form textarea {

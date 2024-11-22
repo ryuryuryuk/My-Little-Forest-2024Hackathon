@@ -1,10 +1,11 @@
 .top_text-box{
     padding: 30px;
-    background-color: rgb(0, 255, 42);
+    background-color: #27634C;
     color: white;
     font-size: 20px;
     text-align: center;    
     width: 250px;
+    border-radius: 30px
     /*margin-left: 2px;*/
 }
 
@@ -12,10 +13,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2열로 배치 */
     gap: 20px;
-    width: 600px;
+    width: 700px;
     height: 600px;
-    margin: 50px auto;
+    margin: 5px auto;
     padding: 20px;
+    /*grid-template-rows: 1fr auto;*/
 }
 
 .image-box {
@@ -46,3 +48,29 @@
     border-top: 1px solid #ccc;
     
 }
+.pagination {
+    display: block;  /* block 요소로 변경 */
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #27634C;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #45a049;
+}
+
+.pagination button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
