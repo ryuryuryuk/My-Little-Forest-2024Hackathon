@@ -141,10 +141,12 @@ h2:nth-child(1) {
 .text p {
     display: none;
     margin: 10px 5px;
-    padding-left: 15px;
+    padding: 5px 10px;
     opacity: 0; 
-    border: 1px solid gray;
+    border: 1px dotted gray;
     border-radius: 10px;
+    width: max-content;
+    height: max-content;
     transform: translateY(20px); 
 }
 
@@ -153,7 +155,7 @@ h2:nth-child(1) {
 }
 
 .A, .C {
-    background-color: #f6f8fc;
+    background-color: #f3fbf3;
 } /* 별로다.. */
 
 /* show 클래스가 추가될 때 애니메이션 */
