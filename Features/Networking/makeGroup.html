@@ -8,6 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>makeGroup</title> <!-- 그룹만들기 페이지 -->
 
+
+    <!-- 꾸미기 이미지 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    
+    
     <!-- .css 불러오기 -->
     <link rel="stylesheet" href="{% static 'start/css/makeGroupGrid.css' %}">
     <link rel="stylesheet" href="{% static 'start/css/makeGroup.css' %}">
@@ -33,7 +39,6 @@
             font-family: 'NanumSquareRound', sans-serif;
             display: flex;
             text-align: center;
-            align-items: flex-end; /* 위에 로고 저만 살짝 잘리나요 */
         }
         
         .main {
@@ -68,7 +73,7 @@
                 </button>
                 <!-- 로그아웃 버튼 -->
                 <button type="button" id="logout-btn" class="logout-btn" onclick="window. location. href='{% url 'starting' %}'">
-                    로그아웃
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </button>
             </div>
         </div>
