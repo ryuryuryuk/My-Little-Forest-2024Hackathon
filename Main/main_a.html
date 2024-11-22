@@ -5,11 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>main</title> <!-- 로그인 된 메인화면 페이지 -->
+<title>main_A</title> <!-- A로 로그인 된 메인화면 페이지 -->
 <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 <link rel="stylesheet" href="{% static 'main/css/mainGrid.css' %}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 <style>
 @import url(main.css);
@@ -29,9 +30,10 @@ background-color: #bcbb6d;
 
 .header {
 grid-area: header;
-font-family: 'Noto Sans KR', sans-serif;
+font-family: 'NanumSquareRound', sans-serif;
 display: flex;
 text-align: center;
+align-items: flex-end;
 }
 
 .widget {
@@ -63,13 +65,9 @@ grid-area: footer;
         <!-- 로고 이미지 "{% static 'images/Logo.png' %}" -->
         <img src="../../Assets/images/Logo.jpg" alt="로고" class="logo">
         <div class="header-btn">
-            <!-- 홈 버튼 -->
+            <!-- 홈 버튼 img src="{% static 'images/home_btn.jpg' %}"-->
             <button type="button" id= "home-btn" class="home-btn" onclick="window. location. href='{% url 'main' %}'">
-                <img src="https://i.ibb.co/3493r17/cat.jpg"/>
-            </button>
-            <!-- 로그인 버튼 -->
-            <button type="button" id="login-btn" class="login-btn" onclick="window. location. href='{% url 'login' %}'">
-                로그인
+                <img src="../../Assets/images/home_btn.jpg">
             </button>
             <!-- 로그아웃 버튼 -->
             <button type="button" id="logout-btn" class="logout-btn" onclick="window. location. href='{% url 'starting' %}'">
@@ -78,18 +76,36 @@ grid-area: footer;
         </div>
     </div>
 
+    
     <div class="box widget">
-        <aside class="widget">
-            <h2>위젯 영역</h2>
-            <img src="profile-placeholder.png" alt="사용자 이미지" class="profil-img">
-            <div class="profile-info">
-                <label for="local">지방도시찾기 결과</label>
-                <input type="text" id="local" placeholer="진주">
+        <div class="widget">
+            <!-- 프로필 카드 -->
+            <div class="profile-card">
+                <div class="profile-header">
+                    <img src="../../Assets/images/resultA강원pf.png" alt="프로필 이미지" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h2>{{request.session.nickname}}</h2>
+                    <p class="profile-role">친절한 반달곰</p>
+                    <p class="local-city">지방도시 강원도</p>
+                </div>
+                <div class="profile-actions">
+                    <button class="action-btn">나의 정보</button>
+                    <button class="action-btn">Be Friends</button>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <i class="fa fa-heart"></i> 20k
+                    </div>
+                    <div class="stat">
+                        <i class="fa fa-comment"></i> Lv.1
+                    </div>
+                    <div class="stat">
+                        <i class="fa fa-share"></i> 10k
+                    </div>
+                </div>
             </div>
-            <div class="profile-info">
-            <label for="information">정보</label>
-            <input type="information" id="information" placeholder="information">
-            </div>
+            
             <div class="menu-btns">
             <!-- 메뉴 버튼들 -->
                 <a href="myinfo.html" class="menu-btn">나의 정보</a>
@@ -99,13 +115,13 @@ grid-area: footer;
                 <a href="mycontens" class="menu-btn">내 콘텐츠 보가</a>
                 <a href="#" class="menu-btn">text</a>
             </div>
-        </aside>
+        </div>
     </div>
 
     <div class="box main">
         <section class="main-section">
-            <h1>우리 지역의 요즘 정보</h1>
-            p>현재 우리 지역에서 인기 있는 정보들을 확인하세요.</p>
+            <h1>마이 포레스트</h1>
+            p>현재 ____에서 인기 있는 정보들을 확인하세요.</p>
             <div class="main-flex-container">
 
                 <!-- info grid -->
