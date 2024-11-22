@@ -20,7 +20,7 @@
     (1fr은 사용 가능한 공간을 균등하게 나눈다는 의미로, 레이아웃의 중앙 내용 부분으로 활용.)
     50px: 마지막 행의 높이를 50px로 설정.
     */
-    grid-template-rows: 50px repeat(10,1fr) 50px;
+    grid-template-rows: 20px repeat(10,1fr) 20px;
     
     /* 열 구성: 좌우 여백 및 메인 콘텐츠 */
     grid-template-columns: 100px repeat(10, 1fr) 100px;
