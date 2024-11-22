@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title> <!-- 메인화면 페이지 -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        body {
+            font-family: 'NanumSquareRound', sans-serif;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #E1E1A0;
+        }
+
+        .header {
+            grid-area: header;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .widget {
+            grid-area: widget;
+        }
+
+        .main {
+            grid-area: main;
+        }
+
+        .footer {
+            grid-area: footer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="box header"></div>
+        <div class="box widget"></div>
+        <div class="box main">
+            <div class="form-container">
+                <form id="post-form" method="POST" action="{% url 'sharing:writeContents_logic' %}">
+                    {% csrf_token %}
+                    <input type="text" id="post-title" name="post-title" placeholder="제목을 입력하세요" required>
+                    <div class="post-container">
+                        <textarea id="post-content" name="post-content" placeholder="내용을 입력하세요" required></textarea>
+
+                        <!-- 이미지 업로드 기능 추가 -->
+                        <input type="file" id="image-upload" name="image-upload" accept="image/*">
+                        <div class="preview-img" id="preview-img">
+                            <img id="uploaded-image" src="" alt="이미지 미리보기">
+                        </div>
+                    </div>
+
+                    <button type="submit">게시글 작성</button>
+                    <!-- 에러 메시지 표시 -->
+                    <div id="error-message" style="color: red; margin-top: 10px;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sharingContents2Url = "{% url 'sharing:sharingContents2' %}";
+
+        document.getElementById('post-form').addEventListener('submit', (event) => {
+            event.preventDefault(); // 폼 제출 기본 동작 막기
+            submitForm();
+        });
+
+        async function submitForm() {
+            const form = document.getElementById('post-form');
+            const formData = new FormData(form);
+            const errorMessage = document.getElementById('error-message');
+
+            // 에러 메시지 초기화
+            errorMessage.textContent = "";
+
+            try {
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: formData
+                });
+
+                // 응답 확인
+                if (!response.ok) {
+                    throw new Error(`HTTP 오류: ${response.status}`);
+                }
+
+                const contentType = response.headers.get("content-type");
+                if (!contentType || !contentType.includes("application/json")) {
+                    throw new Error("서버 응답이 JSON이 아닙니다.");
+                }
+
+                const data = await response.json();
+                if (data.success) {
+                    alert(data.message || "게시글이 등록되었습니다.");
+                    window.location.href = sharingContents2Url; // 다음 화면으로 이동
+                } else {
+                    errorMessage.textContent = data.message || "게시글 등록에 실패했습니다.";
+                }
+            } catch (error) {
+                errorMessage.textContent = "서버 요청 중 오류가 발생했습니다.";
+                console.error("Error:", error);
+            }
+        }
+    </script>
+</body>
+
+</html>

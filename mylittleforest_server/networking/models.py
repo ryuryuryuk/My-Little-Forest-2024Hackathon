@@ -1,6 +1,6 @@
 from django.db import models
 
-class Custom_group(models.Model):
+class Custom_group(models.Model): # 만든 그룹
     group_id = models.AutoField(primary_key=True)
     constructor = models.CharField(max_length=30)
     image = models.ImageField(upload_to='group_images/')  # MEDIA_ROOT/group_images/ == /media/group_images
@@ -11,7 +11,7 @@ class Custom_group(models.Model):
     def __str__(self):
         return self.group_name
 
-class Tag(models.Model):
+class Tag(models.Model): # 그룹 태그들
     group_name = models.CharField(max_length=30, null=True)
     tag = models.CharField(max_length=30, null=True)
 
