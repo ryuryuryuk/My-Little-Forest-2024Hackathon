@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+{% load static %}
+
+<meta charset="UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>main</title> <!-- 메인화면 페이지 -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<style>
+@import url(postpage.css);
+@import url(sharingContentsGrid.css);
+/*@import url(searchlocalgrid.css);*/
+/*@import url(searchLocalstore.html);*/
+
+body {
+
+font-family: 'NanumSquareRound', sans-serif;
+
+}
+
+.box {
+
+display: flex;
+
+justify-content: center;
+
+align-items: center;
+
+text-align: center;
+
+background-color: #E1E1A0;
+
+}
+
+.header {
+
+grid-area: header;
+
+font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.widget {
+
+grid-area: widget;
+
+}
+
+.main {
+
+grid-area: main;
+
+}
+
+.footer {
+
+grid-area: footer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="grid-container">
+
+<div class="box header">
+</div>
+
+<div class="box widget">
+</div>
+<div class="box main">
+    <div class="container">
+        <!-- 첫 번째 컨테이너 -->
+        <div class="box1">
+          <input type="text" placeholder="제목을 입력하세요" class="title-input">
+          
+          <div class="image-box">
+            <img src="image4.jpg" alt="이미지" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          
+          <div class="content"> <!-- ㅅㄷㄴㅅㅅㄷㄴㅅ -->
+            <p>이곳에 내용이 들어갑니다. 내용이 여러 줄일 수 있습니다.</p>
+          </div>
+    
+          <div class="button-group">
+            <button onclick="likeButtonClick()">좋아요</button>
+            <button onclick="scrapButtonClick()">스크랩</button>
+          </div>
+        </div>
+    
+        <!-- 두 번째 컨테이너 -->
+        <div class="box1">
+          <div class="comment-section">
+            <ul class="comment-list" id="commentList">
+              <!-- 댓글들이 여기에 동적으로 추가될 예정 -->
+            </ul>
+    
+            <div class="input-group">
+              <input type="text" id="commentInput" placeholder="댓글을 입력하세요">
+              <button onclick="submitComment()">입력</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+<script>
+     // 좋아요 버튼 클릭 함수
+  function likeButtonClick() {
+      alert('좋아요를 눌렀습니다!');
+  }
+
+  // 스크랩 버튼 클릭 함수
+  function scrapButtonClick() {
+      alert('스크랩을 눌렀습니다!');
+  }
+
+  // 댓글 추가 함수
+  function submitComment() {
+      const commentInput = document.getElementById('commentInput');
+      const commentList = document.getElementById('commentList');
+      const commentText = commentInput.value.trim();
+
+      console.log(commentText);
+
+      if (commentText !== "") {
+          const newComment = document.createElement('li');
+          newComment.classList.add('comment');
+          newComment.textContent = commentText;
+          commentList.appendChild(newComment);
+
+          // 입력창 비우기
+          commentInput.value = "";
+      } else {
+          alert('댓글을 입력해주세요!');
+      }
+  }
+
+</script>
+
+</body>
+</html

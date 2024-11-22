@@ -28,7 +28,7 @@ def login(request):
     else:
         return render(request, 'login/login.html')
 
-    
+
 # 로그아웃
 def user_logout(request):
     if 'nickname' in request.session:

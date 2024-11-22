@@ -4,6 +4,7 @@ from start.models import User
 from .models import Custom_group, Tag
 
 def networking(request):
+    
     return render(request, 'networking/networking.html') 
 
 def makeGroup(request):
@@ -16,10 +17,10 @@ def makeGroup(request):
         group_text = request.POST.get('group_text')
         # 파일 데이터 받기
         group_img = request.FILES.get('group-img')
-        # 디버그 출력
-        print(f"tag1: {tag1}, tag2: {tag2}, tag3: {tag3}")
-        print(f"group_name: {group_name}, group_text: {group_text}")
-        print(f"group_img: {group_img}")
+        # # 디버그 출력
+        # print(f"tag1: {tag1}, tag2: {tag2}, tag3: {tag3}")
+        # print(f"group_name: {group_name}, group_text: {group_text}")
+        # print(f"group_img: {group_img}")
 
         try:  
             # Custom_group에 데이터 저장

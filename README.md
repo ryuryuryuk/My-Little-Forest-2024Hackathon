@@ -12,7 +12,7 @@ cd mylittleforest_server
 py -m venv venv
 
 4. 가상환경 활성화
-(Window 버전) venv\Scripts\active 
+(Window 버전) venv\Scripts\Activate 
 (MacOS 버전) source venv\bin\activate
 
 3. 의존성 설치
