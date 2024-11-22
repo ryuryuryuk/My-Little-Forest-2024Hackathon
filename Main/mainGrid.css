@@ -9,7 +9,6 @@
     .grid-container {
          /* 컨테이너 너비 */
         width: 1280px; 
-
         display: grid;
 
         /* 행 6개 

@@ -13,45 +13,43 @@ body {
     width: 1200px;
 } */
 
-/* 헤더 스타일 */
-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    align-items: flex-start;
-    position: fixed;
-    top: 0;
-    z-index: 10; /* 다른 콘텐츠보다 위에 위치 */
-    height: 100px;
-    width: 100%;
-}
-.header-top {
-    width: 10%;
-    /*text-align: flex-start;*/
-    margin-bottom: 10px;
-    text-align: left;
-}
+
 .logo {
-    max-width: 150px; /* 로고 이미지 크기 조정 */
+    max-width: 220px; /* 로고 이미지 크기 조정 */
+    align-items: center;
+    display: flex;
 }
 
-/* 두 번째 줄(홈 버튼과 로그인/로그아웃 버튼) */
-.header-bottom {
-    width: 100%;
+/* 헤더 홈버튼, 로그인/로그아웃 버튼 */
+.header-btn {
     display: flex;
-    justify-content: flex-start;
+    justify-content: right;
     gap: 20px; /* 버튼들 사이에 여백 */
-    align-items: center;
-    margin-top: 10px;
+    padding : 20px;
+}
+
+/* 홈버튼 */
+.home-btn {
     
 }
-.home-btn, .login-btn, .logout-btn {
+.home-btn:hover {
+    background-color: #f0f0f0;
+}
+
+
+/* 로그인 버튼 */
+.login-btn {
+
+}
+.login-btn:hover {
+    background-color: #45a049;
+}
+
+
+/* 로그아웃 버튼 */
+.logout-btn {
     text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 14px;
     color: #333;
     padding: 10px 20px;
     border: 1px solid #333;
@@ -59,32 +57,12 @@ header {
     transition: background-color 0.3s;
     width: 120px;  /* 버튼의 너비를 고정해서 크기 동일하게 설정 */
     text-align: center;
-    display: inline-block;
-}
-.home-btn {
-    background-color: #f8f8f8;
-        }
-.login-btn {
-    background-color: #4CAF50;
-    color: white;
-}
-.logout-btn {
-    background-color: #f44336;
-    color: white;
-    display: inline-block; /* 기본적으로 숨겨놓기 */
-}
-
-.home-btn:hover {
-    background-color: #f0f0f0;
-}
-
-.login-btn:hover {
-    background-color: #45a049;
 }
 
 .logout-btn:hover {
     background-color: #e53935;
         }
+
 
 /* content 영역 (위젯과 메인 부분을 포함) */
 .content {
