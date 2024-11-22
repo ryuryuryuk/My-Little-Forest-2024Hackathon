@@ -2,18 +2,21 @@
 <html lang="en">
 
 <head>
-    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>startingName</title> <!-- 시작화면 페이지 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <!-- .css 불러오기 -->
     <link rel="stylesheet" href="{% static 'start/css/startingGrid.css' %}">
     <link rel="stylesheet" href="{% static 'start/css/startingName.css' %}">
 
+
     <style>
+        @import url(startingGrid.css);
+        @import url(startingName.css);
+
         body {
             font-family: 'NanumSquareRound', sans-serif;
         }
@@ -44,7 +47,6 @@
             color: #544424;
             text-align: center;
             padding: 10px 20px;
-            margin-top:4px
         }
     </style>
 </head>
@@ -56,14 +58,14 @@
 
             <div class="nickname-wrapper">
                 <!-- 로고 -->
-                <img src="{% static 'images/Logo.jpg' %}" alt="로고" class="Logo">
+                <img src="../../Assets/images/Logo.jpg" alt="로고" class="Logo">
                 <h2 class="nickname-title">당신의 닉네임을 알려주세요</h2>
                 <form method="POST" id="nickname-form" onsubmit="validateNickname(event)"> <!-- 중복된 닉네임인지 확인 필요 -->
                     <input type="text" id="nickname" name="nickname" 
                     onfocus="this.placeholder = ''" 
                     onblur="this.placeholder = '닉네임'" required>
                     <!-- 확인 버튼-->
-                    <button type="submit" style=" font-family: 'NanumSquareRound';">확인</button>
+                    <button type="submit">확인</button>
                     <!-- 잘못 클릭 시, 처음화면으로 돌아가도록 -->
                     <div class="back-to-start">
                         <p><a href="starting.html">처음화면으로 돌아가기 </a></p>
@@ -83,7 +85,7 @@
         document.getElementById("nickname").addEventListener("input", function () {
             var nickname = this.value;
 
-            // 공백만 있는 경우도 빈 문자열로` 취급
+            // 공백만 있는 경우도 빈 문자열로 취급
             if (nickname.trim() === "") {
                 this.setCustomValidity("닉네임을 입력해주세요."); //setCustomValidity(): 오류 메시지를 입맛에 맞게 변경
             } else {

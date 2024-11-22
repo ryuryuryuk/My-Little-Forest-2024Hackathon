@@ -20,19 +20,6 @@
         @import url(startingProgress.css);
         @import url(startingPage.css);
 
-        /* 이 부분 반드시 추가해야지만 로고 위치가 정확하게 일치해요! */
-        @media screen and (min-width: 1280px) and (max-width: 1920px) {
-            .whole-wrapper {
-                margin-top: 16.8px;
-            }
-        }
-
-        @media screen and (max-width: 1279px) {
-            .whole-wrapper {
-                margin-top: 0;
-            }
-        }
-        
         * {
             margin: 0;
             padding: 0;
@@ -57,18 +44,14 @@
 
         .main {
             grid-area: main;
-            background-color: white;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+
         }
 
         .footer {
+            grid-area: footer;
             font-size: 15px;
             color: #544424;
             text-align: center;
-            padding: 10px 20px;
         }
 
         .Logo {
@@ -79,27 +62,27 @@
             display: flex; 
             align-items: center;
             justify-content:center;
-            text-align: center;
+			text-align: center;
             width: 100%;
             max-width: 800px;
-            height: 600px;
-            margin-top: 39.5px;
+            height: 500px;
+            margin-top: 92px;
         }
         
     </style>
 </head>
 <body>
     <div class="grid-container">
+
+
         <div class="box header"></div>
+
         <div class="box main">
 
             <div class="whole-wrapper">
-
                 <div class="whole-container">
-                    <img src="{% static 'images/Logo.jpg' %}" alt="로고" class="Logo">
+                    <img src="../../assets/images/Logo.jpg" alt="로고" class="Logo">
 
-                    <!--6개의 질문 페이지 중 어느 페이지에 해당하는지 보여주기 위한 진행 상태 바
-                    남은 페이지 개수를 유동적으로 보여주기 위하여 원에 색깔이 칠해지는 느낌-->
                     <div class="progress-container">
                         <div class="progress-circle"></div>
                         <div class="progress-line"></div>
@@ -114,8 +97,8 @@
                         <div class="progress-circle"></div>
                     </div>
 
-                    <div class="question-text">가족 구성원</div>
-                    <div class="question-subtext">세부 내용</div>
+                    <div class="question-text">가족</div>
+                    <div class="question-subtext">지금 나와 함께 생활하는 가족 구성원은?</div> <!--불필요 시 삭제 요망-->
                     <div class="buttons-container">
 
                         <!-- 이전페이지 이동 버튼 -->
@@ -124,27 +107,19 @@
                         </button>
 
                         <form id="Fam-1" method="POST" action="">
-                            {% csrf_token %}
-                            <input type="hidden" name="choice" value="a"> 
-                            <button class="choice-button" onclick="selectChoice('fam-1')">선택지 1</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 1')">배우자와 아이들과 <br>살고있다</button>
                         </form>
                         <form id="Fam-2" method="POST" action="">
-                            {% csrf_token %}
-                            <input type="hidden" name="choice" value="a"> 
-                            <button class="choice-button" onclick="selectChoice('fam-2')">선택지 2</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 2')">부모님과 <br>함께 살고있다</button>
                         </form>
                         <form id="Fam-3" method="POST" action="">
-                            {% csrf_token %}
-                            <input type="hidden" name="choice" value="b"> 
-                            <button class="choice-button" onclick="selectChoice('fam-3')">선택지 3</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 3')">혼자 지내며 독립적인<br>생활을 하고있다</button>
                         </form>
                         <form id="Fam-4" method="POST" action="">
-                            {% csrf_token %}
-                            <input type="hidden" name="choice" value="b"> 
-                            <button type="button" class="choice-button" onclick="selectChoice('fam-4')">선택지 4</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 4')">친구나 룸메이트와 <br>함께 살고있다</button>
                         </form>
                         
-                        <button type="button" class="choice-submit">내 포레스트 보기</button>
+                        <button class="choice-submit">내 포레스트 보기</button>
                     </div>
                 </div>
             </div>

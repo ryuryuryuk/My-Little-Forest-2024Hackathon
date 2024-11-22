@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result_a</title> <!-- 결과화면 A() -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
     <!-- .css 불러오기 -->
     <link rel="stylesheet" href="{% static 'start/css/startingResult.css' %}">
@@ -151,22 +152,7 @@
 </head>
 
 <body>
-    <div class="box header">
-        <!-- 로고 이미지 "{% static 'images/Logo.png' %}" -->
-        <img src="../../Assets/images/Logo.jpg" alt="로고" class="logo">
-        <div class="header-btn">
-            <!-- 홈 버튼 img src="{% static 'images/home_btn.jpg' %}"-->
-            <button type="button" id= "home-btn" class="home-btn" onclick="window. location. href='{% url 'main' %}'">
-                <img src="../../Assets/images/home_btn.jpg">
-            </button>
-            <!-- 로그아웃 버튼 -->
-            <button type="button" id="logout-btn" class="logout-btn" onclick="window. location. href='{% url 'starting' %}'">
-                로그아웃
-            </button>
-        </div>
-    </div>
-
-    
+    <div class="box header"></div>
 
     <div class="grid-container">
         <div class="box main">
@@ -174,17 +160,23 @@
                 <img src="../../Assets/images/Logo.jpg" alt="로고" class="Logo">
                 <!-- 마리포 간단한 소개문구 -->
                 <div class="intro-wrapper">
-                    <p class="intro-text">지방도시 A특징을 포함한 간단한 캐릭터 설명 </p>
+                    <p class="intro-text">
+                        <br>평화로운 일상을 꿈꾸는
+                    <br>마음씨 따뜻한 반달가슴곰 </p>
                 </div>
                 <div class="result-wrapper">
                     <img src="{% static 'Assets/images/resultA강원.png' %}" alt="결과이미지" class="result-img">
                 </div>
                     <div class="result-text">
                         <p class="result-title">특별이</p>
-                        <p class="result-subtitle">강원특별자치도의 아름다운 경치를 보고 초록색이 된 반달가슴곰은 <br>청정 자연의 기를 받고 자라 따뜻한 마음씨를 가지고 있으며<br>
-                            태백산 골짜기에서 낮잠 자는 것을 좋아한다. <br> 새로운 강원특별자치도에 대해 호기심과 궁금증이 들끓는다.</p>
-                    </div>
-                    <button class="result-button" onclick="window.location.href='{% url 'loading_a' %}'">더 자세히 보러가기</button>
+                        <p class="result-subtitle">
+                            <B>강원특별자치도</B>의 아름다운 경치를 보고 자란 특별이는 
+                            <br>청정 자연의 기를 받아 따뜻한 마음씨를 가졌어요.
+                            <br>평화로운 일상의 안정감에서 행복을 느끼고 
+                            <br>가족과 함께하는 시간을 소중히 여기는 스타일이에요.
+                        </p>
+                    </div>    
+                    <button class="result-button" onclick="window.location.href='{% url 'loadToMain_a' %}'">더 자세히 보러가기</button>
 
             </div>
         </div>

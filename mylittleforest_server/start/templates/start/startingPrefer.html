@@ -9,24 +9,18 @@
 
     <!-- .css 불러오기 -->
     <link rel="stylesheet" href="{% static 'start/css/startingGrid.css' %}">
-    <link rel="stylesheet" href="{% static 'start/css/startingQuestion.css' %}">
     <link rel="stylesheet" href="{% static 'start/css/startingPage.css' %}">
     <link rel="stylesheet" href="{% static 'start/css/startingProgress.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/startingQuestion.css' %}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
 
     <style>
-        /* 이 부분 반드시 추가해야지만 로고 위치가 정확하게 일치해요! */
-        @media screen and (min-width: 1280px) and (max-width: 1920px) {
-            .whole-wrapper {
-                margin-top: 16.8px;
-            }
-        }
-
-        @media screen and (max-width: 1279px) {
-            .whole-wrapper {
-                margin-top: 0;
-            }
-        }
+        @import url(startingGrid.css);
+        @import url(startingQuestion.css);
+        @import url(startingProgress.css);
+        @import url(startingPage.css);
+        
 
         * {
             margin: 0;
@@ -52,42 +46,43 @@
 
         .main {
             grid-area: main;
-            background-color: white;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+
         }
 
-        .footer {
-            font-size: 15px;
-            color: #544424;
-            text-align: center;
-            padding: 10px 20px;
-            margin-top: 38.8px;
+            .footer {
+                grid-area: footer;
+                font-size: 15px;
+                color: #544424;
+                text-align: center;
         }
 
         .Logo {
             width: 300px;
         }
+
         .whole-wrapper {
             display: flex; 
             align-items: center;
             justify-content:center;
-            text-align: center;
+			text-align: center;
             width: 100%;
             max-width: 800px;
-            height: 600px;
+            height: 500px;
         }
+
+        
     </style>
 </head>
 <body>
     <div class="grid-container">
         <div class="box header"></div>
+
         <div class="box main">
+
             <div class="whole-wrapper">
+
                 <div class="whole-container">
-                    <img src="{% static 'images/Logo.jpg' %}" alt="로고" class="Logo">
+                    <img src="../../assets/images/Logo.jpg" alt="로고" class="Logo">
 
                     <div class="progress-container">
                         <div class="progress-circle"></div>
@@ -103,68 +98,49 @@
                         <div class="progress-circle"></div>
                     </div>
 
-                    <div class="question-text">취향</div>
-                    <div class="question-subtext">세부 내용</div> <!--불필요 시 삭제 요망-->
+                <div class="question-text">취향</div>
+                <div class="question-subtext">내가 쉬는 날에 더 하고싶은 것은?</div> <!--불필요 시 삭제 요망-->
 
-                    <div class="buttons-container">
-                        <!-- 각 선택지별로 form 태그 추가 -->
-                        <form id="prefer-1" method="POST" action="{% url 'start:startingInterest' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="choice" value="a"> <!--선택지1은 a를 저장함-->
-                            <button type="button" class="choice-button" onclick="selectChoice('prefer-1')">선택지 1</button>
-                        </form>
-                        <form id="prefer-2" method="POST" action="{% url 'start:startingInterest' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="choice" value="a"><!--선택지2는 a를 저장함-->
-                            <button type="button" class="choice-button" onclick="selectChoice('prefer-2')">선택지 2</button>
-                        </form>
-                        <form id="prefer-3" method="POST" action="{% url 'start:startingInterest' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="choice" value="b"><!--선택지3은 b를 저장함-->
-                            <button type="button" class="choice-button" onclick="selectChoice('prefer-3')">선택지 3</button>
-                        </form>
-                        <form id="prefer-4" method="POST" action="{% url 'start:startingInterest' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="choice" value="b"><!--선택지4는 b를 저장함-->
-                            <button type="button" class="choice-button" onclick="selectChoice('prefer-4')">선택지 4</button>
-                        </form>
-                        <!-- 다음페이지 버튼 -->
-                        <button type="button" class="choice-next" onclick="nextPage()">
-                            <i class="fa-solid fa-arrow-right" style="color: #27634C;"></i>
-                        </button>
-                    </div>
+                <div class="buttons-container">
+                    <!-- 각 선택지별로 form 태그 추가 -->
+                    <form id="prefer-1" method="POST" action="{% url 'start:startingInterest' %}">
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 1')">가족들과 함께 <br> 피크닉 즐기기</button>
+                    </form>
+                    <form id="prefer-2" method="POST" action="{% url 'start:startingInterest' %}">
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 2')">집에서 영화보며 <br>편안한 시간 보내기</button>
+                    </form>
+                    <form id="prefer-3" method="POST" action="{% url 'start:startingInterest' %}">
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 3')">트랜디한 카페에서 <br>시간 보내기</button>
+                    </form>
+                    <form id="prefer-4" method="POST" action="{% url 'start:startingInterest' %}">
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 4')">액티비티한 체험으로 <br>에너지 뿜뿜하기</button>
+                    </form>
+                    <!-- 다음페이지 버튼 -->
+                    <button class="choice-next" onclick="nextPage()">
+                        <i class="fa-solid fa-arrow-right" style="color: #27634C;"></i>
+                    </button>
                 </div>
             </div>
+
+        </div>
+
         </div>
         <div class="box footer">Copyright©2024 by team 마리포</div>
-    </div>
-    <script src="starting_.js"></script>
-    <script> 
-        let selectedFormId = null; // 선택된 폼의 ID를 저장하는 변수
+        <script src="starting_.js"></script>
+        <script> 
 
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll('.progress-circle')[0].classList.add('filled');
-            document.querySelectorAll('.progress-line')[0].classList.add('filled');
-        });
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelectorAll('.progress-circle')[0].classList.add('filled');
+                document.querySelectorAll('.progress-line')[0].classList.add('filled');
+            });
 
-        function selectChoice(formId) {
-            // 선택된 폼의 ID를 저장
-            selectedFormId = formId;
-
-            // 버튼 강조 표시
-            const buttons = document.querySelectorAll('.choice-button');
-             buttons.forEach(button => button.classList.remove('selected')); // 이전 선택된 버튼의 강조 제거
-             document.querySelector(`#${formId} .choice-button`).classList.add('selected'); // 선택된 버튼 강조
+            function nextPage() {
+                if (!selectedChoice) {
+                    alert("선택되지 않은 상태");
+                } else {
+                    window.location.href = "{% url 'start:startingInterest' %}"; 
+                }
             }
-
-        function nextPage() {
-            if (!selectedFormId) {
-                alert("항목을 선택해주세요");
-            }else{
-                // 선택된 폼 제출
-                document.getElementById(selectedFormId).submit();
-            }
-        }
-    </script>
+        </script>
 </body>
 </html>

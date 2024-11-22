@@ -2,16 +2,23 @@
 <html lang="en">
 
 <head>
-    {% load static %} <!--정적파일 사용-->
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>starting</title> <!-- 시작화면 페이지 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
+    <!-- .css 불러오기 -->
+    <link rel="stylesheet" href="{% static 'start/css/startingGrid.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/starting.css' %}">
+    
 
     <style>
-        @import url("{% static 'start/css/startingGrid.css' %}");
-        @import url("{% static 'start/css/starting.css' %}");
+        @import url(startingGrid.css);
+        @import url(starting.css);
+
+
         body {
             font-family: 'NanumSquareRound', sans-serif;
         }
@@ -55,6 +62,7 @@
             width: 400px;
         }
 
+
         /* 마리포 간단한 소개문구 */
         .intro-text {
             font-size: 20px;
@@ -67,14 +75,20 @@
             /* 애니메이션 조건 */
             
         }
+
+        .intro-wrapper {
+        }
+        
+
     </style>
 </head>
 
 <body>
+
     <div class="grid-container">
         <div class="box main">
             <div class="whole-wrapper">
-                <img src="{% static 'images/Logo.jpg' %}" alt="로고" class="Logo">
+                <img src="../../assets/images/Logo.jpg" alt="로고" class="Logo">
                 <!-- 마리포 간단한 소개문구 -->
                 <div class="intro-wrapper">
                     <p class="intro-text">나를 위한 맞춤형 로컬 라이프, 마이리틀포레스트</p>
@@ -98,8 +112,11 @@
                 </div>
             </div>
         </div>
-        <div class="box footer">Copyright©2024 by team 마리포</div>
+        <div class="footer">
+            Copyright©2024 by team 마리포
+        </div>
     </div>
+
 </body>
 
 </html>

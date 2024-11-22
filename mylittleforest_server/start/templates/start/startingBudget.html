@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="{% static 'start/css/startingGrid.css' %}">
     <link rel="stylesheet" href="{% static 'start/css/startingQuestion.css' %}">
     <link rel="stylesheet" href="{% static 'start/css/startingProgress.css' %}">
-    <link rel="stylesheet" href="{% static 'start/css/startingPage.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/startingPage.css' %}"> 
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
     <style>
@@ -19,26 +20,6 @@
         @import url(startingQuestion.css);
         @import url(startingProgress.css);
         @import url(startingPage.css);
-
-        /* 강조된 선택 버튼 스타일 */
-        .choice-button.selected {
-            background-color: #27634C;
-            color: white;
-            font-weight: bold;
-        }
-
-        /* 페이지 레이아웃 관련 스타일 */
-        @media screen and (min-width: 1280px) and (max-width: 1920px) {
-            .whole-wrapper {
-                margin-top: 16.8px;
-            }
-        }
-
-        @media screen and (max-width: 1279px) {
-            .whole-wrapper {
-                margin-top: 0;
-            }
-        }
         
         * {
             margin: 0;
@@ -64,19 +45,14 @@
 
         .main {
             grid-area: main;
-            background-color: white;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+
         }
 
         .footer {
+            grid-area: footer;
             font-size: 15px;
             color: #544424;
             text-align: center;
-            padding: 10px 20px;
-            margin-top: 38.8px;
         }
 
         .Logo {
@@ -87,10 +63,10 @@
             display: flex; 
             align-items: center;
             justify-content:center;
-            text-align: center;
+			text-align: center;
             width: 100%;
             max-width: 800px;
-            height: 600px;
+            height: 500px;
         }
         
     </style>
@@ -99,11 +75,12 @@
     <div class="grid-container">
         <div class="box header"></div>
 
-        
         <div class="box main">
+
             <div class="whole-wrapper">
+
                 <div class="whole-container">
-                    <img src="{% static 'images/Logo.jpg' %}" alt="로고" class="Logo">
+                    <img src="../../assets/images/Logo.jpg" alt="로고" class="Logo">
 
                     <div class="progress-container">
                         <div class="progress-circle"></div>
@@ -120,89 +97,56 @@
                     </div>
 
                     <div class="question-text">예산</div>
-                    <div class="question-subtext">세부 내용</div>
-
+                    <div class="question-subtext">내가 여행이나 단기거주를 계획할 때 생각하는 예산 범위는?</div> <!--불필요 시 삭제 요망-->
                     <div class="buttons-container">
-                        <!-- 이전페이지 이동 버튼 -->
                         <button class="choice-back" onclick="backPage()">
                             <i class="fa-solid fa-arrow-right fa-flip-horizontal" style="color: #27634C;"></i>
                         </button>
-
-                        <!-- 각 선택지별로 form 태그 추가 -->
-                        <form id="budget-1" method="POST" action="{% url 'start:startingFam' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="choice" value="a"> <!--선택지1은 a를 저장함-->
-                            <button type="button" class="choice-button" onclick="selectChoice('budget-1')">선택지 1</button>
+                        <form id="Bud-1" method="POST" action="{% url 'start:startingFam' %}">
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 1')">가성비가 좋고 <br>비용부담이 적은 곳</button>
                         </form>
-                        <form id="budget-2" method="POST" action="{% url 'start:startingFam' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="choice" value="a"><!--선택지2는 a를 저장함-->
-                            <button type="button" class="choice-button" onclick="selectChoice('budget-2')">선택지 2</button>
+                        <form id="Bud-2" method="POST" action="{% url 'start:startingFam' %}">
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 2')">약간의 여유가 있는 <br>중간 예산</button>
                         </form>
-                        <form id="budget-3" method="POST" action="{% url 'start:startingFam' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="choice" value="b"><!--선택지3은 b를 저장함-->
-                            <button type="button" class="choice-button" onclick="selectChoice('budget-3')">선택지 3</button>
+                        <form id="Bud-3" method="POST" action="{% url 'start:startingFam' %}">
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 3')">특별한 경험을 위한 <br>추가비용은 감당</button>
                         </form>
-                        <form id="budget-4" method="POST" action="{% url 'start:startingFam' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="choice" value="b"><!--선택지4는 b를 저장함-->
-                            <button type="button" class="choice-button" onclick="selectChoice('budget-4')">선택지 4</button>
+                        <form id="Bud-4" method="POST" action="{% url 'start:startingFam' %}">
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 4')">예산 고려 없이 <br>원하는 것을 선택</button>
                         </form>
-
-                        <!-- 다음페이지 이동 버튼 -->
-                        <button type="button" class="choice-next" onclick="nextPage()">
+                        <button class="choice-next" onclick="nextPage()">
                             <i class="fa-solid fa-arrow-right" style="color: #27634C;"></i>
                         </button>
                     </div>
                 </div>
-            </div>
+                </div>
         </div>
         <div class="box footer">Copyright©2024 by team 마리포</div>
-    </div>
-    <script src="starting_.js"></script>
-    <script> 
-        let selectedFormId = null; // 선택된 폼의 ID를 저장하는 변수
-
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll('.progress-circle')[0].classList.add('filled');
-            document.querySelectorAll('.progress-line')[0].classList.add('filled');
-            document.querySelectorAll('.progress-circle')[1].classList.add('filled');
-            document.querySelectorAll('.progress-line')[1].classList.add('filled');
-            document.querySelectorAll('.progress-circle')[2].classList.add('filled');
-            document.querySelectorAll('.progress-line')[2].classList.add('filled');
-            document.querySelectorAll('.progress-circle')[3].classList.add('filled');
-            document.querySelectorAll('.progress-line')[3].classList.add('filled');
-            document.querySelectorAll('.progress-circle')[4].classList.add('filled');
-            document.querySelectorAll('.progress-line')[4].classList.add('filled');
-        });
-
-        function selectChoice(formId) {
-            // 선택된 폼의 ID를 저장
-            selectedFormId = formId;
-
-            // 모든 버튼 강조 제거
-            const buttons = document.querySelectorAll('.choice-button');
-            buttons.forEach(button => button.classList.remove('selected'));
-
-            // 선택된 버튼 강조
-            const selectedForm = document.getElementById(formId);
-            const button = selectedForm.querySelector('.choice-button');
-            button.classList.add('selected');
-        }
-
-        function nextPage() {
-            if (!selectedFormId) {
-                alert("항목을 선택해주세요");
-                return;
+        <script src="starting_.js"></script>
+        <script> 
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelectorAll('.progress-circle')[0].classList.add('filled');
+                document.querySelectorAll('.progress-line')[0].classList.add('filled');
+                document.querySelectorAll('.progress-circle')[1].classList.add('filled');
+                document.querySelectorAll('.progress-line')[1].classList.add('filled');
+                document.querySelectorAll('.progress-circle')[2].classList.add('filled');
+                document.querySelectorAll('.progress-line')[2].classList.add('filled');
+                document.querySelectorAll('.progress-circle')[3].classList.add('filled');
+                document.querySelectorAll('.progress-line')[3].classList.add('filled');
+                document.querySelectorAll('.progress-circle')[4].classList.add('filled');
+                document.querySelectorAll('.progress-line')[4].classList.add('filled');
+            });
+            function nextPage() {
+                if (!selectedChoice) {
+                    alert("선택하지 않은 상태");
+                } else {
+                    window.location.href = "{% url 'start:startingFam' %}";
+                }
             }
-            // 선택된 폼 제출
-            document.getElementById(selectedFormId).submit();
-        }
 
-        function backPage() {
-            window.location.href = "{% url 'start:startingEnv' %}";
-        }
-    </script>
+            function backPage() {
+                window.location.href = "{% url 'start:startingEnv' %}";
+                }
+        </script>
 </body>
 </html>
