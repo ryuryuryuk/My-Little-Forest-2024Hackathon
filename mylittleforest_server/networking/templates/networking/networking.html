@@ -8,15 +8,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>networking</title> <!-- 현지 소셜 네트워킹 메인 페이지 -->
 
+    <!-- .css 불러오기 -->
+    <link rel="stylesheet" href="{% static 'start/css/networkingGrid.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/networking.css' %}">
+
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
+
 	<style>
-        @import url("{% static 'networking/css/networkingGrid.css' %}");
-        @import url("{% static 'networking/css/networking.css' %}");
+		@import url(networkingGrid.css);
+        @import url(networking.css);
 
-
+        /* 화면 너비 줄었을 때 대비해서 만들어 놓은 거라
+        전체 화면으로 보이는 건 css 파일로 충분해요 */
         @media screen and (max-width: 1279px) {
             .second-section {
                 display: flex;
@@ -24,16 +30,25 @@
                 align-items: center;
                 height: 370px;
             }
-            
+
+            .site-img {
+                display: none; /* 기본적으로 이미지를 숨김 */
+                width: 100%; /* 이미지 크기를 조정 */
+                max-width: 300px;
+            }
+
+            .site-img img {
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+            }
+
             .third-section {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 height: 600px;
-            }
-
-            .text-container {
-                text-align: center;
+                left: 0;
             }
             
             .img-container {
@@ -42,67 +57,139 @@
                 width: 100%;
                 max-width: 300px;
             }
+
             .img-container img {
-                position: absolute; /* 애니메이션을 유지하기 위해 절대 위치 */
-                width: 300px; 
+                width: 300px;
                 height:300px;
+                aspect-ratio: 1 / 1; /* 사진에 대한 고정 비율을 지정해 주는 코드 */
+                border: 2px solid black;
                 border-radius: 20px;
-                aspect-ratio: 1 / 1;
+                position: absolute; /* 애니메이션 효과를 위하여 부여 */
+                top:10%;
+                left: 20px;
+            }
+
+            .text-container {
+                text-align: center;
+                padding-top: 40px;
+                line-height: 1.5; 
             }
 
             .button-tag {
+                text-align:center;
                 margin-top: auto;
-                margin-bottom: 60px;
+                margin-right: 10px;
             }
         }
 
 		body {
-			font-family: 'NanumSquareRound', sans-serif;
-		}
+            font-family: 'NanumSquareRound', sans-serif;
+        }
 
-		.box {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			text-align: center;
-            background-color: #4EA686;
-		}
+        .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
 
-		.header {
-			grid-area: header;
-			font-family: 'Noto Sans KR', sans-serif;
-		}
-		
-		
-		.widget {
-			grid-area: widget;
-		}
-		
-		.main {
-			grid-area: main;
-		
-		}
-		
-		.footer {
-			grid-area: footer;
+        }
+
+        .header {
+        grid-area: header;
+        font-family: 'NanumSquareRound', sans-serif;
+        display: flex;
+        text-align: center;
+        align-items: flex-end;
+        }
+
+        .widget {
+        grid-area: widget;
+
+        }
+
+        .main {
+        grid-area: main;
+
+        }
+
+        .footer {
+            grid-area: footer;
             font-size: 15px;
             color: #544424;
             text-align: center;
-		}
+        }
 
 	</style>
 </head>
 
 <body>
 	<div class="grid-container">
-		<div class="box header"></div>
-		<div class="box widget"></div>
+		<div class="box header">
+            <!-- 로고 이미지 "{% static 'images/Logo.png' %}" -->
+            <img src="{% static 'images/Logo.png' %}" alt="로고" class="logo">
+            <div class="header-btn">
+                <!-- 홈 버튼 img src="{% static 'images/home_btn.jpg' %}"-->
+                <button type="button" id= "home-btn" class="home-btn" onclick="window. location. href='{% url 'main' %}'">
+                    <img src="{% static 'images/home_btn.jpg' %}">
+                </button>
+                <!-- 로그아웃 버튼 -->
+                <button type="button" id="logout-btn" class="logout-btn" onclick="window. location. href='{% url 'starting' %}'">
+                    로그아웃
+                </button>
+            </div>
+        </div>
+
+
+		<div class="box widget">
+        <div class="widget">
+            <!-- 프로필 카드 -->
+            <div class="profile-card">
+                <div class="profile-header">
+                    <img src="../../Assets/images/resultA강원pf.png" alt="프로필 이미지" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h2>{{request.session.nickname}}</h2>
+                    <p class="profile-role">친절한 반달곰</p>
+                    
+                    <div class="local-city">
+                        <i class="fa-solid fa-location-dot"></i>강원특별자치도
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="action-btn" onclick="window.location.href='{% url 'main:myResult_a' %}'">나의 정보</button>
+                    <button class="action-btn" onclick="window.location.href='{% url 'main:myForest_a' %}'">나의 포레스트</button>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <i class=></i>
+                    </div>
+                    <div class="stat">
+                        <i class="fa fa-heart"></i> Lv.1
+                    </div>
+                    <div class="stat">
+                        <i class=></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-btns">
+            <!-- 메뉴 버튼들 -->
+                <a href="seachLocal.html" class="menu-btn">포레스트 맵</a>
+                <a href="networking.html" class="menu-btn">포레스트 네트워킹</a>
+                <a href="sharingContens.html" class="menu-btn">포레스트 스튜디오</a>
+                <a href="mycontens" class="menu-btn">콘텐츠 모아보기</a>
+            </div>
+        </div>
+    </div>
+
+
+
 		<div class="box main">
             <div class="whole">
 
                 <section class="first-section"> <!-- 여기가 태그 입력 -->
                     <div class="search-container">
-                        <input type="text" id="search-input" placeholder="#태그">
+                        <input type="text" id="search-input" placeholder="관심사를 입력하세요.">
                         <button id="search-button">
                             <i class="fa-solid fa-magnifying-glass" style="color: white;"></i>
                         </button>
@@ -112,84 +199,95 @@
                 <section class="second-section"> <!-- 여기가 태그 찾기 -->
                     <div class="site-container">
                         <button class="slide left">
-                            <i class="fa-solid fa-angle-left" style="color: white"></i>
+                            <i class="fa-solid fa-angle-left" style="color: gray"></i>
                         </button>
-                        <div class="site-img" data-tag="가">
+                        <div class="site-img" data-tag="강아지">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
-                                <h3 id="group_name1">가하나뿐인태그가가가</h3>
-                                <div class="overlay-group">
-                                    <p id="group-text1" >가</p> <!-- 문구 작성 -->
-                                </div>
-                            </span>
-                        </div>
-                        <div class="site-img" data-tag="나">
-                            <span class="shadow">
-                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
-                                <h3 id="group_name2">나밖에없는태그</h3>
+                                <img src="networkingFirstFadeImg.jpg" alt="사진" class="slideIMG">
+                                <h3 id="group_name1">애완동물사랑이</h3>
                                 <div class="overlay">
-                                    <p id="group-text2">나</p> <!-- 문구 작성 -->
+                                    <div class="overlay-group">
+                                        <p id="group-text1" >가</p> <!-- 문구 작성 -->
+                                    </div>
                                 </div>
                             </span>
                         </div>
-                        <div class="site-img" data-tag="다">
+                        <div class="site-img" data-tag="고양이">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
-                                <h3 id="group_name3">다</h3>
+                                <img src="networkingFirstFadeImg.jpg" alt="사진" class="slideIMG">
+                                <h3 id="group_name2">집사모임</h3>
                                 <div class="overlay">
-                                    <p id="group-text3">다</p> <!-- 문구 작성 -->
+                                    <p id="group-text2">집사들의모임</p> <!-- 문구 작성 -->
                                 </div>
                             </span>
                         </div>
-                        <div class="site-img" data-tag="라">
+                        <div class="site-img" data-tag="햄스터 고양이 강아지">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
-                                <h3 id="group_name4">라</h3>
+                                <img src="networkingFirstFadeImg.jpg" alt="사진" class="slideIMG">
+                                <h3 id="group_name3">동물원</h3>
+                                <div class="overlay">
+                                    <p id="group-text3">동물원동물원</p> <!-- 문구 작성 -->
+                                </div>
+                            </span>
+                        </div>
+                        <div class="site-img" data-tag="강아지 산책">
+                            <span class="shadow">
+                                <img src="networkingSecondFadeImg.jpg" alt="사진" class="slideIMG">
+                                <h3 id="group_name4">산책모임</h3>
                                 <div class="overlay">
                                     <p id="group-text4">라</p> <!-- 문구 작성 -->
                                 </div>
                             </span>
                         </div>
-                        <div class="site-img" data-tag="가 나">
+                        <div class="site-img" data-tag="강아지 맛집 사진">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
-                                <h3 id="group_name5">가 나</h3>
+                                <img src="networkingSecondFadeImg.jpg" alt="사진" class="slideIMG">
+                                <h3 id="group_name5">맛집투어</h3>
                                 <div class="overlay">
-                                    <p id="group-text5">가 나</p> <!-- 문구 작성 -->
+                                    <p id="group-text5">밥밥밥밥바바밥</p> <!-- 문구 작성 -->
                                 </div>
                             </span>
                         </div>
-                        <div class="site-img" data-tag="나 다">
+                        <div class="site-img" data-tag="산책 고양이">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
-                                <h3 id="group_name6">나 다</h3>
+                                <img src="networkingSecondFadeImg.jpg" alt="사진" class="slideIMG">
+                                <h3 id="group_name6">고양이산책모임</h3>
                                 <div class="overlay">
                                     <p id="group-text6">나 다</p> <!-- 문구 작성 -->
                                 </div>
                             </span>
                         </div>
-                        <div class="site-img" data-tag="가 라">
+                        <div class="site-img" data-tag="맛집 산책 사진">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
-                                <h3 id="group_name7">가 라</h3>
+                                <img src="networkingThirdFadeImg.jpg" alt="사진" class="slideIMG">
+                                <h3 id="group_name7">음식사진찍기모임</h3>
                                 <div class="overlay">
                                     <p id="group-text7">가 라</p> <!-- 문구 작성 -->
                                 </div>
                             </span>
                         </div>
-                        <div class="site-img" data-tag="라 사">
+                        <div class="site-img" data-tag="라면 맛집 사진">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
-                                <h3 id="group_name8">나 사</h3>
+                                <img src="networkingThirdFadeImg.jpg" alt="사진" class="slideIMG">
+                                <h3 id="group_name8">라면맛집탐방</h3>
                                 <div class="overlay">
                                     <p id="group-text8">나 사</p> <!-- 문구 작성 -->
                                 </div>
                             </span>
                         </div>
-                        <div class="site-img" data-tag="다 사">
+                        <div class="site-img" data-tag="고양이 강아지 사진">
                             <span class="shadow">
-                                <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="사진" class="slideIMG">
-                                <h3 id="group_name9">다 사</h3>
+                                <img src="networkingThirdFadeImg.jpg" alt="사진" class="slideIMG">
+                                <h3 id="group_name9">동물사진찍기</h3>
+                                <div class="overlay">
+                                    <p id="group-text9">다 사</p> <!-- 문구 작성 -->
+                                </div>
+                            </span>
+                        </div>
+                        <div class="site-img" data-tag="맛집 사진 요리">
+                            <span class="shadow">
+                                <img src="networkingThirdFadeImg.jpg" alt="사진" class="slideIMG">
+                                <h3 id="group_name9">레시피공유</h3>
                                 <div class="overlay">
                                     <p id="group-text9">다 사</p> <!-- 문구 작성 -->
                                 </div>
@@ -197,13 +295,13 @@
                         </div>
 
                         <div class="no-results" style="display: none;">
-                            <p>해당 그룹이 없어요</p>
+                            <p >해당 그룹이 없어요</p>
                         </div>
 
                         <button class="slide right">
                             <i class="fa-solid fa-angle-right" style="color: gray;"></i>
                         </button>
-
+                        
                     </div>
                 </section>
 
@@ -212,28 +310,26 @@
                         <h1><span style="color: #27634C;font-size: 1.2em;font-weight: bold;">
                             관심사</span>를 설정하고<br>
                         더 많은 사람들을 만나보세요!</h1>
-                        <p>원하는 그룹이 없다면,<br>
+                        <p >원하는 그룹이 없다면,<br>
                         관심사를 설정하고 직접 만들어 보세요.</p>
                     </div>
                     <div class="img-container">
                         <div class="img-fade">
-                            <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="이미지1" class="animation-fade active">
+                            <img src="networkingFirstFadeImg.jpg" alt="이미지1" class="animation-fade active">
                         </div>
                         <div class="img-fade">
-                            <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="이미지1" class="animation-fade">
+                            <img src="networkingSecondFadeImg.jpg" alt="이미지1" class="animation-fade">
                         </div>
                         <div class="img-fade">
-                            <img src="{% static 'networking/images/networkingFirstFadeImg.jpg' %}" alt="이미지1" class="animation-fade">
+                            <img src="networkingThirdFadeImg.jpg" alt="이미지1" class="animation-fade">
                         </div>
                     </div>
 
-                
+                    
                     <div class="button-tag">
-                    <script>
-                        const makeGroupUrl = "{% url 'networking:makeGroup' %}";
-                    </script>
+
                         <!-- 그룹만들기 버튼 -->
-                        <button class="make-group" onclick="window.location.href=makeGroupUrl">
+                        <button class="make-group" onclick="window.location.href='{% url 'networking:makeGroup' %}'">
                             그룹 만들기
                         </button>
                     </div>
@@ -241,10 +337,12 @@
 
             </div>
         </div>
-		<div class="box footer"></div>
+		<div class="box footer">
+            Copyright©2024 by team 마리포
+        </div>
 	</div>
-    <script src="{% static 'networking/js/networkingTag.js' %}"></script>
-    <script src="{% static 'networking/js/networkingFade.js' %}"></script>
+    <script src="tagTest.js"></script>
+    <script src="networkingFade.js"></script>
 </body>
 
 </html>
