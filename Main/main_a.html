@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{% static 'main/css/mainGrid.css' %}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <style>
 @import url(main.css);
@@ -25,7 +25,8 @@ display: flex;
 justify-content: center;
 align-items: center;
 text-align: center;
-background-color: #bcbb6d;
+background-color: #bbc0b0;
+
 }
 
 .header {
@@ -37,21 +38,20 @@ align-items: flex-end;
 }
 
 .widget {
-
 grid-area: widget;
 
 }
 
 .main {
-
 grid-area: main;
 
 }
 
 .footer {
-
-grid-area: footer;
-
+    grid-area: footer;
+    font-size: 15px;
+    color: #544424;
+    text-align: center;
 }
 
 </style>
@@ -87,33 +87,34 @@ grid-area: footer;
                 <div class="profile-info">
                     <h2>{{request.session.nickname}}</h2>
                     <p class="profile-role">친절한 반달곰</p>
-                    <p class="local-city">지방도시 강원도</p>
+                    
+                    <div class="local-city">
+                        <i class="fa-solid fa-location-dot"></i>강원특별자치도
+                    </div>
                 </div>
                 <div class="profile-actions">
-                    <button class="action-btn">나의 정보</button>
-                    <button class="action-btn">Be Friends</button>
+                    <button class="action-btn" onclick="window.location.href='{% url 'main:myResult_a' %}'">나의 정보</button>
+                    <button class="action-btn" onclick="window.location.href='{% url 'main:myForest_a' %}'">나의 포레스트</button>
                 </div>
                 <div class="profile-stats">
                     <div class="stat">
-                        <i class="fa fa-heart"></i> 20k
+                        <i class=></i>
                     </div>
                     <div class="stat">
-                        <i class="fa fa-comment"></i> Lv.1
+                        <i class="fa fa-heart"></i> Lv.1
                     </div>
                     <div class="stat">
-                        <i class="fa fa-share"></i> 10k
+                        <i class=></i>
                     </div>
                 </div>
             </div>
             
             <div class="menu-btns">
             <!-- 메뉴 버튼들 -->
-                <a href="myinfo.html" class="menu-btn">나의 정보</a>
-                <a href="seachLocal.html" class="menu-btn">맞춤도시 안내받기</a>
-                <a href="networking.html" class="menu-btn">현지 소셜 네트워킹</a>
-                <a href="sharingContens.html" class="menu-btn">콘텐츠 공유하기</a>
-                <a href="mycontens" class="menu-btn">내 콘텐츠 보가</a>
-                <a href="#" class="menu-btn">text</a>
+                <a href="seachLocal.html" class="menu-btn">포레스트 맵</a>
+                <a href="networking.html" class="menu-btn">포레스트 네트워킹</a>
+                <a href="sharingContens.html" class="menu-btn">포레스트 스튜디오</a>
+                <a href="mycontens" class="menu-btn">콘텐츠 모아보기</a>
             </div>
         </div>
     </div>
@@ -195,7 +196,7 @@ grid-area: footer;
         </section>
     </div>
 
-    <div class="box footer">
+    <div class="footer">
         Copyright©2024 by team 마리포
     </div>
 </div>
