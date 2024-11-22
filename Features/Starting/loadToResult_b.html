@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+    <link rel="stylesheet" href="{% static 'css/loadToResult.css' %}">
+    <link rel="stylesheet" href="{% static 'css/startingGrid.css' %}">
+
+    <style>
+        @import url(loadToResult.css);
+        @import url(startingGrid.css);
+
+    </style>
+</head>
+
+<body>
+    <div class="loading-container">
+        <!-- 로고 이미지 -->
+        <img src="{% static 'images/Logo.png' %}" alt="My Little Forest 로고" class="loading-logo">
+        
+        <!-- 로딩 애니메이션 -->
+        <div class="loading-dots">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+        </div>
+    </div>
+
+    <!-- JavaScript로 4초 후 페이지 이동 -->
+    <script>
+        setTimeout(() => {
+            window.location.href = "{% url 'startingResult_b' %}"; // Django URL 설정
+        }, 4000);
+    </script>
+</body>
+
+</html>

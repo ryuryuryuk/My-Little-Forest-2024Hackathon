@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Page</title>
+
+    <link rel="stylesheet" href="{% static 'start/css/loading.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/startingGrid.css' %}">
+
+    <style>
+        @import url(loading.css);
+		@import url(startingGrid.css);
+
+    </style>
+
+</head>
+
+
+<body>
+    <div class="loading-wrapper">
+        <img src="{% static 'Assets/images/resultB강원.png' %}" alt="로딩 이미지" class="loading-img">
+        <p class="loading-text">로딩 중...</p>
+    </div>
+
+    <script src="loading.js"></script>
+</body>
+</html>
