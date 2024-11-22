@@ -17,6 +17,8 @@ Including another URLconf
 
 from django.contrib import admin #admin모듈 불러오기
 from django.urls import path, include #path, include 모듈 불러오기
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,3 +29,7 @@ urlpatterns = [
     path("sharing/", include("sharing.urls")),
     path("searchLocal/", include("searchLocal.urls")),
 ]
+
+# MEDIA 설정 추가 (개발 환경에서만 사용)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,144 +1,109 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="ko">
 
 <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
 
-{% load static %}
-<meta charset="UTF-8">
+    <!-- External Fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Inline Styles -->
+    <style>
+        @import url("{% static 'sharing/css/sharingcontents.css' %}");
+        @import url("{% static 'sharing/css/sharingContentsGrid.css' %}");
+        @import url("{% static 'sharing/js/sharingcontents.js' %}");
+        body {
+            font-family: 'NanumSquareRound', sans-serif;
+        }
 
-<title>main</title> <!-- 메인화면 페이지 -->
+        .box {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #E1E1A0;
+        }
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
+        .header {
+            grid-area: header;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+        .widget {
+            grid-area: widget;
+        }
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        .main {
+            grid-area: main;
+        }
 
-<style>
-@import url(sharingcontents.css);
-@import url(sharingContentsGrid.css);
-@import url(sharingcontents.js);
-/*@import url(searchlocalgrid.css);*/
-/*@import url(searchLocalstore.html);*/
-
-body {
-
-font-family: 'NanumSquareRound', sans-serif;
-
-}
-
-.box {
-
-justify-content: center;
-
-align-items: center;
-
-text-align: center;
-
-background-color: #E1E1A0;
-
-}
-
-.header {
-
-grid-area: header;
-
-font-family: 'Noto Sans KR', sans-serif;
-
-}
-
-.widget {
-
-grid-area: widget;
-
-}
-
-.main {
-
-grid-area: main;
-
-}
-
-.footer {
-
-grid-area: footer;
-
-}
-
-</style>
-
+        .footer {
+            grid-area: footer;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="grid-container">
+        <div class="box header">
+            <!-- 헤더 영역 (추가 내용 없음) -->
+        </div>
 
-<div class="grid-container">
+        <div class="box widget">
+            <aside class="widget">
+                <h2>위젯 영역</h2>
+                <div class="menu-btns">
+                    <a href="writeContents.html" class="menu-btn">콘텐츠 공유하기</a>
+                    <a href="mycontents.html" class="menu-btn">내 콘텐츠 보기</a>
+                </div>
+            </aside>
+        </div>
 
-<div class="box header">
-</div>
+        <div class="box main">
+            <div class="text-box1">
+                <h3>게시판</h3>
+            </div>
 
-<div class="box widget">
-    <aside class="widget">
-        <h2>위젯 영역</h2>
-        <div class="menu-btns">
-            <!-- 메뉴 버튼들 -->
-            <a href="writeContents.html" class="menu-btn">콘텐츠 공유하기</a>
-            <a href="mycontents.html" class="menu-btn">내 콘텐츠 보기</a>
+            <div class="container">
+                {% for post in posts %}
+                <div class="image-box">
+                    <a href="{% url 'sharing:postpage' post.id %}">
+                        {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="게시글 이미지">
+                        {% else %}
+                        <img src="{% static 'images/default_image.jpg' %}" alt="기본 이미지">
+                        {% endif %}
+                    </a>
+                    <div class="text-box">{{ post.title }}</div>
+                </div>
+                {% endfor %}
+
+                <!-- 게시글이 9개 미만인 경우 빈 자리를 추가 -->
+                {% for i in empty_slots %}
+                <div class="image-box">
+                    <img src="{% static 'images/empty_slot.jpg' %}" alt="빈 자리">
+                    <div class="text-box">비어 있음</div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="pagination">
+                <button class="prev-btn">이전</button>
+                <button class="next-btn">다음</button>
+            </div>
         </div>
-    </aside>
-</div>
-<div class="box main">
-    <div class="text-box1">
-        <h3>dkdkd</h3>
-    </div>
-    <div class="container">
-        <div class="image-box">
-            <img src="image1.jpg" alt="Image 1">
-            <div class="text-box">텍스트 1</div>
-        </div>
-        <div class="image-box">
-            <img src="image2.jpg" alt="Image 2">
-            <div class="text-box">텍스트 2</div>
-        </div>
-        <div class="image-box">
-            <img src="image3.jpg" alt="Image 3">
-            <div class="text-box">텍스트 3</div>
-        </div>
-        <div class="image-box">
-            <img src="image4.jpg" alt="Image 4">
-            <div class="text-box">텍스트 4</div>
-        </div>
-        <div class="image-box">
-            <img src="image5.jpg" alt="Image 5">
-            <div class="text-box">텍스트 5</div>
-        </div>
-        <div class="image-box">
-            <img src="image6.jpg" alt="Image 6">
-            <div class="text-box">텍스트 6</div>
-        </div>
-        <div class="image-box">
-            <img src="image7.jpg" alt="Image 7">
-            <div class="text-box">텍스트 7</div>
-        </div>
-        <div class="image-box">
-            <img src="image8.jpg" alt="Image 8">
-            <div class="text-box">텍스트 8</div>
-        </div>
-        <div class="image-box">
-            <img src="image9.jpg" alt="Image 9">
-            <div class="text-box">텍스트 9</div>
+
+        <div class="box footer">
+            Copyright©2024 by team 마리포
         </div>
     </div>
-    <div class="pagination">
-        <button class="prev-btn">이전</button>
-        <button class="next-btn">다음</button>
-    </div>
-    
-</div>
 </body>
+
 </html>
