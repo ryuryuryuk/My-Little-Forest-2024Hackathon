@@ -1,4 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result_a</title> <!-- 결과화면 A() -->
+
+    <!-- .css 불러오기 -->
+    <link rel="stylesheet" href="{% static 'start/css/startingResult.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/startingResultGrid.css' %}">
+    
+
+    <style>
+        @import url(startingResultGrid.css);
+        @import url(startingResult.css);
+
+
+        body {
+            font-family: 'NanumSquareRound', sans-serif;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .header {
+            grid-area: header;
+            font-family: 'Noto Sans KR', sans-serif;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .main {
+            grid-area: main;
+        }
+
+        .footer {
+            grid-area: footer;
+            font-size: 15px;
+            color: #544424;
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .whole-wrapper {
+            width: 70%;
+            max-width: 600px;
+            text-align: center;
+            justify-content: center;
+            background: white;
+            border-radius: 30px; /* 모서리 둥글게 */
+            border: solid 3px #61b600;
+            padding: 30px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* 그림자 확대 */
+        }
+
+        .Logo {
+            width: 175px;
+        }
+
+
+        /* 간단한 결과 소개 */
+        .intro-text {
+            font-size: 18px;
+            color: #544424;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: bold;
+
+            /* 애니메이션 조건 */
+            
+        }
+
+
+        .intro-wrapper {
+        }
+
+        .result-wrapper {
+            display: flex; 
+            justify-content: center; /* 가로 방향으로 중앙 정렬 */
+            align-items: center; /* 세로 방향으로 중앙 정렬 */
+            text-align: center; /* 텍스트 정렬 */
+            width: 100%; /* 부모 요소의 너비에 맞게 확장 */
+        }
+
+        .result-img {
+            width: 130px;
+            display: flex; 
+            align-items: center;
+			text-align: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .result-text{
+
+        }
+
+        /* 결과 캐릭터 타이틀 */
+        .result-title{
+            font-size: 32px;
+            color: #61b600;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
 
 
 
-성향 결과 a입니다
+        /* 결과 설명 */
+        .result-subtitle{
+            font-size: 17px;
+            color: #544424;
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .result-button {
+            width: 180px;
+            height: 50px;
+            margin: 20px;
+            background:linear-gradient(180deg,  #8BC330, #27634C);
+            color: rgb(255, 255, 255);
+            border: none;
+            text-align: center;
+            font-size: 16px; /* 기본 글꼴 크기 */
+            border-radius: 30px; /* 둥근 모서리 */
+            cursor: pointer;
+            
+        }
+        
+        
+        /* 마우스 호버 효과 (추가) */
+        .result-button:hover {
+            background: linear-gradient(180deg,  #8BC330, #4EA686); /* 그라데이션 */
+            transform: translateY(-2px); /* 살짝 떠오르는 효과 */
+        }
+        
+
+
+    </style>
+</head>
+
+<body>
+    <div class="box header">
+    </div>
+
+    <div class="grid-container">
+        <div class="box main">
+            <div class="whole-wrapper">
+                <img src="../../Assets/images/Logo.jpg" alt="로고" class="Logo">
+                <!-- 마리포 간단한 소개문구 -->
+                <div class="intro-wrapper">
+                    <p class="intro-text">지방도시 A특징을 포함한 간단한 캐릭터 설명 </p>
+                </div>
+                <div class="result-wrapper">
+                    <img src="{% static 'Assets/images/resultA강원.png' %}" alt="결과이미지" class="result-img">
+                </div>
+                    <div class="result-text">
+                        <p class="result-title">특별이</p>
+                        <p class="result-subtitle">강원특별자치도의 아름다운 경치를 보고 초록색이 된 반달가슴곰은 <br>청정 자연의 기를 받고 자라 따뜻한 마음씨를 가지고 있으며<br>
+                            태백산 골짜기에서 낮잠 자는 것을 좋아한다. <br> 새로운 강원특별자치도에 대해 호기심과 궁금증이 들끓는다.</p>
+                    </div>
+                    <button class="result-button" onclick="window.location.href='{% url 'loading_a' %}'">더 자세히 보러가기</button>
+
+            </div>
+        </div>
+        <div class="box footer">
+            Copyright©2024 by team 마리포
+        </div>
+    </div>
+
+</body>
+
+</html>

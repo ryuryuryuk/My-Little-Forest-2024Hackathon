@@ -1,7 +1,42 @@
-.text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px 0px;
+.Logo {
+    width: 400px;
+    margin-bottom: 20px;
+}
+
+.text > p {
+    font-size: 20px;
+    color: #544424;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 시작하기 버튼*/
+.button-wrap>button[type="button"] {
+    font-family: 'NanumSquareRound';
+    width: 50%;
+    max-width: 300px;
+    height: 50px;
+    padding: 10px 20px;
+    border-radius: 60px;
+    background-color: #27634C;
+    border: none;
+    color: #fff;
+    font-size: 19px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+/* 시작하기 버튼에 마우스 올렸을 때 */
+button[type="button"]:hover {
+    font-family: 'NanumSquareRound';
+    transform: scale(1.02);
     font-size: 1.2em;
+}
+
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
