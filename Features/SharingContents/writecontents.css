@@ -8,10 +8,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: blueviolet;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   /*padding: 20px;*/
-  border: 1px solid #000;
 }
 
 .image-box {
