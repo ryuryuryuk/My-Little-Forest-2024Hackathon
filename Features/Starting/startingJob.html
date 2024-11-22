@@ -145,13 +145,20 @@
         <script src="starting_.js"></script>
         <script> 
             document.addEventListener("DOMContentLoaded", function () {
-                document.querySelectorAll('.progress-circle')[0].classList.add('filled');
-                document.querySelectorAll('.progress-line')[0].classList.add('filled');
-                document.querySelectorAll('.progress-circle')[1].classList.add('filled');
-                document.querySelectorAll('.progress-line')[1].classList.add('filled');
-                document.querySelectorAll('.progress-circle')[2].classList.add('filled');
-                document.querySelectorAll('.progress-line')[2].classList.add('filled');
+                const circles = document.querySelectorAll('.progress-circle');
+                const lines = document.querySelectorAll('.progress-line');
+                
+                // 칠할 circle과 line 개수 설정 (현재는 3개씩)
+                for (let i = 0; i < 3; i++) {
+                    if (circles[i]) {
+                        circles[i].classList.add('filled');
+                    }
+                    if (lines[i]) {
+                        lines[i].classList.add('filled');
+                    }
+                }
             });
+
             function nextPage() {
                 if (!selectedChoice) {
                     alert("선택하지 않은 상태");
