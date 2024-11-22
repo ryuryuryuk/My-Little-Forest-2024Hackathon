@@ -1,16 +1,18 @@
 form {
     background-color: #fff; /* 흰색 배경 */
-    border-radius: 10px; /* 둥근 모서리 */
+    border-radius: 15px; /* 둥근 모서리 */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
-    padding: 30px;
+    padding: 20px 20px;
     max-width: 500px;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin: 5px;
+    align-items: center;
+    justify-content: center; /* 수직 중앙 정렬 */
+    box-sizing: border-box; /* 전체 크기 계산 */
+    margin: 0; /* 기본 여백 제거 */
 }
-
 /* 제목 스타일 */
 .interest-title h2, .group-title h2 {
     font-size: 22px;
@@ -23,11 +25,11 @@ form {
 /* 입력 필드 */
 .search-input,
 textarea {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 10px;
+    font-size: 13px;
     font-family: inherit;
     transition: border-color 0.2s ease-in-out;
 }
@@ -42,14 +44,22 @@ textarea:focus {
 .search-input {
     margin-top: 5px;
     border-radius: 10px;
+    flex: 1; /* 박스 크기 균등하게 설정 */
+    min-width: 80px; /* 최소 너비 */
+    max-width: 120px; /* 최대 너비 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 15px;
 }
 
 
 .upload-label {
     display: block;
     width: 100%; /* 원하는 너비 */
-    height: 300px; /* 원하는 높이 */
-    border: 2px dashed #ccc; /* 박스 스타일 */
+    height: 200px; /* 원하는 높이 */
+    border: 2px solid #ccc; /* 박스 스타일 */
     border-radius: 8px; /* 둥근 모서리 */
     display: flex;
     justify-content: center;
@@ -191,6 +201,7 @@ input:focus {
     max-width: 200px;
     height: auto;
 }
+<<<<<<< HEAD
 
 /* header 홈/로그아웃 버튼들 위치 */
 .header-btn {
@@ -236,3 +247,5 @@ input:focus {
     transform: scale(1.02); /* 버튼 크기 확대 (1.1배) */
 }
 
+=======
+>>>>>>> ab0b915 (콘텐츠 삽입)
