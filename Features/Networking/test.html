@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>test</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/><!-- 스와이퍼 불러오기 -->
+        <link rel="stylesheet" href="test.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <style>
+            .swiper {
+                width: 600px;
+                height: 300px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <section class="section-banner-wrap">
+            <div class="con mx-auto">
+                <div class="swiper">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="얼렁뚱땅.png" alt="이미지1" class="pc-img">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="현상이 현수막.jpg" alt="이미지2" class="pc-img">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="실화야.jpg" alt="이미지3" class="pc-img">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="전못먹음.jpg" alt="이미지4" class="pc-img">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="어정쩡한 뷰.jpg" alt="이미지5" class="pc-img">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="현상이 하트.jpg" alt="이미지6" class="pc-img">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="현상이 귀여운.jpg" alt="이미지7" class="pc-img">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="구름이 공룡이야.jpg" alt="이미지8" class="pc-img">
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="다먹지도못한것들.jpg" alt="이미지9" class="pc-img">
+                            </a>
+                        </li>
+                    </ul>
+
+                    
+                    <!--<div class="swiper-pagination"></div>-->
+                    <div class="swiper-btn-group">
+                        <div class="swiper-button swiper-button-prev">
+                            <span>
+                                <i class="fa-solid fa-angle-left"></i>
+                            </span>
+                        </div>
+                        <div class="swiper-button swiper-button-next">
+                            <span>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 스와이퍼 불러오기 -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script>
+            /* 섹션 스와이퍼 */
+            function SectionBannerSwiper() {
+                const swiper = new Swiper('.section-banner-wrap .swiper', {
+                    loop: true, // 슬라이드 반복 여부
+                    slidePerView: 'auto',
+                    centeredSlides: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                });
+            }
+            
+            SectionBannerSwiper(); // Correct function call
+        </script>
+    </body>
+</html>
