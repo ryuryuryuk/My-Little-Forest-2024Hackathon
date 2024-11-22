@@ -76,9 +76,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // 초기화
     updateSlide();
 });
-
-/*
-추가한 기능
-1. 검색창에 "아무것도 입력하지 않았을 경우" 처음 화면을 출력함
-2. 검색창에 입력한 tag와 일치하는 tag가 없는 경우 noResults를 출력하되, leftButton와 rightButton을 삭제함
-*/ 

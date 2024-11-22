@@ -2,10 +2,15 @@
 <html lang="en">
 
 <head>
+    {% load static %}
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>networking</title> <!-- 현지 소셜 네트워킹 메인 페이지 -->
+
+    <!-- .css 불러오기 -->
+    <link rel="stylesheet" href="{% static 'start/css/networkingGrid.css' %}">
+    <link rel="stylesheet" href="{% static 'start/css/networking.css' %}">
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/NanumSquareRound@1.0/NanumSquareRound.css">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
@@ -102,7 +107,7 @@
 
                 <section class="first-section"> <!-- 여기가 태그 입력 -->
                     <div class="search-container">
-                        <input type="text" id="search-input" placeholder="#태그">
+                        <input type="text" id="search-input" placeholder="관심사를 입력하세요.">
                         <button id="search-button">
                             <i class="fa-solid fa-magnifying-glass" style="color: white;"></i>
                         </button>

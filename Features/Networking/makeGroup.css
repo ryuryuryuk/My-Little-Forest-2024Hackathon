@@ -181,25 +181,3 @@ input:focus {
 .upload-group-img span {
     color: rgba(0, 0, 0, 0.4);
 }
-
-/*.animation {
-    opacity: 0; 
-    transform: translateY(5px);
-    animation: slideUp 0.5s ease-out forwards;
-}*/
-
-/*.animation:nth-of-type(1) {
-    animation-delay: 0s; 
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-*/
