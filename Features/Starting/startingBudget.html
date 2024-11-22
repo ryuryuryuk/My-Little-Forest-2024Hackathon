@@ -73,22 +73,7 @@
 </head>
 <body>
     <div class="grid-container">
-        <div class="box header">
-            <!-- 로고 이미지 "{% static 'images/Logo.png' %}" -->
-            <img src="../../Assets/images/Logo.jpg" alt="로고" class="logo">
-            <div class="header-btn">
-                <!-- 홈 버튼 img src="{% static 'images/home_btn.jpg' %}"-->
-                <button type="button" id= "home-btn" class="home-btn" onclick="window. location. href='{% url 'main' %}'">
-                    <img src="../../Assets/images/home_btn.jpg">
-                </button>
-                <!-- 로그아웃 버튼 -->
-                <button type="button" id="logout-btn" class="logout-btn" onclick="window. location. href='{% url 'starting' %}'">
-                    로그아웃
-                </button>
-            </div>
-        </div>
-
-        
+        <div class="box header"></div>
 
         <div class="box main">
 
@@ -118,17 +103,17 @@
                             <i class="fa-solid fa-arrow-right fa-flip-horizontal" style="color: #27634C;"></i>
                         </button>
                         <form id="Bud-1" method="POST" action="{% url 'start:startingFam' %}">
-                        <button class="choice-button" onclick="selectChoice(this, '선택지 1')">가성비가 좋고 <br>비용부담이 적은 곳</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 1')">가성비가 좋고 <br>비용부담이 적은 곳</button>
                         </form>
                         <form id="Bud-2" method="POST" action="{% url 'start:startingFam' %}">
-                        <button class="choice-button" onclick="selectChoice(this, '선택지 2')">약간의 여유가 있는 <br>중간 예산</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 2')">약간의 여유가 있는 <br>중간 예산</button>
                         </form>
                         <form id="Bud-3" method="POST" action="{% url 'start:startingFam' %}">
-                        <button class="choice-button" onclick="selectChoice(this, '선택지 3')">특별한 경험을 위한 <br>추가비용은 감당</button>
-                    </form>
-                    <form id="Bud-4" method="POST" action="{% url 'start:startingFam' %}"></form>
-                        <button class="choice-button" onclick="selectChoice(this, '선택지 4')">예산 고려 없이 <br>원하는 것을 선택</button>
-                    </form>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 3')">특별한 경험을 위한 <br>추가비용은 감당</button>
+                        </form>
+                        <form id="Bud-4" method="POST" action="{% url 'start:startingFam' %}">
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 4')">예산 고려 없이 <br>원하는 것을 선택</button>
+                        </form>
                         <button class="choice-next" onclick="nextPage()">
                             <i class="fa-solid fa-arrow-right" style="color: #27634C;"></i>
                         </button>

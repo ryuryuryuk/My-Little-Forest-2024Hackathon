@@ -72,22 +72,7 @@
 </head>
 <body>
     <div class="grid-container">
-        <div class="box header">
-            <!-- 로고 이미지 "{% static 'images/Logo.png' %}" -->
-            <img src="../../Assets/images/Logo.jpg" alt="로고" class="logo">
-            <div class="header-btn">
-                <!-- 홈 버튼 img src="{% static 'images/home_btn.jpg' %}"-->
-                <button type="button" id= "home-btn" class="home-btn" onclick="window. location. href='{% url 'main' %}'">
-                    <img src="../../Assets/images/home_btn.jpg">
-                </button>
-                <!-- 로그아웃 버튼 -->
-                <button type="button" id="logout-btn" class="logout-btn" onclick="window. location. href='{% url 'starting' %}'">
-                    로그아웃
-                </button>
-            </div>
-        </div>
-
-        
+        <div class="box header"></div>
 
         <div class="box main">
 
@@ -120,7 +105,6 @@
                         </button>
 
                         <form id="Env-1" method="POST" action="{% url 'start:startingBudget' %}">
-                            <button class="choicPOST" action="{% url 'start:startingBudget' %}">
                             <button class="choice-button" onclick="selectChoice(this, '선택지 1')">선택지 1</button>
                         </form>
                         <form id="Env-2" method="POST" action="{% url 'start:startingBudget' %}">

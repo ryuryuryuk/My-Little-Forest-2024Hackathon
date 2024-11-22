@@ -66,6 +66,7 @@
             width: 100%;
             max-width: 800px;
             height: 500px;
+            margin-top: 92px;
         }
         
     </style>
@@ -74,21 +75,7 @@
     <div class="grid-container">
 
 
-        <div class="box header">
-            <!-- 로고 이미지 "{% static 'images/Logo.png' %}" -->
-            <img src="../../Assets/images/Logo.jpg" alt="로고" class="logo">
-            <div class="header-btn">
-                <!-- 홈 버튼 img src="{% static 'images/home_btn.jpg' %}"-->
-                <button type="button" id= "home-btn" class="home-btn" onclick="window. location. href='{% url 'main' %}'">
-                    <img src="../../Assets/images/home_btn.jpg">
-                </button>
-                <!-- 로그아웃 버튼 -->
-                <button type="button" id="logout-btn" class="logout-btn" onclick="window. location. href='{% url 'starting' %}'">
-                    로그아웃
-                </button>
-            </div>
-        </div>
-
+        <div class="box header"></div>
 
         <div class="box main">
 
@@ -126,7 +113,7 @@
                             <button class="choice-button" onclick="selectChoice(this, '선택지 2')">부모님과 <br>함께 살고있다</button>
                         </form>
                         <form id="Fam-3" method="POST" action="">
-                            <button class="choice-button" onclick="selectChoice(this, '선택지 3')">혼자 지내며 독립적인 <br>생활을 하고있다</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 3')">혼자 지내며 독립적인<br>생활을 하고있다</button>
                         </form>
                         <form id="Fam-4" method="POST" action="">
                             <button class="choice-button" onclick="selectChoice(this, '선택지 4')">친구나 룸메이트와 <br>함께 살고있다</button>

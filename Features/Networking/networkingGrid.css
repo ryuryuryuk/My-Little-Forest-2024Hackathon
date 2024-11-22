@@ -23,7 +23,7 @@
         grid-template-columns: repeat(12, 1fr);
 
         /* 열 사이 간격 10px */
-        gap: 10px; 
+        gap: 5px; 
 
         /* 화면 가운데 정렬 */
         margin: auto; 

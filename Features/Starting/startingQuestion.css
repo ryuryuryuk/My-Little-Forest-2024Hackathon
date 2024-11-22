@@ -15,14 +15,17 @@
 }
 
 .choice-button {
-    padding: 15px 30px;
-    font-size: 18px;
+    padding: 10px 15px;
+    font-size: 17px;
     background-color: #27634C;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    min-width: 200px;
+    font-family: 'NanumSquareRound';
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); 
+    width: 200px;
+    height: 100px;
 }
 
 .choice-button:hover {
