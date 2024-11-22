@@ -27,6 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchValue = searchInput.value.trim();
         currentIndex = 0; // 검색 후 첫 번째 이미지부터 시작
 
+        if (!searchValue) {
+            // 검색어가 공백일 경우 초기 화면 표시
+            filteredImages = Array.from(siteImages);
+            noResults.style.display = 'none'; // "결과 없음" 숨기기
+            leftButton.style.display = 'block'; // 버튼 복원
+            rightButton.style.display = 'block';
+            updateSlide(); // 초기 화면 갱신
+            return;
+        }
+
         // 검색어로 필터링
         filteredImages = Array.from(siteImages).filter(img => {
             const tags = img.dataset.tag.split(' ');
@@ -36,10 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // 결과 처리
         if (filteredImages.length > 0) {
             noResults.style.display = 'none'; // "결과 없음" 숨기기
+            leftButton.style.display = 'block'; // 버튼 복원
+            rightButton.style.display = 'block';
             updateSlide(); // 슬라이드 갱신
         } else {
             noResults.style.display = 'block'; // "결과 없음" 표시
             siteImages.forEach(img => img.style.display = 'none'); // 모든 이미지 숨기기
+            leftButton.style.display = 'none'; // 버튼 삭제
+            rightButton.style.display = 'none'; // 버튼 삭제
         }
     });
 
@@ -62,3 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 초기화
     updateSlide();
 });
+
+/*
+추가한 기능
+1. 검색창에 "아무것도 입력하지 않았을 경우" 처음 화면을 출력함
+2. 검색창에 입력한 tag와 일치하는 tag가 없는 경우 noResults를 출력하되, leftButton와 rightButton을 삭제함
+*/ 
