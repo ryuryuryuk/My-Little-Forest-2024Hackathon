@@ -8,7 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let filteredImages = Array.from(siteImages); // 현재 표시 중인 이미지 (초기에는 전체)
     let currentIndex = 0; // 현재 첫 번째로 표시 중인 이미지의 인덱스
-    const imagesPerPage = 3; // 한 번에 보여줄 이미지 수
+    //const imagesPerPage = 3; 한 번에 보여줄 이미지 수 >> 반응형 위해 아래 코드 사용
+
+    let imagesPerPage = window.innerWidth <= 1279 ? 1 : 3; // 초기 설정
+    //window.innerWidth는 브라우저 창의 가로 길이(px)를 나타냅니다.
+
+
+    // 화면 크기 변경 감지
+    window.addEventListener('resize', () => {
+        imagesPerPage = window.innerWidth <= 1279 ? 1 : 3;
+        currentIndex = 0; // 크기 변경 시 첫 번째 페이지로 초기화
+        updateSlide();
+    });
 
     // 슬라이드 업데이트 함수
     function updateSlide() {

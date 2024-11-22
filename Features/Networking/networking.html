@@ -28,16 +28,25 @@
                 align-items: center;
                 height: 370px;
             }
-            
+
+            .site-img {
+                display: none; /* 기본적으로 이미지를 숨김 */
+                width: 100%; /* 이미지 크기를 조정 */
+                max-width: 300px;
+            }
+
+            .site-img img {
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+            }
+
             .third-section {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 height: 600px;
-            }
-
-            .text-container {
-                text-align: center;
+                left: 0;
             }
             
             .img-container {
@@ -46,17 +55,28 @@
                 width: 100%;
                 max-width: 300px;
             }
+
             .img-container img {
-                position: absolute; /* 애니메이션을 유지하기 위해 절대 위치 */
-                width: 300px; 
+                width: 300px;
                 height:300px;
+                aspect-ratio: 1 / 1; /* 사진에 대한 고정 비율을 지정해 주는 코드 */
+                border: 2px solid black;
                 border-radius: 20px;
-                aspect-ratio: 1 / 1;
+                position: absolute; /* 애니메이션 효과를 위하여 부여 */
+                top:10%;
+                left: 20px;
+            }
+
+            .text-container {
+                text-align: center;
+                padding-top: 40px;
+                line-height: 1.5; 
             }
 
             .button-tag {
+                text-align:center;
                 margin-top: auto;
-                margin-bottom: 60px;
+                margin-right: 10px;
             }
         }
 
@@ -69,7 +89,6 @@
 			justify-content: center;
 			align-items: center;
 			text-align: center;
-            background-color: #4EA686;
 		}
 
 		.header {
