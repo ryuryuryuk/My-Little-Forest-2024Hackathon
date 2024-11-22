@@ -114,21 +114,21 @@
                     </div>
 
                 <div class="question-text">취향</div>
-                <div class="question-subtext">세부 내용</div> <!--불필요 시 삭제 요망-->
+                <div class="question-subtext">내가 쉬는 날에 더 하고싶은 것은?</div> <!--불필요 시 삭제 요망-->
 
                 <div class="buttons-container">
                     <!-- 각 선택지별로 form 태그 추가 -->
                     <form id="prefer-1" method="POST" action="{% url 'start:startingInterest' %}">
-                        <button class="choice-button" onclick="selectChoice(this, '선택지 1')">선택지 1</button>
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 1')">가족들과 함께 <br> 피크닉 즐기기</button>
                     </form>
                     <form id="prefer-2" method="POST" action="{% url 'start:startingInterest' %}">
-                        <button class="choice-button" onclick="selectChoice(this, '선택지 2')">선택지 2</button>
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 2')">집에서 영화보며 <br>편안한 시간 보내기</button>
                     </form>
                     <form id="prefer-3" method="POST" action="{% url 'start:startingInterest' %}">
-                        <button class="choice-button" onclick="selectChoice(this, '선택지 3')">선택지 3</button>
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 3')">트랜디한 카페에서 <br>시간 보내기</button>
                     </form>
                     <form id="prefer-4" method="POST" action="{% url 'start:startingInterest' %}">
-                        <button class="choice-button" onclick="selectChoice(this, '선택지 4')">선택지 4</button>
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 4')">액티비티한 체험으로 <br>에너지 뿜뿜하기</button>
                     </form>
                     <!-- 다음페이지 버튼 -->
                     <button class="choice-next" onclick="nextPage()">

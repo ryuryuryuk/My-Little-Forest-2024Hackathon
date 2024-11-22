@@ -109,8 +109,8 @@
                         <div class="progress-circle"></div>
                     </div>
 
-                    <div class="question-text">관심사항</div>
-                    <div class="question-subtext">세부 내용</div> <!--불필요 시 삭제 요망-->
+                    <div class="question-text">관심사</div>
+                    <div class="question-subtext">요즘 나한테 좀 더 끌리는 주제는?</div> <!--불필요 시 삭제 요망-->
                     <div class="buttons-container">
 
                         <!-- 이전페이지 이동 버튼 -->
@@ -119,16 +119,16 @@
                         </button>
 
                         <form id="Interest-1" method="POST" action="{% url 'start:startingJob' %}">
-                            <button class="choice-button" onclick="selectChoice(this, '선택지 1')">선택지 1</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 1')">가족과 함께하는 <br>이벤트와 체험활동</button>
                         </form>
                         <form id="Interest-2" method="POST" action="{% url 'start:startingJob' %}">
-                            <button class="choice-button" onclick="selectChoice(this, '선택지 2')">선택지 2</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 2')">축제와 <br>전통문화 체험</button>
                         </form>
                         <form id="Interest-3" method="POST" action="{% url 'start:startingJob' %}">
-                            <button class="choice-button" onclick="selectChoice(this, '선택지 3')">선택지 3</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 3')">숨겨진 맛집과 <br>핫플레이스</button>
                         </form>
                         <form id="Interest-4" method="POST" action="{% url 'start:startingJob' %}">
-                            <button class="choice-button" onclick="selectChoice(this, '선택지 4')">선택지 4</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 4')">취미 개발과<br> 새로운 경험</button>
                         </form>
 
                         <!-- 다음페이지 이동 버튼 -->

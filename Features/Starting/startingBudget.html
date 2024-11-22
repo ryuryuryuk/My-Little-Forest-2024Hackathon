@@ -112,15 +112,23 @@
                     </div>
 
                     <div class="question-text">예산</div>
-                    <div class="question-subtext">세부 내용</div> <!--불필요 시 삭제 요망-->
+                    <div class="question-subtext">내가 여행이나 단기거주를 계획할 때 생각하는 예산 범위는?</div> <!--불필요 시 삭제 요망-->
                     <div class="buttons-container">
                         <button class="choice-back" onclick="backPage()">
                             <i class="fa-solid fa-arrow-right fa-flip-horizontal" style="color: #27634C;"></i>
                         </button>
-                        <button class="choice-button" onclick="selectChoice(this, '선택지 1')">선택지 1</button>
-                        <button class="choice-button" onclick="selectChoice(this, '선택지 2')">선택지 2</button>
-                        <button class="choice-button" onclick="selectChoice(this, '선택지 3')">선택지 3</button>
-                        <button class="choice-button" onclick="selectChoice(this, '선택지 4')">선택지 4</button>
+                        <form id="Bud-1" method="POST" action="{% url 'start:startingFam' %}">
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 1')">가성비가 좋고 <br>비용부담이 적은 곳</button>
+                        </form>
+                        <form id="Bud-2" method="POST" action="{% url 'start:startingFam' %}">
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 2')">약간의 여유가 있는 <br>중간 예산</button>
+                        </form>
+                        <form id="Bud-3" method="POST" action="{% url 'start:startingFam' %}">
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 3')">특별한 경험을 위한 <br>추가비용은 감당</button>
+                    </form>
+                    <form id="Bud-4" method="POST" action="{% url 'start:startingFam' %}"></form>
+                        <button class="choice-button" onclick="selectChoice(this, '선택지 4')">예산 고려 없이 <br>원하는 것을 선택</button>
+                    </form>
                         <button class="choice-next" onclick="nextPage()">
                             <i class="fa-solid fa-arrow-right" style="color: #27634C;"></i>
                         </button>

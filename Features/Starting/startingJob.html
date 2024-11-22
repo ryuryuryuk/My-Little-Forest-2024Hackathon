@@ -112,7 +112,7 @@
                     </div>
 
                     <div class="question-text">직업</div>
-                    <div class="question-subtext">세부 내용</div> <!--불필요 시 삭제 요망-->
+                    <div class="question-subtext">지금 내 상황과 직업에 더 가까운 것은?</div> <!--불필요 시 삭제 요망-->
                     <div class="buttons-container">
 
                         <!-- 이전페이지 이동 버튼 -->
@@ -121,16 +121,16 @@
                         </button>
 
                         <form id="Job-1" method="POST" action="{% url 'start:startingEnv' %}">
-                            <button class="choice-button" onclick="selectChoice(this, '선택지 1')">선택지 1</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 1')">아이들과 함께 <br>가족 중심의 생활</button>
                         </form>
                         <form id="Job-2" method="POST" action="{% url 'start:startingEnv' %}">
-                            <button class="choice-button" onclick="selectChoice(this, '선택지 2')">선택지 2</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 2')">집에서 취미와 <br>여유를 즐기는 생활</button>
                         </form>
                         <form id="Job-3" method="POST" action="{% url 'start:startingEnv' %}">
-                            <button class="choice-button" onclick="selectChoice(this, '선택지 3')">선택지 3</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 3')">학업에 힘쓰는 <br>자기계발 중심의 생활</button>
                         </form>
                         <form id="Job-4" method="POST" action="{% url 'start:startingEnv' %}">
-                            <button class="choice-button" onclick="selectChoice(this, '선택지 4')">선택지 4</button>
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 4')">다양한 경험을 추구하며 <br>일하는 열정적인 생활</button>
                         </form>
                         
                         <!-- 다음페이지 이동 버튼 -->
