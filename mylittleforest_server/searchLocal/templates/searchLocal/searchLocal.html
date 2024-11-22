@@ -24,7 +24,6 @@
 			justify-content: center;
 			align-items: center;
 			text-align: center;
-			background-color: #4EA686;
 		}
 
 		.header {
@@ -38,6 +37,8 @@
 		
 		.main {
 			grid-area: main;
+			flex-direction: column;
+			height: 100%; 
 		}
 		
         .sidebar {
@@ -55,9 +56,63 @@
 
 <body>
 	<div class="grid-container">
-		<div class="box header">Header - 100px</div>
+		<div class="box header">
+			<!-- 로고 이미지 "{% static 'images/Logo.png' %}" -->
+			<img src="{% static 'images/Logo.png' %}" alt="로고" class="logo">
+			<div class="header-btn">
+				<!-- 홈 버튼 img src="{% static 'images/home_btn.jpg' %}"-->
+				<button type="button" id= "home-btn" class="home-btn" onclick="window. location. href='{% url 'main' %}'">
+					<img src="{% static 'images/home_btn.jpg' %}">
+				</button>
+				<!-- 로그아웃 버튼 -->
+				<button type="button" id="logout-btn" class="logout-btn" onclick="window. location. href='{% url 'starting' %}'">
+					로그아웃
+				</button>
+			</div>
+		</div>
 
-		<div class="box widget">widget - 행 당 80px</div>
+		<div class="box widget">
+			<div class="widget">
+				<!-- 프로필 카드 -->
+				<div class="profile-card">
+					<div class="profile-header">
+						<img src="../../Assets/images/resultA강원pf.png" alt="프로필 이미지" class="profile-img">
+					</div>
+					<div class="profile-info">
+						<h2>{{request.session.nickname}}</h2>
+						<p class="profile-role">친절한 반달곰</p>
+						
+						<div class="local-city">
+							<i class="fa-solid fa-location-dot"></i>강원특별자치도
+						</div>
+					</div>
+					<div class="profile-actions">
+						<button class="action-btn" onclick="window.location.href='{% url 'main:myResult_a' %}'">나의 정보</button>
+						<button class="action-btn" onclick="window.location.href='{% url 'main:myForest_a' %}'">나의 포레스트</button>
+					</div>
+					<div class="profile-stats">
+						<div class="stat">
+							<i class=></i>
+						</div>
+						<div class="stat">
+							<i class="fa fa-heart"></i> Lv.1
+						</div>
+						<div class="stat">
+							<i class=></i>
+						</div>
+					</div>
+				</div>
+				
+				<div class="menu-btns">
+				<!-- 메뉴 버튼들 -->
+					<a href="seachLocal.html" class="menu-btn">포레스트 맵</a>
+					<a href="networking.html" class="menu-btn">포레스트 네트워킹</a>
+					<a href="sharingContens.html" class="menu-btn">포레스트 스튜디오</a>
+					<a href="mycontens" class="menu-btn">콘텐츠 모아보기</a>
+				</div>
+			</div>
+		</div>
+		
 
 		<div class="box main">
 				<h2>
@@ -67,7 +122,16 @@
 				<span class="shadow">
 					<img src="page.jpg" alt="사진">
 					<div class="overlay">
-						<p>문구 작성</p> <!-- 문구 작성 -->
+						<p>문구 작성
+							문구 작성
+							문구 작성
+							문구 작성
+							문구 작성
+							문구 작성
+							문구 작성
+							문구 작성
+							문구 작성
+						</p> <!-- 문구 작성 -->
 					 </div>
 				</span>
 			</div>
@@ -96,16 +160,16 @@
 
         <div class="box sidebar">
 			<div class="side-box">
-				<span class=" side city">
+				<span class="side city">
 					<a href="#city">도시 특징</a> <!-- '같은 페이지: 사이드바 -> 메인'으로 이동하는 거라 이대로 두었어요! -->
 				</span>
-				<span class=" side info">
+				<span class="side info">
 					<a href="#info">생활 정보</a> <!-- '같은 페이지: 사이드바 -> 메인'으로 이동하는 거라 이대로 두었어요! -->
 				</span>
-				<span class=" side fes">
+				<span class="side fes">
 					<a href="{% url 'searchLocal:searchLocalFestival' %}">지역 축제</a> <!-- searchLocalFestival.html로 이동하도록 설정 -->
 				</span>
-				<span class=" side store">
+				<span class="side store">
 					<a href="{% url 'searchLocal:searchLocalStore' %}">지역 가게</a> <!-- searchLocalStore.html로 이동하도록 설정 -->
 				</span>
 
@@ -115,18 +179,21 @@
 
 			</div>
 		</div>
-		<div class="box footer">Footer - 50px</div>
+		<div class="box footer">Copyright©2024 by team 마리포</div>
 	</div>
 
     <script>
-        function showContent(element) {
-            const content = element.nextElementSibling;
-            if (content.style.display === "none" || content.style.display === "") {
-                content.style.display = "block";
-            } else {
-                content.style.display = "none";
-            }
-        }
+		function showContent(element) {
+    const content = element.nextElementSibling;
+
+    // p 태그가 보이지 않으면 애니메이션을 통해 보이게 하고, 보이면 숨기기
+    if (content.classList.contains("show")) {
+        content.classList.remove("show"); // 이미 보이고 있으면 숨김
+    } else {
+        content.classList.add("show"); // 보이지 않으면 애니메이션으로 보여줌
+    }
+}
+
     </script>
 
 </body>
