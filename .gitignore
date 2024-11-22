@@ -1,7 +1,7 @@
 #macOS
 .DS_Store
 
-#Virtual enviroments
+#Virtual environments
 venv
 
 # Python
