@@ -56,14 +56,11 @@
             align-items: center;
             text-align: center;
         }
-        
-		.header {
-			grid-area: header;
-			font-family: 'NanumSquareRound', sans-serif;
-			display: flex;
-			text-align: center;
-			align-items: flex-end;
-		}
+
+        .header {
+            grid-area: header;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
 
         .main {
             grid-area: main;
@@ -100,20 +97,7 @@
 </head>
 <body>
     <div class="grid-container">
-        <div class="box header">
-            <!-- 로고 이미지 "{% static 'images/Logo.png' %}" -->
-            <img src="{% static 'images/Logo.png' %}" alt="로고" class="logo">
-            <div class="header-btn">
-                <!-- 홈 버튼 img src="{% static 'images/home_btn.jpg' %}"-->
-                <button type="button" id= "home-btn" class="home-btn" onclick="window. location. href='{% url 'main' %}'">
-                    <img src="{% static 'images/home_btn.jpg' %}">
-                </button>
-                <!-- 로그아웃 버튼 -->
-                <button type="button" id="logout-btn" class="logout-btn" onclick="window. location. href='{% url 'starting' %}'">
-                    로그아웃
-                </button>
-            </div>
-        </div>
+        <div class="box header"></div>
 
         
         <div class="box main">
