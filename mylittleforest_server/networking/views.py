@@ -4,8 +4,22 @@ from start.models import User
 from .models import Custom_group, Tag
 
 def networking(request):
+    # 데이터베이스에서 모든 그룹과 태그 가져오기
+    groups = Custom_group.objects.all()
     
-    return render(request, 'networking/networking.html') 
+    group_data = []
+
+    for group in groups:
+        # Tag 모델에서 group_name이 일치하는 태그 가져오기
+        tags = Tag.objects.filter(group_name=group.group_name).values_list('tag', flat=True)
+        group_data.append({
+            'group': group,
+            'tags': list(tags)  # 태그 목록
+        })
+        context = {
+            'group_data': group_data,  # 템플릿에서 사용하는 변수명 
+        }
+    return render(request, 'networking/networking.html', context)
 
 def makeGroup(request):
     if request.method == 'POST':
@@ -23,9 +37,13 @@ def makeGroup(request):
         # print(f"group_img: {group_img}")
 
         try:  
+            constructor = request.session.get('nickname', None)
+            if not constructor:
+                return JsonResponse({"success": False, 'message': '로그인이 필요합니다.'}, status=403)
+
             # Custom_group에 데이터 저장
             group = Custom_group.objects.create(
-                constructor = request.session['nickname'],
+                constructor =constructor,
                 image = group_img,
                 group_name = group_name,
                 description = group_text
