@@ -19,19 +19,6 @@
         @import url(startingQuestion.css);
         @import url(startingProgress.css);
         @import url(startingPage.css);
-
-        /* 이 부분 반드시 추가해야지만 로고 위치가 정확하게 일치해요! */
-        @media screen and (min-width: 1280px) and (max-width: 1920px) {
-            .whole-wrapper {
-                margin-top: 16.8px;
-            }
-        }
-
-        @media screen and (max-width: 1279px) {
-            .whole-wrapper {
-                margin-top: 0;
-            }
-        }
         
         * {
             margin: 0;
@@ -57,9 +44,7 @@
 
         .main {
             grid-area: main;
-            background-color: white;
-            flex-direction: column;
-            gap: 20px;
+
         }
 
         .footer {
@@ -67,7 +52,6 @@
             font-size: 15px;
             color: #544424;
             text-align: center;
-            padding: 10px 20px;
         }
 
         .Logo {
@@ -83,12 +67,28 @@
             max-width: 800px;
             height: 500px;
         }
-        
+
     </style>
 </head>
 <body>
     <div class="grid-container">
-        <div class="box header"></div>
+        <div class="box header">
+            <!-- 로고 이미지 "{% static 'images/Logo.png' %}" -->
+            <img src="../../Assets/images/Logo.jpg" alt="로고" class="logo">
+            <div class="header-btn">
+                <!-- 홈 버튼 img src="{% static 'images/home_btn.jpg' %}"-->
+                <button type="button" id= "home-btn" class="home-btn" onclick="window. location. href='{% url 'main' %}'">
+                    <img src="../../Assets/images/home_btn.jpg">
+                </button>
+                <!-- 로그아웃 버튼 -->
+                <button type="button" id="logout-btn" class="logout-btn" onclick="window. location. href='{% url 'starting' %}'">
+                    로그아웃
+                </button>
+            </div>
+        </div>
+
+        
+
         <div class="box main">
 
             <div class="whole-wrapper">
@@ -129,7 +129,8 @@
                         <form id="Env-3" method="POST" action="{% url 'start:startingBudget' %}">
                             <button class="choice-button" onclick="selectChoice(this, '선택지 3')">선택지 3</button>
                         </form>
-                        <form id="Env-4" method="e-button" onclick="selectChoice(this, '선택지 4')">선택지 4</button>
+                        <form id="Env-4" method="POST" action="{% url 'start:startingBudget' %}">
+                            <button class="choice-button" onclick="selectChoice(this, '선택지 3')">선택지 3</button>
                         </form>
 
                         <!-- 다음페이지 이동 버튼 -->
@@ -137,7 +138,7 @@
                             <i class="fa-solid fa-arrow-right" style="color: #27634C;"></i>
                         </button>
                     </div>
-                </div>
+                </div>  
             </div>
         </div>
         <div class="box footer">Copyright©2024 by team 마리포</div>

@@ -166,3 +166,246 @@ main {
     text-align: center;
     border-radius: 5px;
     }
+
+
+
+
+
+
+
+    /* 로고 */
+.logo {
+    position: absolute; /* 중앙에 고정하기 위해 절대 위치 */
+    left: 50%;
+    transform: translateX(-50%); /* 중앙 정렬 */
+    max-width: 200px;
+    height: auto;
+}
+
+/* header 홈/로그아웃 버튼들 위치 */
+.header-btn {
+    display: flex; /* 버튼 그룹을 가로로 배치 */
+    gap: 10px; /* 버튼 간 간격 */
+    margin-left: auto; /* 오른쪽 정렬 */
+    padding: 0px 20px;
+    align-items: flex-end; /* 그룹 내 버튼을 아래로 정렬 */
+
+}
+/* 홈버튼 이미지 */
+.home-btn img {
+    width: 40px; /* 이미지 너비 설정 */
+    height: 40px; /* 이미지 높이 설정 */
+    object-fit: cover; /* 이미지를 버튼 크기에 맞게 조절 */
+}
+
+.home-btn {
+    border: none; /* 버튼 외곽선 제거 */
+    background: none; /* 버튼 배경 제거 */
+    padding: 0; /* 여백 제거 */
+    cursor: pointer; /* 마우스 포인터를 손 모양으로 */
+    
+}
+.home-btn:hover {
+    transform: scale(1.04); /* 버튼 크기 확대 (1.1배) */
+    
+}
+
+/* 로그아웃 버튼 */
+.logout-btn {
+        font-size: 13px;
+        padding: 5px 10px;
+        background-color: #ffffff; /* 버튼 배경색 */
+        border: 1px solid #ccc; /* 테두리 */
+        border-radius: 5px; /* 버튼 모서리 둥글게 */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 5px;
+}
+.logout-btn:hover {
+    color : #3a8459;
+    transform: scale(1.02); /* 버튼 크기 확대 (1.1배) */
+}
+
+
+/* 위젯 */
+.widget{
+    max-width: 100%; /* 화면이 좁아질 경우 위젯이 너무 커지지 않도록 설정 */
+    height: auto; /* 위젯 영역 높이 */
+    flex-direction: column; /* 위젯 안의 요소를 세로로 정렬 */
+    align-items: center; /* 가로 정렬 중앙 */
+    justify-content: flex-start; /* 세로 정렬 상단 */
+    height: 100%; /* 위젯 높이를 고정 */
+    gap: 20px; /* 요소 간 간격 */
+    overflow: hidden; /* 내용이 넘치지 않도록 설정 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 박스 크기 계산 */
+}
+
+/* 프로필 카드 */
+.profile-card {
+    width: 100%; /* 위젯 영역 너비에 맞게 설정 */
+    height: auto; /* 높이는 내용에 따라 자동 조정 */
+    box-sizing: border-box; /* 패딩과 보더 포함 */
+    overflow: hidden; /* 내부 내용이 위젯 크기를 넘어갈 경우 잘리도록 설정 */
+    background: #fbfbfb;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'NanumSquareRound', sans-serif;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+/* 프로필카드 */
+.profile-header .profile-img {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    margin-top: 30px:
+    display: block;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.profile-info h2 {
+    font-size: 18px;
+    margin-top:15px;
+    color: #000000;
+}
+
+.profile-role {
+    font-size: 12px;
+    color: #544424;
+    margin: 20px;
+}
+
+.local-city {
+    font-size: 18px; /* 크기를 적당히 크게 설정 */
+    font-weight: bold; /* 텍스트 굵게 */
+    color: #61b600; /* 눈에 띄는 초록색 */
+    text-align: center; /* 가운데 정렬 */
+    margin: 30px 0; /* 위아래 여백 설정 */
+
+    display: flex;
+    flex-direction: column; /* 아이콘을 텍스트 위로 배치 */
+    align-items: center; /* 중앙 정렬 */
+}
+/* 아이콘크기 */
+.local-city i {
+    font-size: 22px; /* 아이콘 크기 */
+    color: #4a8b00; /* 아이콘 색상 변경 */
+    margin-bottom: 8px; /* 텍스트와 아이콘 사이 간격 */
+}
+
+/* 프로필카드 버튼 */
+.profile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.action-btn {
+    background: #4EA686;
+    color: white;
+    font-size: 12px;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.action-btn:hover {
+    background: #3a8459;
+    transform: scale(1.02); /* 버튼 크기 확대 (1.1배) */
+}
+
+
+/* 스텟 */
+.profile-stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #666;
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+.profile-stats .stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* 공통 메뉴 스타일 */
+.menu-btn {
+    width: 100%; /* 위젯 영역 너비에 맞게 설정 */
+    height: auto; /* 높이는 내용에 따라 자동 조정 */
+    box-sizing: border-box; /* 패딩과 보더 포함 */
+    overflow: hidden;
+    display: block;
+    margin: 10px auto; /* 가운데 정렬과 간격 */
+    padding: 15px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 15px; /* 버튼의 둥근 모서리 */
+    background: linear-gradient(135deg, #4EA686, #8BC330); /* 화려한 그라데이션 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* 입체감 */
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    border: none; /* 기본 테두리 제거 */
+    cursor: pointer;
+}
+
+/* 마우스 오버 효과 */
+.menu-btn:hover {
+    transform: translateY(-3px); /* 살짝 위로 이동 */
+    background: linear-gradient(135deg, #8BC330, #4EA686); /* 반대 방향 그라데이션 */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3); /* 그림자 강조 */
+    font-weight: bold;
+}
+
+/* 클릭 효과 */
+.menu-btn:active {
+    transform: translateY(2px); /* 클릭 시 살짝 아래로 */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 줄임 */
+}
+
+/* 각 버튼에 아이콘 추가 */
+.menu-btn:nth-child(1)::before {
+    content: '\f1fc'; /* Font Awesome 아이콘 (책 아이콘) */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 8px;
+}
+.menu-btn:nth-child(2)::before {
+    content: '\f0c0'; /* 네트워크 아이콘 */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 8px;
+}
+.menu-btn:nth-child(3)::before {
+    content: '\f108'; /* 스튜디오 느낌의 아이콘 */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 8px;
+}
+.menu-btn:nth-child(4)::before {
+    content: '\f00b'; /* 모아보기 느낌의 아이콘 */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 8px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .menu-btn {
+        font-size: 14px;
+        padding: 12px 15px;
+    }
+}
+
+
+

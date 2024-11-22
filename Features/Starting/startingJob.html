@@ -20,19 +20,6 @@
         @import url(startingQuestion.css);
         @import url(startingProgress.css);
         @import url(startingPage.css);
-
-        /* 이 부분 반드시 추가해야지만 로고 위치가 정확하게 일치해요! */
-        @media screen and (min-width: 1280px) and (max-width: 1920px) {
-            .whole-wrapper {
-                margin-top: 16.8px;
-            }
-        }
-
-        @media screen and (max-width: 1279px) {
-            .whole-wrapper {
-                margin-top: 0;
-            }
-        }
         
         * {
             margin: 0;
@@ -58,17 +45,14 @@
 
         .main {
             grid-area: main;
-            background-color: white;
-            flex-direction: column;
-            gap: 20px;
         }
+
 
         .footer {
             grid-area: footer;
             font-size: 15px;
             color: #544424;
             text-align: center;
-            padding: 10px 20px;
         }
 
         .Logo {
@@ -89,7 +73,23 @@
 </head>
 <body>
     <div class="grid-container">
-        <div class="box header"></div>
+        <div class="box header">
+            <!-- 로고 이미지 "{% static 'images/Logo.png' %}" -->
+            <img src="../../Assets/images/Logo.jpg" alt="로고" class="logo">
+            <div class="header-btn">
+                <!-- 홈 버튼 img src="{% static 'images/home_btn.jpg' %}"-->
+                <button type="button" id= "home-btn" class="home-btn" onclick="window. location. href='{% url 'main' %}'">
+                    <img src="../../Assets/images/home_btn.jpg">
+                </button>
+                <!-- 로그아웃 버튼 -->
+                <button type="button" id="logout-btn" class="logout-btn" onclick="window. location. href='{% url 'starting' %}'">
+                    로그아웃
+                </button>
+            </div>
+        </div>
+
+        
+        
         <div class="box main">
 
             <div class="whole-wrapper">
