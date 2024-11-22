@@ -74,7 +74,8 @@ h2 {
         width: 90%; 
         text-align: center;
         margin: 10px 0;
-        font-weight: 700; 
+        font-weight: 700;
+        margin-right: 100px;
 }
 
 h2:nth-child(1) {
@@ -218,19 +219,20 @@ h2:nth-child(1) {
 
 /* 로그아웃 버튼 */
 .logout-btn {
-        font-size: 13px;
-        padding: 5px 10px;
-        background-color: #ffffff; /* 버튼 배경색 */
-        border: 1px solid #ccc; /* 테두리 */
-        border-radius: 5px; /* 버튼 모서리 둥글게 */
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-bottom: 5px;
+    color: #3a8767;
+    font-size: 26px;
+    padding: 5px 10px;
+    background-color: #ffffff; /* 버튼 배경색 */
+    border: none;
+    border-radius: 5px; /* 버튼 모서리 둥글게 */
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 .logout-btn:hover {
-    color : #3a8459;
-    transform: scale(1.02); /* 버튼 크기 확대 (1.1배) */
+color : #3a8767;
+transform: scale(1.02); /* 버튼 크기 확대 (1.1배) */
 }
+
 
 
 /* 위젯 */
