@@ -7,8 +7,11 @@
     
     .grid-container {
     /* 컨테이너 너비 */
-    width: 1200px;
+    -ms-scroll-snap-points-x: 1200px;
     display: grid;
+    padding: 0px;
+    margin: auto;   /* 가로로 중앙 정렬 */ 
+    min-height: 100vh; 
     
     
     /* 행 6개
@@ -17,16 +20,13 @@
     (1fr은 사용 가능한 공간을 균등하게 나눈다는 의미로, 레이아웃의 중앙 내용 부분으로 활용.)
     50px: 마지막 행의 높이를 50px로 설정.
     */
-    grid-template-rows: 50px repeat(10, 60px) 50px;
+    grid-template-rows: 50px repeat(10,1fr) 50px;
     
     /* 열 구성: 좌우 여백 및 메인 콘텐츠 */
     grid-template-columns: 100px repeat(10, 1fr) 100px;
     
     /* 열 사이 간격 10px */
     gap: 10px;
-    
-    /* 화면 가운데 정렬 */
-    margin: auto;
     
     /* 레이아웃 구성 : header, main, footer */
     grid-template-areas:
