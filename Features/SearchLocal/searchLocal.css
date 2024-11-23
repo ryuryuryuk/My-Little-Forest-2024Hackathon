@@ -97,6 +97,7 @@ h2:nth-child(1) {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 20px;
     background: rgb( 0,0,0, 0.2);
     opacity: 0;
     transition: opacity 0.2s;
@@ -114,8 +115,9 @@ h2:nth-child(1) {
     display: flex;
     flex-direction: column; /* 세로로 줄바꿈 되도록 */
     width: 85%;
-    height: 100%;
+    height: max-content;
     text-align: left;
+    background-color: #f3fbf3;
 }
 
 .click-info {
@@ -155,9 +157,6 @@ h2:nth-child(1) {
     margin-bottom: 8px;
 }
 
-.A, .C {
-    background-color: #f3fbf3;
-} /* 별로다.. */
 
 /* show 클래스가 추가될 때 애니메이션 */
 .text p.show {
